@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" lang="pt-br">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon_io/favicon-32x32.png" type="image/x-icon">
+    <link rel="alternate" href="atom.xml" type="application/atom+xml" title="Atom">
+    <style>
+            * {
+                box-sizing: border-box;
+            }
+            .img-comp-container {
+                position: relative;
+                height: 200px;
+            }
+            .img-comp-img {
+                position: absolute;
+                width: auto;
+                height: auto;
+                overflow: hidden;
+            }
+            .img-comp-img img {
+                display: block;
+                width: 100%;
+                glyph-orientation-vertical: center;
+            }
+            .img-comp-slider {
+                margin: 40px;
+                position: absolute;
+                z-index: 9;
+                cursor: ew-resize;
+                width: 40px;
+                height: 40px;
+                background-color: #2196F3;
+                opacity: 0.7;
+                border-radius: 50%;
+            }
+        </style>
+                <h1>Solução Para Refrigeração e Climatização</h1>
+                <br>
+        <div class="img-comp-container">
+            <div class="img-comp-img">
+                <img src="vrf-ou-vrvpng.png"
+                    width="300" height="200">
+            </div>
+            <div class="img-comp-img img-comp-overlay">
+                <img src="camara friapng.png"
+                    width="300" height="200">
+            </div>
+        </div>
+        <script>
+            function initComparisons() {
+                var x, i;
+                x = document.getElementsByClassName("img-comp-overlay");
+                for (i = 0; i < x.length; i++) {compareImages(x[i]);}
+                function compareImages(img) {
+                    var slider, img, clicked = 0, w, h;
+                    w = img.offsetWidth; h = img.offsetHeight;
+                    img.style.width = (w / 2) + "px";
+                    slider = document.createElement("DIV");
+                    slider.setAttribute("class", "img-comp-slider");
+                    img.parentElement.insertBefore(slider, img);
+                    slider.style.top = (h / 2) - (slider.offsetHeight / 2) + "px";
+                    slider.style.left = (w / 2) - (slider.offsetWidth / 2) + "px";
+                    slider.addEventListener("mousedown", slideReady);
+                    window.addEventListener("mouseup", slideFinish);
+                    slider.addEventListener("touchstart", slideReady);
+                    window.addEventListener("touchend", slideFinish);
+                    function slideReady(e) {
+                        e.preventDefault();
+                        clicked = 1;
+                        window.addEventListener("mousemove",slideMove);
+                        window.addEventListener("touchmove", slideMove);
+                    }
+                    function slideFinish() { clicked = 0;}
+                    function slideMove(e) {
+                        var pos;
+                        if (clicked == 0) return false;
+                        pos = getCursorPos(e)
+                        if (pos < 0) pos = 0;
+                        if (pos > w) pos = w;
+                        slide(pos);
+                    }
+                    function getCursorPos(e) {
+                        var a, x = 0;
+                        e = (e.changedTouches) ? e.changedTouches[0] : e;
+                        a = img.getBoundingClientRect();
+                        x = e.pageX - a.left;
+                        x = x - window.pageXOffset;
+                        return x;
+                    }
+                    function slide(x) {
+                        img.style.width = x + "px";
+                        slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
+                    }
+                }
+            }
+            initComparisons();
+        </script>
+    <title>Solução simples</title>
+    
+    <style>
+        /*AQUI VAI TODO NOSSO CÓDIGO CSS*/
+        .flex{
+            max-width: 1500px;
+            padding-inline-start: 10px;
+            margin: 10px;
+            border: 1px solid #000; 
+            display: nowrap;  
+            border-radius: 10px;
+            background-color:rgb(183, 222, 248);
+        }
+        .item{
+            max-width: 1200px;
+            background-color: #1fa1a1;
+            margin-inline: 10px;
+            padding: 45px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+         .item1{
+            max-width: 1200px;
+            background-color: rgb(195, 233, 248);
+            
+            margin-inline: 10px;
+            padding: 45px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        .titulo{  
+            text-align: center;
+            font-size: 25px;
+            max-width: 1200px;
+            font-family: "Times New Roman", Times, serif;
+            color: rgb(0, 73, 119);
+            margin: 15px;
+            border: 1px solid;
+            display: block;
+            border-radius: 15px;
+        }
+        .container{
+            background-color:#d02126;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .text{
+            text-align: justify;
+            max-width: 1200%;
+            margin-inline: 400px;            
+            padding:center;
+            display: inline-flex;
+            color: #00536d;
+            font-size: 40px;
+            font-family: 'Times New Roman', Times, serif;
+        
+        
+           
+
+
+        }.corpweb{
+            background-color:#dfdede;
+            margin:2%;
+            color: #0a4f64;
+            font-size: 20px;
+
+        }
+        .rodpé{
+            font-size: 12px;
+        }
+        .Aviso{
+            background-color: #d02126;
+            padding: 2px;
+            max-width: 1200;
+            margin: 1px ;
+            border: 1px solid rgb(252, 0, 0);
+            display: inline-block;
+            border-radius: 10px;
+        } 
+        .textoIn{
+            padding:20px;
+            color: whitesmoke;
+        } .wats{
+            text-shadow: #000;
+            text-align:left;
+        }
+        .borda{
+            background-color: #8d2e31;
+            color: #dfdede;
+            
+            
+        }.bode{
+            border-radius: 3%;
+            box-sizing: border-box;
+            margin-top: 10px;
+            max-width: 1200;
+            margin-bottom:auto;
+
+        }
+    </style>
+
+</head>
+<body  class="corpweb">
+<header><!--criando um cabeçalho para nossa página com um menu-->
+    <h2>Ar Condicionado bom e Barato</h2>
+    <nav><!--vamos criar um menu utilizando listas-->
+        <ul>
+            <li> <span> Qual seria o "Melhor Custo Beneficio"?, </span> 
+                <br> O mais barato talvez?, 
+                <br> Mesmo sendo inverter? 
+                <br> Aqui vamos esclarecer todas as suas duvidas!</li>
+            <ul>
+            <h2>
+             Maquinas Inverter 
+            </<h2>
+            </ul>
+        
+            <li><p>
+                Com certaza já ouviram falar que aparelhos inverter, sejam eles, geladeira, maquinas, arcondicionado e freezers por exemplo, tem um alto redimento e uma alta taxa de economia.
+            <br>
+                Realmente ela tras muitas vantagens como durabilidade, economia, maior eficiencia e uma serie de teecnologias criadas para facilitar o nosso dia a dia como por exmplo a inclusão da internet nos aparelhos o que nos permite controlalo a distancia. <br> Mas será que todo aparelho inver é igual não tem diferençã nenhuma entre eles? <br>
+                Na verdade a diferenças as vezes gritante entre eles, e iremos explicar detalhadamente a diferença entre eles, bas escolher o assunto clicando nas imagem a baixo.                   
+            </p></li>
+        </ul>
+    </nav><!--aqui finaliza o meu menu-->
+</header>
+<main>    
+    <section><!--vamos criar a primeira section do meu documento-->
+        <article>
+            <h3>Soluções Simples para Climatização e Refigeração em Geral</h3>
+            <p>Ao longo da vida estamos sempre buscando soluções para resolver pequenas ou complexas questões que aparecem no nosso dia a dia, seja para climatizar um abiente, ou para aquecer uma picina, ou até mesmo buscando uma forma de economizar na hora de comprar. Para cada uma dessas questões estamos sempre buscando o material de melhor qualidade e melhor preço, e muitas vezes recorremos a internet um jeito pratico e facil de comprar, mas, será que é facil resolver alguma questão de troca por avaria ou desistencia de compra? <br>
+                É o que vamos descobrir, abaixo teremos algumas dicas na area de reffrigeração, climatização e energia solar comerical ou industrial, ou seja, para vc consumidor de pequeno ou de grande porte, estamos aqui hoje para oferecer a melhor solução para suas duvidas, no caso o "melhor custo beneficio". </p>
+            <br>
+            <p class="container">
+                <h2 class="text" > Dicas para uma boa compra.</h2>
+            </p>
+            <ol class="flex"><!--vamos criar uma lista ordenada-->
+                <div>         
+                    <h3 class="titulo"> Split & Mult-Split </h3>
+                 <li class="item"><a href="Split.MultSplit.html"><img src="splitxmultsplitpng.png" alt="foto multsplit"></a></li>             
+              
+                
+                </div>
+
+                <div>
+                    <h3 class="titulo"> Camara Fria / Expositores</h3>
+                    <li class="item"><a href="camarafria.html"><img src="camara friapng.png" alt="camarafira"></a></li>
+                </div>  
+                <div>
+                    <h3 class="titulo"> Sistemas VRF e VRV</h3>
+                    <li class="item"><a href="VrvVrf.html"><img src="vrf-ou-vrvpng.png" alt="vrf"></a></li>
+                </div>
+                
+                <div>
+                    <h3 class="titulo"> Energia Solar  </h3>
+                    <li class="item"><a href="EnergiaSolar.html"><img src="vrf-ou-vrvpng.png" alt="solar"></a></li>
+                </div> 
+                
+                <div>
+                    <h3 class="titulo"> Peças & Materiais  </h3>
+                    <li class="item"><a href="Peças&Serviços.html"><img src="vrf-ou-vrvpng.png" alt="solar"></a></li>
+                </div>
+                
+            </ol>
+        </article> <!-- aqui finaliza meu primeiro artigo da section-->
+        <article>
+            <h3>Gostou? Em breve traremos mais novidades!</h3>
+            <p>Deixe um feedback para que assim possamos estar aprimorando cada vez mais nossa pagina para trazer, esclarecer e te encaminhar  </p>
+            <p>Em sugestões ou pedidos, informe o produto desejado ou nos de um comentário sobre o nosso serviço, para que possamos melhorar cada vez mais.</p>        
+        </article><!--aqui finaliza meu segundo artigo da section-->
+</section><!--aqui encerra a primeira section do meu documento-->
+</main><!--aqui finaliza todo conteúdo principal do corpo da pagina-->
+
+<aside> <div class="Aviso" >
+            <div class="textoIn">
+                <h2>Trabalhamos com os Principais Fornecedores</h2>
+            <p>Te encaminhamos direto para o representante e com as melhores condições e entrega garantida em todo Brasíl, <br>
+            basta nós acionar wats ou deixar seu contato, vc será direcionado diretamente para um vendedor especifico para <br> a solução
+            que você procura, não e preocupe com relação a fraudes te encaminhamos para loja físicas onde você entra <br> em contato direto com o colaborador.
+            </div>
+            
+         </p>
+        </div>
+       
+    <ul> <h3>Contato Pessoal/ Colaborador Parceiro</h3>
+        <li><p> Abaixo segue link do Whatsap e loja Parceira para comprar e solicitar acompanhamento durante a compra e entrega do item escolhido. </p></li>
+        
+        <p class="wats">Marcus Henrique</p>
+        <li><p>Codigo Vendedor : 000586 </p></li>
+        
+        <li>Página oficial para compra segura <a href="https://www.climario.com.br/" target="_blank">Clima Rio</a></li>
+
+        <li> <a href="https://wa.me/5561993144860?text=Ol%C3%A1%20meu%20nome%20%C3%A9%20Marcus%20Henrique,%20estou%20a%20disposi%C3%A7%C3%A3o%20para%20orienta-lo%20e%20esclarecer%20qualquer%20duvida,%20garantindo%20a%20voc%C3%AA%20uma%20compra%20segura%20e%20r%C3%A1pida!" target="_blank"><img src="Curso_Dio_Estrutura_Básica/icoWats2.png"icoWats"> </a> </li>
+        <li class="borda"><p class="bode"> <H5>OBSERVAÇÃO</H5> É  muito importante adicionar o codgo do vendedor antes de finalizara compra, para que o mesmo consigo acompanhar e dar o devido suporte para o que precisar. </p></li>
+        
+
+    </ul>
+</aside>
+
+<footer>
+    <div><!--criando uma divisão para meu rodapé-->
+        <p>Inscreva-se para receber noticias</p>
+        <form method="post">
+            <input type="text" name="nome" placeholder="Digite seu Nome">
+            <input type="email" name="email" placeholder="Digite seu Email"> <br>
+            <input type="text" name="Texto" placeholder="Sugestão ou Produto ">
+            
+                        <input type="submit" name="enviar" value="Enviar">
+        </form>
+        <script>
+            function enviar(){
+                alert("Mensagem enviada com sucesso!");
+            }
+        </script>
+    </div>
+    <div><!--criando outra para meu rodapé-->
+        <span><h3>O Melhor Custo Beneficio, nós te falamos aqui!</h3></span>
+        
+        <span><h6>Todos os direitos reservados</h6></span>
+    </div>
+    
+</footer>
+<span class="rodpé"> &copy; MafiosoBR-DF </span>
+<script>
+    //AQUI VAI NOSSO CÓDIGO DE SCRIPT (JAVASCRIPT)
+</script>
+    
+</body>
+</html>
