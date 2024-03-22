@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" lang="pt-br">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon_io/favicon-32x32.png" type="image/x-icon">
+    <link rel="alternate" href="atom.xml" type="application/atom+xml" title="Atom">
+    <style>
+            * {
+                box-sizing: border-box;
+            }
+            .img-comp-container {
+                position: relative;
+                height: 200px;
+            }
+            .img-comp-img {
+                position: absolute;
+                width: auto;
+                height: auto;
+                overflow: hidden;
+            }
+            .img-comp-img img {
+                display: block;
+                width: 100%;
+                glyph-orientation-vertical: center;
+            }
+            .img-comp-slider {
+                position: absolute;
+                z-index: 9;
+                cursor: ew-resize;
+                width: 40px;
+                height: 40px;
+                background-color: #2196F3;
+                opacity: 0.7;
+                border-radius: 50%;
+            }
+        </style>
+        <div class="img-comp-container">
+            <div class="img-comp-img">
+                <img src="https://images.unsplash.com/photo-1593642532400-2682810df593?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80"
+                    width="300" height="200">
+            </div>
+            <div class="img-comp-img img-comp-overlay">
+                <img src="https://images.unsplash.com/photo-1593642532871-8b12e02d091c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1112&q=80"
+                    width="300" height="200">
+            </div>
+        </div>
+        <script>
+            function initComparisons() {
+                var x, i;
+                x = document.getElementsByClassName("img-comp-overlay");
+                for (i = 0; i < x.length; i++) {compareImages(x[i]);}
+                function compareImages(img) {
+                    var slider, img, clicked = 0, w, h;
+                    w = img.offsetWidth; h = img.offsetHeight;
+                    img.style.width = (w / 2) + "px";
+                    slider = document.createElement("DIV");
+                    slider.setAttribute("class", "img-comp-slider");
+                    img.parentElement.insertBefore(slider, img);
+                    slider.style.top = (h / 2) - (slider.offsetHeight / 2) + "px";
+                    slider.style.left = (w / 2) - (slider.offsetWidth / 2) + "px";
+                    slider.addEventListener("mousedown", slideReady);
+                    window.addEventListener("mouseup", slideFinish);
+                    slider.addEventListener("touchstart", slideReady);
+                    window.addEventListener("touchend", slideFinish);
+                    function slideReady(e) {
+                        e.preventDefault();
+                        clicked = 1;
+                        window.addEventListener("mousemove",slideMove);
+                        window.addEventListener("touchmove", slideMove);
+                    }
+                    function slideFinish() { clicked = 0;}
+                    function slideMove(e) {
+                        var pos;
+                        if (clicked == 0) return false;
+                        pos = getCursorPos(e)
+                        if (pos < 0) pos = 0;
+                        if (pos > w) pos = w;
+                        slide(pos);
+                    }
+                    function getCursorPos(e) {
+                        var a, x = 0;
+                        e = (e.changedTouches) ? e.changedTouches[0] : e;
+                        a = img.getBoundingClientRect();
+                        x = e.pageX - a.left;
+                        x = x - window.pageXOffset;
+                        return x;
+                    }
+                    function slide(x) {
+                        img.style.width = x + "px";
+                        slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
+                    }
+                }
+            }
+            initComparisons();
+        </script>
+    <title><h1>Solução Para Refrigeração e Climatização</h1></title>
+    <meta charset="utf-8">
+    <style>
+        /*AQUI VAI TODO NOSSO CÓDIGO CSS*/
+        .flex{
+            max-width: 1500px;
+            padding-inline-start: 10px;
+            margin: 10px;
+            border: 1px solid #000; 
+            display: nowrap;  
+            border-radius: 10px;
+        }
+        .item{
+            max-width: 1200px;
+            background-color: rgb(122, 204, 236);
+            margin: 10px;
+            padding: 45px;
+            border-radius: 10px;
+            display: flex;
+        }
+        .titulo{  
+            text-align: center;
+            font-size: 30px;
+            font-family: "Times New Roman", Times, serif;
+            color: rgb(38, 139, 197);
+            margin-left: 10px;
+        }
+        .çontainer{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<header><!--criando um cabeçalho para nossa página com um menu-->
+    <h2>Minha Página</h2>
+    <nav><!--vamos criar um menu utilizando listas-->
+        <ul>
+            <li>Home</li>
+            <li>Meu menu</li>
+        </ul>
+    </nav><!--aqui finaliza o meu menu-->
+</header>
+<main>    
+    <section><!--vamos criar a primeira section do meu documento-->
+        <article>
+            <h3>Titulo do meu artigo</h3>
+            <p>No nosso cotidiano, estamos em constante contato com soluções, como as ligas metálicas, o ar atmosférico, o soro fisiológico, entre outras. Em várias dessas soluções formadas por sólidos e líquidos, a água atua como solvente na maioria dos casos e, por isso, é considerada um solvente universal.</p>
+            <p>Mais conteúdo para o meu artigo</p>
+            <ol class="flex"><!--vamos criar uma lista ordenada-->
+                <div>
+                    <h3 class="titulo"> Split e Mult-Split </h3>
+                <li class="item"><a href="Split.MultSplit.html"><img src="splitxmultsplitpng.png" alt="foto multsplit"></a></li>
+                </div>
+                <div>
+                    <h3 class="titulo"> Camara Fria / Expositores</h3>
+                <li class="item"><a href="camarafria.html"><img src="camara friapng.png" alt="camarafira"></a></li>
+                </div>  
+                <div>
+                    <h3 class="titulo"> Sistemas VRF e VRV</h3>
+                <li class="item"><a href="VrvVrf.html"><img src="vrf-ou-vrvpng.png" alt="vrf"></a></li>
+                </div>
+            </ol>
+        </article><!-- aqui finaliza meu primeiro artigo da section-->
+        <article>
+            <h3>Titulo do meu segundo artigo</h3>
+            <p>Conteudo do meu segundo artigo</p>
+            <p>Mais conteúdo para o meu segundo artigo</p>        
+        </article><!--aqui finaliza meu segundo artigo da section-->
+</section><!--aqui encerra a primeira section do meu documento-->
+</main><!--aqui finaliza todo conteúdo principal do corpo da pagina-->
+
+<aside>
+    <h4><h2>Principais Fornecedores</h2></h4>
+    <ul>
+        <li>Página oficial da <a href="https://www.climario.com.br/" target="_blank">Clima Rio</a></li>
+        <li>item da lista</li>
+        <li>item da lista</li>
+    </ul>
+</aside>
+
+<footer>
+    <div><!--criando uma divisão para meu rodapé-->
+        <p>Inscreva-se para receber noticias</p>
+        <form method="post">
+            <input type="text" name="nome" placeholder="Digite seu Nome">
+            <input type="email" name="email" placeholder="Digite seu Email">
+            <input type="submit" name="enviar" value="Enviar">
+        </form>
+        <script>
+            function enviar(){
+                alert("Mensagem enviada com sucesso!");
+            }
+        </script>
+    </div>
+    <div><!--criando outra para meu rodapé-->
+        <h3>Minha primeira página html</h3>
+        <span>Todos os direitos reservados</span>
+    </div>
+</footer>
+
+<script>
+    //AQUI VAI NOSSO CÓDIGO DE SCRIPT (JAVASCRIPT)
+</script>
+
+</body>
+</html>
