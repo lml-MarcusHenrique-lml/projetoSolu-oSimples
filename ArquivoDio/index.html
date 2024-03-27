@@ -102,12 +102,19 @@
         .item img {
             width: 100%;
             display: block;
+            border-radius: 20px;
             filter: grayscale(100%);
             transition: filter 1s ease;
         }
         .item :hover{
             filter: none;
+            border-radius:20px;
+            border-style: inset ;
+            border-color: #004977;
             transition: filter 1s ease;
+            
+            
+            
         }
 
         /* Sidebar Styles */
@@ -119,7 +126,7 @@
         }
 
         .Aviso {
-            background-color: #342e8d;
+            background-color: #00000096;
             padding: 10px;
             border: 1px solid #fff;
             border-radius: 10px;
@@ -128,7 +135,8 @@
 
         .Aviso p {
             color: #fff;
-            font-size: 16px;
+            font-size: 20px;
+            padding: 1%;
         }
 
         .borda {
@@ -158,10 +166,70 @@
             padding: 1%;
             margin: 0 1,5% 0 3%;
         }
+        .dadosP p{
+            font-size: 30px;
+
+        }
+        .dadosP h3{
+            font-size:40px;
+        }
+        .span1 h6{
+            font-size: 14px;
+        }
+        .span1 h2{
+            font: size 43px;
+            color: #29b250;
+        }
+         /* Estilos para o menu flutuante */
+        .menu-flutuante {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #000000;
+            color: #fff;
+            padding: 10px 0;
+            z-index: 9999;
+            text-align: center;
+        }
+
+        .menu-flutuante ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-flutuante li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .menu-flutuante a {
+            color: #fff;
+            text-decoration: none;
+            transition: 0.8s;
+        }
+        .menu-flutuante :hover{
+            color: #6f9fff;
+        }
+        header{
+            margin-top: 40px;
+        }
     </style>
 </head>
 
 <body>
+    <div class="menu-flutuante">
+        <ul>
+            <li><a href="#solution">Soluções Simples</a></li>
+            <li><a href="#split-multi-split">Split & Multi-Split</a></li>
+            <li><a href="#vrf-vrv">VRF&VRV</a></li>
+            <li><a href="#camaras-frigorificas">Câmaras Frigoríficas</a></li>
+            <li><a href="#energia-solar">Energia Solar</a></li>
+            <li><a href="#materiais-insumos">Materiais & Insumos</a></li>
+            <li><a href="#contato">Contato&Suporte</a></li>
+        </ul>
+    </div>
     <header>
         <h1>Solução Para Refrigeração e Climatização</h1>
     </header>
@@ -174,29 +242,41 @@
                         <h3>Refrigeração: Uma Visão Abrangente</h3>
                             <p>Seja em residências, estabelecimentos comerciais ou indústrias, a refrigeração desempenha um papel crucial para manter ambientes confortáveis, produtos frescos e processos industriais eficientes. Nesta jornada pelo mundo da refrigeração, exploraremos uma variedade de tecnologias e soluções que garantem conforto, eficiência e economia.</p><br>
                     </div>
-                    <div>
+                    <div  id="split-multi-split"><br><br><br>
                         <h3>Split & Multi-Split: Eficiência Personalizada</h3>
                             <p>Os sistemas Split e Multi-Split oferecem uma solução flexível e eficaz para climatização de ambientes. Com unidades internas discretas e unidades externas poderosas, esses sistemas podem ser dimensionados de acordo com as necessidades específicas de cada espaço, proporcionando conforto térmico sob medida.</p><br>
+                            <p>
+                                O sistema Split e o sistema Multi-Split são ambos tipos de sistemas de ar-condicionado, mas têm diferenças significativas em termos de design e aplicação</p>
+                                <p>Em resumo, a principal diferença entre os sistemas Split e Multi-Split está na capacidade de conectar várias unidades internas a uma única unidade externa, proporcionando maior flexibilidade e eficiência em projetos que exigem refrigeração ou aquecimento em múltiplos ambientes.</p>
                     </div>
-                    <div>
-                        <h3>VRF & VRV: Eficiência Energética e Controle Preciso</h3>
-                            <p>Os sistemas VRF (Fluxo de Refrigerante Variável) e VRV (Volume de Refrigerante Variável) representam o estado da arte em climatização. Com a capacidade de fornecer aquecimento e resfriamento simultâneos para diferentes zonas, juntamente com controle individualizado de temperatura, esses sistemas garantem conforto superior e eficiência energética excepcional.</p>    <br>
+                    <div id="vrf-vrv"><br><br><br>
+                        <h3>VRF&VRV: Eficiência Energética e Controle Preciso</h3>
+                            <p>Os sistemas VRF (Fluxo de Refrigerante Variável) e VRV (Volume de Refrigerante Variável) representam o estado da arte em climatização. Com a capacidade de fornecer aquecimento e resfriamento simultâneos para diferentes zonas, juntamente com controle individualizado de temperatura, esses sistemas garantem conforto superior e eficiência energética excepcional.</p>
+                            <p>O VRF, ou Volume de Refrigerante Variável, é um sistema de ar condicionado que se destaca por sua eficiência energética, flexibilidade e capacidade de controle individualizado de temperatura em diferentes áreas de um edifício.</p>    <br>
+                            <p><strong>Eficiência Energética:</strong>  Tanto os sistemas VRV quanto os VRF são conhecidos por sua eficiência energética, mas os sistemas VRV da Daikin, em particular, são frequentemente elogiados por sua capacidade de ajustar continuamente a capacidade de refrigeração de acordo com as necessidades de cada ambiente, o que pode resultar em economias adicionais de energia.<br>
+
+                            Em relação a atender um maior número de salas, geralmente os sistemas VRV têm uma vantagem devido à sua capacidade de escalabilidade e maior capacidade de refrigeração. No entanto, a escolha entre VRV e VRF dependerá das necessidades específicas do projeto, do orçamento e das preferências do cliente, bem como das especificações e recomendações do fabricante. É importante consultar um especialista em climatização para determinar a melhor solução para cada caso.</p>
+                    
                     </div>
-                    <div>
+                    <div id="camaras-frigorificas"><br><br><br>
                         <h3>Câmaras Frigoríficas: Preservação de Produtos e Eficiência Logística</h3>
-                            <p>Para a conservação de alimentos e produtos perecíveis, as câmaras frigoríficas desempenham um papel vital. Seja para armazenamento congelado ou resfriado, essas estruturas oferecem controle preciso de temperatura e umidade, garantindo a frescura e a qualidade dos itens armazenados, além de otimizar os processos logísticos.</p><br>
+                            <p>Para a conservação de alimentos e produtos perecíveis, as câmaras frigoríficas desempenham um papel vital. Seja para armazenamento congelado ou resfriado, essas estruturas oferecem controle preciso de temperatura e umidade, garantindo a frescura e a qualidade dos itens armazenados, além de otimizar os processos logísticos.</p>
                     </div>
-                    <div>
+                    <div id="energia-solar"><br><br><br>
                         <h3>Energia Fotovoltaica: Sustentabilidade e Autonomia Energética</h3>
                             <p>A energia solar fotovoltaica emergiu como uma alternativa sustentável e econômica para suprir as necessidades energéticas de residências, empresas e indústrias. Ao converter a luz solar em eletricidade limpa e renovável, os sistemas fotovoltaicos reduzem os custos de energia e contribuem para a redução das emissões de carbono.</p>    <br>
                     </div>
-                    <div>
-                        <h3>Materiais & Insumos: Componentes Essenciais para o Funcionamento Eficiente</h3>
-                            <p>Além das tecnologias principais, uma variedade de materiais e insumos desempenham um papel crucial na refrigeração eficiente. Desde compressores e evaporadores até isolamentos térmicos e refrigerantes, cada componente desempenha um papel vital no funcionamento suave e confiável dos sistemas de refrigeração.</p><br>
+                    <div id="materiais-insumos"><br><br><br>
+                        <h3>Materiais&Insumos: Componentes Essenciais para o Funcionamento Eficiente</h3>
+                            <p>Além das tecnologias principais, uma variedade de materiais e insumos desempenham um papel crucial na refrigeração eficiente. Desde compressores e evaporadores até isolamentos térmicos e gás refrigerantes, cada componente desempenha um papel vital no funcionamento suave e confiável dos sistemas de refrigeração.</p><br>
                     </div>
                 </div>
                 
-
+                <div id="solution">
+                        <br>  <br>             
+                </div>
+                <h3>Selecione a solução desejada!</h3>
+                
                 <div class="container">
                     <div>
                         <h3 class="titulo">Split &Mult-Split</h3>
@@ -209,7 +289,7 @@
                     </div>
 
                     <div>
-                        <h3 class="titulo">Sistemas VRF &VRV</h3>
+                        <h3 class="titulo">Sistemas VRF&VRV</h3>
                         <div class="item"><a href="VrvVrf.html"><img src="vrf-ou-vrvpng.png" alt="vrf"></a></div>
                     </div>
 
@@ -230,14 +310,22 @@
     <aside>
     <div class="Aviso">
         <h2>Trabalhamos com os Principais Fornecedores</h2>
-        <p>Garantimos a entrega em todo o Brasil. Nossa equipe está baseada em nossa loja física em Brasília. No entanto, se preferir, oferecemos a opção de pagamento e retirada do produto pessoalmente em uma loja parceira mais próxima de você. Basta entrar em contato conosco pelo WhatsApp ou deixar seu contato, e nós iremos localizar a loja mais conveniente para você. O nosso colaborador estará disponível para realizar o pedido, e você poderá efetuar o pagamento e retirar o produto na loja selecionada da sua região. Traga o seu projeto e faça um orçamento sem compromisso! Estamos aqui para garantir a melhor solução para você, e cobrimos orçamentos de concorrentes.</p>
-    </div>
+        <p><strong>Entregamos em todo o Brasil!</strong> " Nossa equipe, baseada em Brasília, está pronta para atendê-lo. Se preferir, temos a opção de pagamento e retirada do produto pessoalmente em uma de nossas lojas. Para isso, basta entrar em contato conosco pelo WhatsApp ou deixar seu contato. Nós iremos te encmainhar para a loja mais proxima de você, ou simplesmente pode aguardar o produto chegar no endereço desejado, oferecemos uma uma entrega realmente rápida e eficiente.
 
-    <h3>Colaborador Parceiro</h3>
+        Um de nossos colaboradores estará à disposição para realizar o seu pedido. Você poderá efetuar o pagamento e retirar o produto na loja proxima sua região.
+
+        Traga o seu projeto e faça um orçamento sem compromisso! Estamos aqui para garantir a melhor solução para você. Além disso, cobrimos orçamentos de concorrentes. <strong>Conte conosco para fazer bons negócios!</strong> "</p>
+    </div>
+    <div id="contato">
+        <div class="dadosP"><h3>Colaborador Parceiro</h3>
     <p>Marcus Henrique</p>
+    </div>
+    
     <a aria-label="Chat on WhatsApp" href="https://wa.me/5561974012022/?text=Ol%C3%A1%2C%20eu%20gostaria%20de%20solicitar%20um%20or%C3%A7amento!" target="_blank">
         <img alt="Chat on WhatsApp" src="icoWats2.png" />
     </a>
+    </div>
+    
 </aside>
 
 
@@ -251,8 +339,8 @@
                 <input type="submit" name="enviar" value="Enviar" onclick="enviar()">
             </form>
         </div>
-        <div>
-            <span><h3>O Melhor Custo Benefício, nós te falamos aqui!</h3></span>
+        <div class="span1">
+            <span><h2>O Melhor Custo Benefício, nós te falamos aqui!</h2></span>
             <span><h6>&copy;Marcus Henrique Consultor, Todos os direitos reservados</h6></span>
         </div>
     </footer>

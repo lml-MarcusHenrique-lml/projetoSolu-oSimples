@@ -1,69 +1,332 @@
 <!DOCTYPE html>
-<html lang="en" lang="pt-br">
+<html lang="pt-br">
+
 <head>
-    <title>Título da página</title>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VRV & VRF</title>
     <style>
-        /*AQUI VAI TODO NOSSO CÓDIGO CSS*/
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0 ;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        header nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        header nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        h2,
+        h3 {
+            color: #007bff;
+            margin-top: 0;
+        }
+
+        p,
+        li {
+            line-height: 1.6;
+        }
+
+        footer {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        footer form input[type="text"],
+        footer form input[type="email"],
+        footer form input[type="submit"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        footer form input[type="text"],
+        footer form input[type="email"] {
+            width: calc(50% - 10px);
+        }
+
+        footer form input[type="submit"] {
+            background-color: #0056b3;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        footer form input[type="submit"]:hover {
+            background-color: #004080;
+        }
+
+        footer div:last-child {
+            text-align: center;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        footer div:last-child span {
+            font-size: 12px;
+        }
+    .margincont{
+        margin: 0 5% 0 5%;
+    }
     </style>
 </head>
+
 <body>
-<header><!--criando um cabeçalho para nossa página com um menu-->
-    <h2>Minha Página</h2>
-    <nav><!--vamos criar um menu utilizando listas-->
-        <ul>
-            <li>Home</li>
-            <li>Meu menu</li>
-        </ul>
-    </nav><!--aqui finaliza o meu menu-->
-</header>
-<main>    
-    <section><!--vamos criar a primeira section do meu documento-->
-        <article>
-            <h3>Titulo do meu artigo</h3>
-            <p>Conteudo do meu artigo</p>
-            <p>Mais conteúdo para o meu artigo</p>
-            <ol><!--vamos criar uma lista ordenada-->
-                <li>item 1</li>
-                <li>item 2</li>
-                <li>item 3</li>
-            </ol>
-        </article><!-- aqui finaliza meu primeiro artigo da section-->
-        <article>
-            <h3>Titulo do meu segundo artigo</h3>
-            <p>Conteudo do meu segundo artigo</p>
-            <p>Mais conteúdo para o meu segundo artigo</p>        
-        </article><!--aqui finaliza meu segundo artigo da section-->
-</section><!--aqui encerra a primeira section do meu documento-->
-</main><!--aqui finaliza todo conteúdo principal do corpo da pagina-->
+    <header>
+        <h2>VRV E VRF</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Meu menu</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="margincont">
+    <main>
+        <section>
+            <article>
+                <h2>VRF: A Solução Completa para Climatização de Ambientes</h2>
+                <p>Cansado de soluções de climatização complexas e ineficientes? Conheça o VRF (Variable Refrigerant
+                    Flow), a solução completa para climatizar ambientes de forma eficiente, flexível e econômica!</p>
+                <h3>O que é o VRF?</h3>
+                <p>O VRF é um sistema de climatização inovador que utiliza um único compressor para controlar o fluxo de
+                    refrigerante em várias unidades evaporadoras (split). Isso permite um controle preciso da
+                    temperatura em cada ambiente, proporcionando conforto e economia de energia.</p>
+                <h3>Vantagens do VRF:</h3>
+                <ul>
+                    <li>Eficiência Energética</li>
+                    <li>Flexibilidade</li>
+                    <li>Controle Individualizado</li>
+                    <li>Design Compacto</li>
+                    <li>Manutenção Simplificada</li>
+                </ul>
+                <p>Em resumo, o VRF é uma escolha popular para aplicações de ar condicionado em edifícios comerciais,
+                    residenciais e industriais devido à sua eficiência energética, flexibilidade de controle e
+                    capacidade de proporcionar conforto personalizado aos ocupantes.</p>
+                <ol>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                </ol>
+            </article>
+            <article>
+                <h3>Soluções VRV Daikin: Climatização Eficiente e Personalizada</h3>
+                <p>A Daikin, líder mundial em soluções de climatização, oferece a tecnologia VRV (Variable Refrigerant
+                    Volume) como a solução ideal para climatizar ambientes de forma eficiente, flexível e personalizada.
+                </p>
+                <h3>O que é o VRV Daikin?</h3>
+                <p>O VRV Daikin é um sistema de climatização inovador que utiliza um único compressor para controlar o
+                    fluxo de refrigerante em várias unidades evaporadoras (split). Isso permite um controle preciso da
+                    temperatura em cada ambiente, proporcionando conforto e economia de energia.</p>
+                <h4>Vantagens do VRV Daikin:</h4>
+                <ul>
+                    <li>Eficiência energética</li>
+                    <li>Flexibilidade</li>
+                    <li>Conforto</li>
+                    <li>Aplicações Comerciais e Industriais</li>
+                </ul>
+                <p>O número de unidades evaporadoras que podem ser conectadas a um sistema VRF/VRV varia de acordo com o modelo e a capacidade do sistema.</p>
 
-<aside>
-    <h4>Conteúdos relacionados</h4>
-    <ul>
-        <li>Página oficial da <a href="https://www.homehost.com.br/">Home Host</a></li>
-        <li>item da lista</li>
-        <li>item da lista</li>
-    </ul>
-</aside>
+                <h3>Fatores que influenciam a quantidade de unidades evaporadoras:</h3>
+                <ul>
+                    <ol>
+                        <b>Capacidade do compressor:</b> Define a quantidade total de refrigerante que o sistema pode circular.
+                    </ol>
+                    <ol>
+                        <b>Potência das unidades evaporadoras:</b> Determina a quantidade de refrigerante que cada unidade necessita.
+                    </ol>
+                    <ol>
+                        <b>Comprimento da tubulação:</b> Quanto mais longa a tubulação, menor a quantidade de unidades evaporadoras que podem ser conectadas.
+                    </ol>
+                </ul>
+                <h2>Limite de unidades evaporadoras:</h2>
+                <ul>
+                    <li>VRV residencial: Suporta até 9 unidades evaporadoras por sistema.</li>
+                    <li>VRF comercial: Suporta até 64 unidades evaporadoras por sistema.</li>
+                    <li>Sistemas de grande porte: Permitem a conexão de centenas de
+                    unidades evaporadoras.</li>
+                </ul>
+                <h4>Recomendações</h4>
+                <p>Consulte o manual do sistema para verificar a quantidade máxima de unidades evaporadoras permitidas.<br>
+                    Utilize a ferramenta de seleção de sistemas da Daikin para escolher o sistema ideal para suas necessidades.<br>
+                    Contate um representante autorizado Daikin para obter orientação e dimensionamento correto do sistema.</p>
+                <h4>Exemplo:</h4>
+                <p>
+                    <strong>Um sistema VRF/VRV com um compressor de 16 HP pode suportar:</strong>
+                    <ul>
+                        <li>
+                            Até 9 unidades evaporadoras de 1 HP 
+                        </li>
+                        <li>
+                            Até 6 unidades evaporadoras de 2 HP 
+                        </li>
+                        <li>
+                            Combinação de diferentes potências de unidades evaporadoras
+                        </li>
+                    </ul>              
+                
+                </p>
+                
+                <h3>Importante:</h3>
+                <p>A quantidade ideal de unidades evaporadoras depende da carga térmica do ambiente a ser climatizado. <br>
+                É fundamental realizar um dimensionamento correto do sistema para garantir a eficiência e o bom funcionamento do mesmo.</p>
 
-<footer>
-    <div><!--criando uma divisão para meu rodapé-->
-        <p>Inscreva-se para receber noticias</p>
-        <form method="post">
-            <input type="text" name="nome" placeholder="Digite seu Nome">
-            <input type="email" name="email" placeholder="Digite seu Email">
-            <input type="submit" name="enviar" value="Enviar">
-        </form>
+                <h3>Solicite um orçamento sem compromisso!</h3>
+                <h4>A Daikin tem a solução ideal para climatizar seu ambiente com conforto, eficiência e economia. Entre
+                    em contato conosco hoje mesmo!</h4>
+            </article>
+        </section>
+    </main>
+    <aside>
+        <h4>Conteúdos relacionados:</h4>
+        <h3>Convite para Parceria</h3> 
+            Aumente suas vendas e ganhe novos clientes com <strong>"Bom&Barato"!</strong>
+
+            <p>Somos uma empresa especializada em refrigeração industrial e comercial, <b>ar condicionados, VRF, câmaras frigoríficas, expositores e muito mais.</b></p>
+
+            <h3>Acreditamos que a colaboração é a chave para o sucesso!</h3>
+            <h4>Por isso, convidamos você para uma parceria comercial que beneficiará ambas as partes.</h4>
+            <p>Oferecemos:</p>
+            <ul>
+                <li>
+                    <b>Troca de clientes e indicações:</b> Ampliaremos nossa base de clientes e você terá acesso a novos leads.
+                </li>
+                <li>
+                    <b>Comissões atrativas:</b> Você receberá comissões sobre as vendas geradas por suas indicações, Consulte politica de comissão.
+                </li>
+                <li>
+                    <b>Suporte técnico especializado:</b> Uma equipe de especialistas à sua disposição para auxiliar em suas vendas.
+                </li>
+                <li>
+                    <b>Negociação direta com o cliente:</b> Você terá total liberdade para negociar com o cliente final.
+                </li>
+                <li>
+                    <b>Treinamento periódico:</b> Mantenha-se atualizado sobre nossos produtos e serviços.
+                </li>
+            </ul>
+
+
+
+
+            <h4>Esta parceria é ideal para:</h4>
+
+            <ul>
+                <ol>
+                    <strong>Arquitetos e Engenheiros:</strong> Que desejam oferecer soluções completas em refrigeração para seus clientes.
+                </ol>
+                <ol>
+                    <strong>Prestadores de Serviços:</strong> Que buscam ampliar sua oferta de serviços e aumentar seus rendimentos.
+                </ol>
+                <ol>
+                    <strong>Profissionais que trabalham com projetos e reformas:</strong> Que desejam oferecer soluções inovadoras e eficientes em refrigeração.
+                </ol>
+                
+            </ul>       
+            
+            <p>Esta é a oportunidade perfeita para você!</p>
+
+            <p> <b>Junte-se a nós e:</b> 
+            Amplie sua rede de contatos: Conecte-se com novos clientes em potencial.
+            Ofereça soluções completas aos seus clientes: Aumente a sua competitividade.
+            Aumente seus rendimentos: Ganhe mais comissões.
+            </p>
+            <p>
+                Para se cadastrar, basta acessar o link: [Link para o formulário de inscrição]
+            </p>
+            <p>Dúvidas? Entre em contato conosco:</p>
+
+            <p>
+                Telefone: [Número de telefone] <br>
+                E-mail: [Endereço de e-mail] <br> 
+                Faça parte da nossa equipe! <br>
+            </p>
+            <p>#JuntosSomosMaisFortes
+
+            #NomeDaSuaLoja
+
+            #RefrigeraçãoIndustrialEComercial
+
+            #ArCondicionado
+
+            #VRF
+
+            #CâmarasFrigoríficas
+
+            #Expositores
+
+            #NovosNegócios
+
+            #Parcerias
+
+            #ComissõesAtrativas
+
+            #SuporteTécnico
+
+            #MateriaisDeMarketing
+
+            #Treinamento
+
+            #Arquitetos
+
+            #Engenheiros
+
+            #PrestadoresDeServiços
+
+            #Projetos
+
+            #Reformas</p>
+
+            
+    </aside>
     </div>
-    <div><!--criando outra para meu rodapé-->
-        <h3>Minha primeira página html</h3>
-        <span>Todos os direitos reservados</span>
-    </div>
-</footer>
-
-<script>
-    //AQUI VAI NOSSO CÓDIGO DE SCRIPT (JAVASCRIPT)
-</script>
-
+    <footer>
+        <div>
+            <p>Inscreva-se para receber notícias</p>
+            <form method="post">
+                <input type="text" name="nome" placeholder="Digite seu Nome">
+                <input type="email" name="email" placeholder="Digite seu Email">
+                <input type="submit" name="enviar" value="Enviar">
+            </form>
+        </div>
+        <div>
+            <h3>Torne-se um Cliente Parceiro e receber indicações e até comissão por indicação.<obs class=":"> "Consultar Regulamentos"</obs></h3>
+            <span>&copy; Marcus Henrique Consultor, Todos os direitos reservados.</span>
+        </div>
+    </footer>
 </body>
+
 </html>

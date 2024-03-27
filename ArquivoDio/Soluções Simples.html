@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha de Ar Condicionado</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Escolha de Ar Condicionado</h1>
+    </header>
+    <main>
+        <section id="calculator">
+            <h2>Calculadora de BTUs</h2>
+            <form id="btuCalculator">
+                <label for="area">Área do Ambiente (m²):</label>
+                <input type="number" id="area" required>
+                <label for="type">Tipo de Ar Condicionado:</label>
+                <select id="type">
+                    <option value="split">Split</option>
+                    <option value="janela">Janela</option>
+                    <option value="portatil">Portátil</option>
+                </select>
+                <button type="submit">Calcular</button>
+            </form>
+            <div id="result"></div>
+        </section>
+        <section id="comparison">
+            <h2>Comparação de Modelos</h2>
+            <div id="models">
+                <!-- Os modelos serão carregados dinamicamente aqui -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 Escolha de Ar Condicionado</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
