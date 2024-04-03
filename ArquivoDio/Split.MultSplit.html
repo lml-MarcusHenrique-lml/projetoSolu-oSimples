@@ -29,11 +29,13 @@
         }
         .menu-flutuante ul li:last-child {
             margin-right: 0;
+            margin-top: 1%;
         }
         .menu-flutuante ul li a {
             color: #fff;
             text-decoration: none;
             font-weight: bold;   
+            
         }
         .menu-flutuante :hover{
         
@@ -124,6 +126,52 @@
         .marginBod{
             margin: 0 5% 0 5%;
         }
+
+    .container {
+    display: flex;
+    align-items: center;
+}
+
+.imagem, .texto {
+    flex: 1;
+    padding: 0 10px; /* Espaçamento entre os elementos */
+}
+
+.texto {
+    order: 2; /* Altera a ordem do texto para aparecer abaixo da imagem em dispositivos móveis */
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Altera a direção da grade para coluna em dispositivos móveis */
+    }
+}
+ 
+
+        .conteudo {
+            display: flex;
+        }
+
+        .video-wrapper {
+            flex: 1;
+            margin-right: 20px; /* Espaçamento entre o vídeo e o texto */
+        }
+
+        .texto {
+            flex: 1;
+        }
+
+        @media (max-width: 768px) {
+            .conteudo {
+                flex-direction: column;
+            }
+
+            .video-wrapper {
+                margin-right: 0;
+            }
+        }
+            
+
     </style>
 </head>
 <body>
@@ -144,12 +192,44 @@
     <main>
         <div class="marginBod">
             <section id="split-multsplit">
-            <h1>Personalização e Eficiência</h1>
-            <!-- Conteúdo sobre Split e MultSplit -->
-            <h3>O que são Split e MultSplit?</h3>
-                <P> Os sistemas de ar condicionado Split e MultSplit são soluções modernas e eficientes para climatizar ambientes residenciais e comerciais. Eles se destacam pela sua versatilidade e capacidade de personalização, oferecendo conforto térmico sob medida para cada ambiente.</P>
-                <P> <b>Split:</b>  O sistema Split consiste em duas unidades principais: a unidade condensadora, instalada externamente, e a unidade evaporadora, instalada internamente. Essas unidades são conectadas por tubulações de cobre e trabalham em conjunto para refrigerar o ambiente de forma eficaz e silenciosa.</P>
-        </section>
+                <h1>Personalização e Eficiência</h1>
+                <!-- Conteúdo sobre Split e MultSplit -->
+                <h3>O que são Split e MultSplit?</h3>
+                <p>Os sistemas de ar condicionado Split e MultSplit são soluções modernas e eficientes para climatizar ambientes residenciais e comerciais. Eles se destacam pela sua versatilidade e capacidade de personalização, oferecendo conforto térmico sob medida para cada ambiente.</p>
+                
+                <div class="container">
+                    <div class="imagem">
+                        <img src="SPLITHWLG.PNG" alt="Split">
+                    </div>
+                    <div class="texto">
+                        <h3>Funcionamento:</h3>
+                        <ul>
+                            <li><b>O fluido refrigerante</b> circula entre as duas unidades, absorvendo o calor do ambiente interno na evaporadora e liberando-o no ambiente externo na condensadora.</li>
+                            <li><b>Um compressor</b> na unidade condensadora impulsiona o fluido refrigerante pelo ciclo.</li>
+                            <li><b>O sistema split</b> pode ser ligado e desligado de acordo com a necessidade, proporcionando controle preciso da temperatura do ambiente.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p>
+                    <strong>O sistema Multi-Split</strong> é uma solução inovadora para climatizar múltiplos ambientes com apenas uma unidade condensadora externa. Essa tecnologia oferece diversos benefícios em termos de eficiência energética, flexibilidade e estética.
+                </p>
+
+                <div class="container">
+                    <div class="imagem">
+                        <img src="exemplo multLg.png" alt="Mult-Split">
+                    </div>
+                    <div class="texto">
+                        <h3>Funcionamento:</h3>
+                        <ul>
+                            <li><strong>Uma única unidade condensadora:</strong> Diferente dos sistemas split tradicionais, o Multi-Split conecta várias unidades evaporadoras (internas) a uma única unidade condensadora externa.</li>
+                            <li><strong>Controle individualizado:</strong> Cada ambiente possui controle individual de temperatura e funções, permitindo personalização do conforto.</li>
+                            <li><strong>Variedade de modelos:</strong> Diversos modelos de evaporadoras estão disponíveis para atender às necessidades de cada ambiente.</li>
+                        </ul> 
+                    </div>
+                </div>
+            </section>
+
         <section id="tecnologia-inverter">
             <h1>Tecnologia Inverter: Eficiência Energética</h1>
             <!-- Conteúdo sobre Tecnologia Inverter -->
@@ -171,8 +251,19 @@
         <section id="tecnologia-vrf-vrv">
             <h1>Comparação com Sistemas Tradicionais:</h1>
             <!-- Conteúdo sobre Tecnologia VRF & VRV -->
-            <p>Ao comparar os sistemas inverter com os sistemas tradicionais de ar-condicionado, é evidente a diferença significativa na eficiência energética e no desempenho. Enquanto os sistemas convencionais consomem mais energia durante os ciclos de ligar/desligar e podem apresentar variações na temperatura ambiente, os sistemas inverter mantêm uma operação mais estável e eficiente ao longo do tempo.</p>
+            <div class="conteudo">
+                <div class="video-wrapper">
+                    <!-- Código de incorporação do YouTube -->
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/FTQGbpVWXOk?si=EIQwhkP5kybIU1jy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="texto">
+                    <h2>Inverter X Convencional</h2>
+                    <p>Ao comparar os sistemas inverter com os sistemas tradicionais de ar-condicionado, é evidente a diferença significativa na eficiência energética e no desempenho. Enquanto os sistemas convencionais consomem mais energia durante os ciclos de ligar/desligar e podem apresentar variações na temperatura ambiente, os sistemas inverter mantêm uma operação mais estável e eficiente ao longo do tempo.</p>
+                </div>
+            </div>
         </section>
+
+
         <section id="camaras-frigorificas">
             <h1>Aplicações Práticas:</h1>
             <!-- Conteúdo sobre Câmaras Frigoríficas -->
