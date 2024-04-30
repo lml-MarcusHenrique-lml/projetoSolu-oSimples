@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,8 +12,10 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
-            text-transform: uppercase; /* Transformar todos os textos em maiúsculas */
+            text-transform: uppercase;
+            /* Transformar todos os textos em maiúsculas */
         }
+
         .container {
             max-width: 800px;
             margin: 20px auto;
@@ -20,11 +23,15 @@
             background-color: #fff;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center; /* Centralizar o conteúdo */
+            text-align: center;
+            /* Centralizar o conteúdo */
         }
+
         h1 {
-            margin-top: 0; /* Remover margem superior do título */
+            margin-top: 0;
+            /* Remover margem superior do título */
         }
+
         .item {
             border-bottom: 1px solid #ccc;
             padding: 10px 0;
@@ -32,10 +39,13 @@
             align-items: center;
             justify-content: space-between;
         }
+
         .item input[type="number"] {
             width: 60px;
-            margin-right: 10px; /* Adicionar margem à direita dos inputs */
+            margin-right: 10px;
+            /* Adicionar margem à direita dos inputs */
         }
+
         .chart {
             width: 100%;
             height: 20px;
@@ -44,21 +54,26 @@
             margin-top: 5px;
             overflow: hidden;
         }
+
         .chart-fill {
             height: 100%;
             background-color: #4caf50;
         }
+
         form {
             margin-top: 20px;
         }
+
         form input[type="text"],
         form input[type="number"] {
             width: calc(50% - 10px);
             margin-bottom: 10px;
             padding: 8px;
             box-sizing: border-box;
-            text-transform: none; /* Manter o texto do input como inserido */
+            text-transform: none;
+            /* Manter o texto do input como inserido */
         }
+
         form input[type="submit"] {
             width: 100%;
             background-color: #4caf50;
@@ -68,12 +83,15 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
+
         form input[type="submit"]:hover {
             background-color: #45a049;
         }
+
         .btn-group {
             margin-top: 10px;
         }
+
         .btn {
             background-color: #4caf50;
             color: #fff;
@@ -84,20 +102,25 @@
             border-radius: 5px;
             margin-right: 10px;
         }
+
         .btn:hover {
             background-color: #45a049;
         }
+
         .legend {
             text-align: left;
             margin-top: 20px;
         }
+
         .legend span {
             display: inline-block;
             margin-right: 10px;
         }
+
         .legend .low-stock {
             color: red;
         }
+
         .low-stock-item {
             color: red;
             font-weight: bold;
@@ -105,320 +128,344 @@
         }
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <h1>Controle de Dispensa</h1>
-    
-    <!-- Formulário para adicionar novos itens -->
-    <form id="add-item-form">
-        <h2>Adicionar Novo Item</h2>
-        <input type="text" id="new-item-name" placeholder="Nome do Item" required>
-        <input type="number" id="new-item-quantity" placeholder="Quantidade Inicial" required>
-        <input type="number" id="new-item-min-quantity" placeholder="Quantidade Mínima" required>
-        <select id="item-category" required>
-            <option value="">Selecione a Categoria</option>
+    <div class="container">
+        <h1>Controle de Dispensa</h1>
+
+        <!-- Formulário para adicionar novos itens -->
+        <form id="add-item-form">
+            <h2>Adicionar Novo Item</h2>
+            <input type="text" id="new-item-name" placeholder="Nome do Item" required>
+            <input type="number" id="new-item-quantity" placeholder="Quantidade Inicial" required>
+            <input type="number" id="new-item-min-quantity" placeholder="Quantidade Máxima" required>
+            <input type="number" id="new-item-price" placeholder="Preço (Opcional)">
+            <select id="item-category" required>
+                <option value="">Selecione a Categoria</option>
+                <option value="limpeza">Limpeza</option>
+                <option value="alimento">Alimento</option>
+                <option value="higiene">Higiene</option>
+                <!-- Adicione outras opções de categoria conforme necessário -->
+            </select>
+            <input type="submit" value="Adicionar Item">
+        </form>
+
+        <!-- Busca e filtro -->
+        <input type="text" id="search" placeholder="Buscar Categoria">
+        <select id="category-filter">
+            <option value="">Filtrar por Categoria</option>
             <option value="limpeza">Limpeza</option>
             <option value="alimento">Alimento</option>
             <option value="higiene">Higiene</option>
             <!-- Adicione outras opções de categoria conforme necessário -->
+            <option value="low-stock">Baixo Estoque</option>
         </select>
-        <input type="submit" value="Adicionar Item">
-    </form>
 
-    <!-- Busca e filtro -->
-    <input type="text" id="search" placeholder="Buscar Categoria">
-    <select id="category-filter">
-        <option value="">Filtrar por Categoria</option>
-        <option value="limpeza">Limpeza</option>
-        <option value="alimento">Alimento</option>
-        <option value="higiene">Higiene</option>
-        <!-- Adicione outras opções de categoria conforme necessário -->
-    </select>
+        <!-- Lista de itens na dispensa -->
+        <div id="item-list">
+            <!-- Os itens serão adicionados dinamicamente aqui -->
+        </div>
 
-    <!-- Lista de itens na dispensa -->
-    <div id="item-list">
-        <!-- Os itens serão adicionados dinamicamente aqui -->
+        <!-- Lista de itens com estoque baixo -->
+        <div id="low-stock-list" class="legend" style="display: none;">
+            <h3>Itens com Estoque Baixo</h3>
+        </div>
+
+        <!-- Parcial total dos itens -->
+        <div id="partial-total" class="legend">
+            <h3>Parcial Total dos Itens</h3>
+            <p id="total-amount">R$ 0.00</p>
+        </div>
     </div>
 
-    <!-- Lista de itens com estoque baixo -->
-    <div id="low-stock-list" class="legend" style="display: none;">
-        <h3>Itens com Estoque Baixo</h3>
-    </div>
-</div>
+    <script>
+        // Array para armazenar os itens na dispensa
+        let items = [];
 
-<script>
-    // Array para armazenar os itens na dispensa
-    let items = [];
+        // Função para calcular a parcial total dos itens
+        function calculatePartialTotal() {
+            let total = 0;
+            items.forEach(item => {
+                total += (item.price ? item.price * item.quantity : 0);
+            });
+            return total.toFixed(2);
+        }
 
-    // Função para renderizar a lista de itens na dispensa
-    function renderItemList() {
-        const itemListDiv = document.getElementById('item-list');
-        itemListDiv.innerHTML = '';
+        // Função para renderizar a lista de itens na dispensa
+        function renderItemList() {
+            const itemListDiv = document.getElementById('item-list');
+            itemListDiv.innerHTML = '';
 
-        // Limpar a lista de itens com estoque baixo
-        const lowStockListDiv = document.getElementById('low-stock-list');
-        lowStockListDiv.innerHTML = '';
-        lowStockListDiv.style.display = 'none';
+            // Limpar a lista de itens com estoque baixo
+            const lowStockListDiv = document.getElementById('low-stock-list');
+            lowStockListDiv.innerHTML = '';
+            lowStockListDiv.style.display = 'none';
 
-        items.forEach(item => {
-            const itemDiv = document.createElement('div');
-            itemDiv.classList.add('item');
+            items.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('item');
 
-            // Botões de adição, subtração e exclusão
-            const btnGroup = document.createElement('div');
-            btnGroup.classList.add('btn-group');
+                // Botões de adição, subtração e exclusão
+                const btnGroup = document.createElement('div');
+                btnGroup.classList.add('btn-group');
 
-            const increaseBtn = document.createElement('button');
-            increaseBtn.textContent = '+';
-            increaseBtn.classList.add('btn');
-            increaseBtn.addEventListener('click', () => increaseQuantity(item.name));
+                const increaseBtn = document.createElement('button');
+                increaseBtn.textContent = '+';
+                increaseBtn.classList.add('btn');
+                increaseBtn.addEventListener('click', () => increaseQuantity(item.name));
 
-            const decreaseBtn = document.createElement('button');
-            decreaseBtn.textContent = '-';
-            decreaseBtn.classList.add('btn');
-            decreaseBtn.addEventListener('click', () => decreaseQuantity(item.name));
+                const decreaseBtn = document.createElement('button');
+                decreaseBtn.textContent = '-';
+                decreaseBtn.classList.add('btn');
+                decreaseBtn.addEventListener('click', () => decreaseQuantity(item.name));
 
-            const removeBtn = document.createElement('button');
-            removeBtn.textContent = 'X';
-            removeBtn.classList.add('btn');
-            removeBtn.addEventListener('click', () => removeItem(item.name));
+                const removeBtn = document.createElement('button');
+                removeBtn.textContent = 'X';
+                removeBtn.classList.add('btn');
+                removeBtn.addEventListener('click', () => removeItem(item.name));
 
-            btnGroup.appendChild(increaseBtn);
-            btnGroup.appendChild(decreaseBtn);
-            btnGroup.appendChild(removeBtn);
+                btnGroup.appendChild(increaseBtn);
+                btnGroup.appendChild(decreaseBtn);
+                btnGroup.appendChild(removeBtn);
 
-            itemDiv.appendChild(btnGroup);
+                itemDiv.appendChild(btnGroup);
 
-            // Nome do item
-            const itemName = document.createElement('strong');
-            itemName.textContent = item.name;
-            itemDiv.appendChild(itemName);
+                // Nome do item
+                const itemName = document.createElement('strong');
+                itemName.textContent = item.name;
+                itemDiv.appendChild(itemName);
 
-            // Quantidade atual
-            const currentQuantityLabel = document.createElement('p');
-            currentQuantityLabel.textContent = `Quantidade atual: ${item.quantity}`;
-            itemDiv.appendChild(currentQuantityLabel);
+                // Quantidade atual
+                const currentQuantityLabel = document.createElement('p');
+                currentQuantityLabel.textContent = `Quantidade atual: ${item.quantity}`;
+                itemDiv.appendChild(currentQuantityLabel);
 
-            // Quantidade mínima desejada
-            const minQuantityLabel = document.createElement('p');
-            minQuantityLabel.textContent = `Quantidade mínima: ${item.minQuantity}`;
-            itemDiv.appendChild(minQuantityLabel);
+                // Quantidade Máxima desejada
+                const minQuantityLabel = document.createElement('p');
+                minQuantityLabel.textContent = `Quantidade Máxima: ${item.minQuantity}`;
+                itemDiv.appendChild(minQuantityLabel);
 
-            // Categoria do item
-            const categoryLabel = document.createElement('p');
-            categoryLabel.textContent = `Categoria: ${item.category}`;
-            itemDiv.appendChild(categoryLabel);
+                // Preço do item (se existir)
+                if (item.price) {
+                    const priceLabel = document.createElement('p');
+                    priceLabel.textContent = `Preço: R$ ${item.price.toFixed(2)}`;
+                    itemDiv.appendChild(priceLabel);
+                }
 
-            // Gráfico horizontal
-            const chartDiv = document.createElement('div');
-            chartDiv.classList.add('chart');
-            const chartFillDiv = document.createElement('div');
-            chartFillDiv.classList.add('chart-fill');
-            chartFillDiv.style.width = `${(item.quantity / item.minQuantity) * 100}%`;
-            chartDiv.appendChild(chartFillDiv);
-            itemDiv.appendChild(chartDiv);
+                // Categoria do item
+                const categoryLabel = document.createElement('p');
+                categoryLabel.textContent = `Categoria: ${item.category}`;
+                itemDiv.appendChild(categoryLabel);
 
-            // Verificar se o estoque está baixo
-            if (item.quantity / item.minQuantity < 0.5) {
-                itemDiv.classList.add('low-stock'); // Adicionar classe de estilo para indicar estoque baixo
+                // Gráfico horizontal
+                const chartDiv = document.createElement('div');
+                chartDiv.classList.add('chart');
+                const chartFillDiv = document.createElement('div');
+                chartFillDiv.classList.add('chart-fill');
+                chartFillDiv.style.width = `${(item.quantity / item.minQuantity) * 100}%`;
+                chartDiv.appendChild(chartFillDiv);
+                itemDiv.appendChild(chartDiv);
 
-                // Adicionar o item à lista de estoque baixo
-                const lowStockItem = document.createElement('p');
-                lowStockItem.classList.add('low-stock-item');
-                lowStockItem.textContent = item.name;
-                lowStockListDiv.appendChild(lowStockItem);
-                lowStockListDiv.style.display = 'block'; // Exibir a lista de estoque baixo
+                // Verificar se o estoque está baixo
+                if (item.quantity / item.minQuantity <= 0.5) {
+                    itemDiv.classList.add('low-stock'); // Adicionar classe de estilo para indicar estoque baixo
+
+                    // Adicionar o item à lista de estoque baixo
+                    const lowStockItem = document.createElement('p');
+                    lowStockItem.classList.add('low-stock-item');
+                    lowStockItem.textContent = item.name;
+                    lowStockListDiv.appendChild(lowStockItem);
+                    lowStockListDiv.style.display = 'block'; // Exibir a lista de estoque baixo
+                }
+
+                itemListDiv.appendChild(itemDiv);
+            });
+
+            // Exibir a parcial total dos itens
+            document.getElementById('total-amount').textContent = `R$ ${calculatePartialTotal()}`;
+        }
+
+        // Função para adicionar um novo item à lista
+        function addItem(event) {
+            event.preventDefault();
+
+            const newItemName = document.getElementById('new-item-name').value.trim().toUpperCase();
+            const newItemQuantity = parseInt(document.getElementById('new-item-quantity').value);
+            const newItemMinQuantity = parseInt(document.getElementById('new-item-min-quantity').value);
+            const newItemPrice = parseFloat(document.getElementById('new-item-price').value);
+            const newItemCategory = document.getElementById('item-category').value;
+
+            if (newItemName && !isNaN(newItemQuantity) && !isNaN(newItemMinQuantity) && newItemCategory) {
+                // Verificar se o item já existe na lista (independentemente da capitalização)
+                const existingItemIndex = items.findIndex(item => item.name.toUpperCase() === newItemName);
+
+                if (existingItemIndex === -1) {
+                    const newItem = {
+                        name: newItemName,
+                        quantity: newItemQuantity,
+                        minQuantity: newItemMinQuantity,
+                        price: isNaN(newItemPrice) ? null : newItemPrice,
+                        category: newItemCategory
+                    };
+
+                    items.push(newItem);
+                    renderItemList();
+                    document.getElementById('add-item-form').reset(); // Limpar o formulário
+                } else {
+                    alert('Este item já está na lista!');
+                }
             }
+        }
 
-            itemListDiv.appendChild(itemDiv);
-        });
-    }
+        // Event listener para adicionar itens quando o formulário for enviado
+        document.getElementById('add-item-form').addEventListener('submit', addItem);
 
-    // Função para adicionar um novo item à lista
-    function addItem(event) {
-        event.preventDefault();
+        // Função para aumentar a quantidade do item selecionado
+        function increaseQuantity(itemName) {
+            const selectedItem = items.find(item => item.name === itemName);
 
-        const newItemName = document.getElementById('new-item-name').value.trim().toUpperCase();
-        const newItemQuantity = parseInt(document.getElementById('new-item-quantity').value);
-        const newItemMinQuantity = parseInt(document.getElementById('new-item-min-quantity').value);
-        const newItemCategory = document.getElementById('item-category').value;
-
-        if (newItemName && !isNaN(newItemQuantity) && !isNaN(newItemMinQuantity) && newItemCategory) {
-            // Verificar se o item já existe na lista (independentemente da capitalização)
-            const existingItemIndex = items.findIndex(item => item.name.toUpperCase() === newItemName);
-
-            if (existingItemIndex === -1) {
-                const newItem = {
-                    name: newItemName,
-                    quantity: newItemQuantity,
-                    minQuantity: newItemMinQuantity,
-                    category: newItemCategory
-                };
-
-                items.push(newItem);
+            if (selectedItem) {
+                selectedItem.quantity++;
                 renderItemList();
-                document.getElementById('add-item-form').reset(); // Limpar o formulário
+            }
+        }
+
+        // Função para diminuir a quantidade do item selecionado
+        function decreaseQuantity(itemName) {
+            const selectedItem = items.find(item => item.name === itemName);
+
+            if (selectedItem) {
+                selectedItem.quantity--;
+                if (selectedItem.quantity < 0) {
+                    selectedItem.quantity = 0; // Garantir que a quantidade não seja negativa
+                }
+                renderItemList();
+            }
+        }
+
+        // Função para excluir o item selecionado
+        function removeItem(itemName) {
+            const selectedItemIndex = items.findIndex(item => item.name === itemName);
+
+            if (selectedItemIndex !== -1) {
+                items.splice(selectedItemIndex, 1);
+                renderItemList();
+            }
+        }
+
+        // Função para filtrar os itens por categoria
+        document.getElementById('category-filter').addEventListener('change', function () {
+            const selectedCategory = this.value;
+            if (selectedCategory) {
+                let filteredItems;
+                if (selectedCategory === 'low-stock') {
+                    filteredItems = items.filter(item => item.quantity / item.minQuantity <= 0.5);
+                } else {
+                    filteredItems = items.filter(item => item.category === selectedCategory);
+                }
+                renderFilteredItemList(filteredItems);
+
+                // Acionar manualmente o evento de entrada do campo de busca para atualizar a lista filtrada
+                document.getElementById('search').dispatchEvent(new Event('input'));
             } else {
-                alert('Este item já está na lista!');
+                renderItemList();
             }
-        }
-    }
-
-    // Event listener para adicionar itens quando o formulário for enviado
-    document.getElementById('add-item-form').addEventListener('submit', addItem);
-
-    // Função para aumentar a quantidade do item selecionado
-    function increaseQuantity(itemName) {
-        const selectedItem = items.find(item => item.name === itemName);
-
-        if (selectedItem) {
-            selectedItem.quantity++;
-            renderItemList();
-        }
-    }
-
-    // Função para diminuir a quantidade do item selecionado
-    function decreaseQuantity(itemName) {
-        const selectedItem = items.find(item => item.name === itemName);
-
-        if (selectedItem) {
-            selectedItem.quantity--;
-            if (selectedItem.quantity < 0) {
-                selectedItem.quantity = 0; // Garantir que a quantidade não seja negativa
-            }
-            renderItemList();
-        }
-    }
-
-    // Função para excluir o item selecionado
-    function removeItem(itemName) {
-        const selectedItemIndex = items.findIndex(item => item.name === itemName);
-
-        if (selectedItemIndex !== -1) {
-            items.splice(selectedItemIndex, 1);
-            renderItemList();
-        }
-    }
-
-    // Função para filtrar os itens por categoria
-    document.getElementById('category-filter').addEventListener('change', function() {
-        const selectedCategory = this.value;
-        if (selectedCategory) {
-            const filteredItems = items.filter(item => item.category === selectedCategory);
-            renderFilteredItemList(filteredItems);
-        } else {
-            renderItemList();
-        }
-    });
-
-    // Função para realizar a busca dos itens pela categoria
-    document.getElementById('search').addEventListener('input', function() {
-        const searchText = this.value.trim().toLowerCase();
-        if (searchText) {
-            const filteredItems = items.filter(item => item.category.toLowerCase().includes(searchText));
-            renderFilteredItemList(filteredItems);
-        } else {
-            renderItemList();
-        }
-    });
-
-    // Função para renderizar a lista de itens filtrada
-    function renderFilteredItemList(filteredItems) {
-        const itemListDiv = document.getElementById('item-list');
-        itemListDiv.innerHTML = '';
-
-        filteredItems.forEach(item => {
-            const itemDiv = document.createElement('div');
-            itemDiv.classList.add('item');
-
-            // Botões de adição, subtração e exclusão
-            const btnGroup = document.createElement('div');
-            btnGroup.classList.add('btn-group');
-
-            const increaseBtn = document.createElement('button');
-            increaseBtn.textContent = '+';
-            increaseBtn.classList.add('btn');
-            increaseBtn.addEventListener('click', () => increaseQuantity(item.name));
-
-            const decreaseBtn = document.createElement('button');
-            decreaseBtn.textContent = '-';
-            decreaseBtn.classList.add('btn');
-            decreaseBtn.addEventListener('click', () => decreaseQuantity(item.name));
-
-            const removeBtn = document.createElement('button');
-            removeBtn.textContent = 'X';
-            removeBtn.classList.add('btn');
-            removeBtn.addEventListener('click', () => removeItem(item.name));
-
-            btnGroup.appendChild(increaseBtn);
-            btnGroup.appendChild(decreaseBtn);
-            btnGroup.appendChild(removeBtn);
-
-            itemDiv.appendChild(btnGroup);
-
-            // Nome do item
-            const itemName = document.createElement('strong');
-            itemName.textContent = item.name;
-            itemDiv.appendChild(itemName);
-
-            // Quantidade atual
-            const currentQuantityLabel = document.createElement('p');
-            currentQuantityLabel.textContent = `Quantidade atual: ${item.quantity}`;
-            itemDiv.appendChild(currentQuantityLabel);
-
-            // Quantidade mínima desejada
-            const minQuantityLabel = document.createElement('p');
-            minQuantityLabel.textContent = `Quantidade mínima: ${item.minQuantity}`;
-            itemDiv.appendChild(minQuantityLabel);
-
-            // Categoria do item
-            const categoryLabel = document.createElement('p');
-            categoryLabel.textContent = `Categoria: ${item.category}`;
-            itemDiv.appendChild(categoryLabel);
-
-            // Gráfico horizontal
-            const chartDiv = document.createElement('div');
-            chartDiv.classList.add('chart');
-            const chartFillDiv = document.createElement('div');
-            chartFillDiv.classList.add('chart-fill');
-            chartFillDiv.style.width = `${(item.quantity / item.minQuantity) * 100}%`;
-            chartDiv.appendChild(chartFillDiv);
-            itemDiv.appendChild(chartDiv);
-
-            // Verificar se o estoque está baixo
-            if (item.quantity / item.minQuantity < 0.5) {
-                itemDiv.classList.add('low-stock'); // Adicionar classe de estilo para indicar estoque baixo
-
-                // Adicionar o item à lista de estoque baixo
-                const lowStockItem = document.createElement('p');
-                lowStockItem.classList.add('low-stock-item');
-                lowStockItem.textContent = item.name;
-                lowStockListDiv.appendChild(lowStockItem);
-                lowStockListDiv.style.display = 'block'; // Exibir a lista de estoque baixo
-            }
-
-            itemListDiv.appendChild(itemDiv);
         });
-    }
 
-    // Renderizar a lista de itens inicialmente
-    renderItemList();
-    // Função para filtrar os itens por categoria
-document.getElementById('category-filter').addEventListener('change', function() {
-    const selectedCategory = this.value;
-    if (selectedCategory) {
-        const filteredItems = items.filter(item => item.category === selectedCategory);
-        renderFilteredItemList(filteredItems);
-        
-        // Acionar manualmente o evento de entrada do campo de busca para atualizar a lista filtrada
-        document.getElementById('search').dispatchEvent(new Event('input'));
-    } else {
+        // Função para realizar a busca dos itens pela categoria
+        document.getElementById('search').addEventListener('input', function () {
+            const searchText = this.value.trim().toLowerCase();
+            if (searchText) {
+                const filteredItems = items.filter(item => item.category.toLowerCase().includes(searchText));
+                renderFilteredItemList(filteredItems);
+            } else {
+                renderItemList();
+            }
+        });
+
+        // Função para renderizar a lista de itens filtrada
+        function renderFilteredItemList(filteredItems) {
+            const itemListDiv = document.getElementById('item-list');
+            itemListDiv.innerHTML = '';
+
+            filteredItems.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('item');
+
+                // Botões de adição, subtração e exclusão
+                const btnGroup = document.createElement('div');
+                btnGroup.classList.add('btn-group');
+
+                const increaseBtn = document.createElement('button');
+                increaseBtn.textContent = '+';
+                increaseBtn.classList.add('btn');
+                increaseBtn.addEventListener('click', () => increaseQuantity(item.name));
+
+                const decreaseBtn = document.createElement('button');
+                decreaseBtn.textContent = '-';
+                decreaseBtn.classList.add('btn');
+                decreaseBtn.addEventListener('click', () => decreaseQuantity(item.name));
+
+                const removeBtn = document.createElement('button');
+                removeBtn.textContent = 'X';
+                removeBtn.classList.add('btn');
+                removeBtn.addEventListener('click', () => removeItem(item.name));
+
+                btnGroup.appendChild(increaseBtn);
+                btnGroup.appendChild(decreaseBtn);
+                btnGroup.appendChild(removeBtn);
+
+                itemDiv.appendChild(btnGroup);
+
+                // Nome do item
+                const itemName = document.createElement('strong');
+                itemName.textContent = item.name;
+                itemDiv.appendChild(itemName);
+
+                // Quantidade atual
+                const currentQuantityLabel = document.createElement('p');
+                currentQuantityLabel.textContent = `Quantidade atual: ${item.quantity}`;
+                itemDiv.appendChild(currentQuantityLabel);
+
+                // Quantidade Máxima desejada
+                const minQuantityLabel = document.createElement('p');
+                minQuantityLabel.textContent = `Quantidade Máxima: ${item.minQuantity}`;
+                itemDiv.appendChild(minQuantityLabel);
+
+                // Preço do item (se existir)
+                if (item.price) {
+                    const priceLabel = document.createElement('p');
+                    priceLabel.textContent = `Preço: R$ ${item.price.toFixed(2)}`;
+                    itemDiv.appendChild(priceLabel);
+                }
+
+                // Categoria do item
+                const categoryLabel = document.createElement('p');
+                categoryLabel.textContent = `Categoria: ${item.category}`;
+                itemDiv.appendChild(categoryLabel);
+
+                // Gráfico horizontal
+                const chartDiv = document.createElement('div');
+                chartDiv.classList.add('chart');
+                const chartFillDiv = document.createElement('div');
+                chartFillDiv.classList.add('chart-fill');
+                chartFillDiv.style.width = `${(item.quantity / item.minQuantity) * 100}%`;
+                chartDiv.appendChild(chartFillDiv);
+                itemDiv.appendChild(chartDiv);
+
+                itemListDiv.appendChild(itemDiv);
+            });
+
+            // Exibir a parcial total dos itens
+            document.getElementById('total-amount').textContent = `R$ ${calculatePartialTotal()}`;
+        }
+
+        // Renderizar a lista de itens inicialmente
         renderItemList();
-    }
-});
 
-</script>
+    </script>
 
 </body>
+
 </html>
