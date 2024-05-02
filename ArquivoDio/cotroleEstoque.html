@@ -134,9 +134,34 @@
     <div class="container">
         <h1>Controle de Dispensa</h1>
 
+        <!-- Lista de compras salvas e dados históricos -->
+        <div id="saved-lists">
+            <h2>Listas de Compras Salvas</h2>
+            <ul id="saved-lists-ul">
+                <!-- As listas de compras serão adicionadas dinamicamente aqui -->
+            </ul>
+        </div>
+
+        <!-- Detalhes da lista selecionada -->
+        <div id="list-details" style="display: none;">
+            <h2>Detalhes da Lista</h2>
+            <p id="list-date"></p>
+            <p id="list-market"></p>
+            <p id="list-total-cost"></p>
+            <h3>Itens da Lista</h3>
+            <ul id="list-items">
+                <!-- Os itens da lista serão adicionados dinamicamente aqui -->
+            </ul>
+        </div>
+
+
         <!-- Formulário para adicionar novos itens -->
         <form id="add-item-form">
             <h2>Adicionar Novo Item</h2>
+            <!-- Campos para adicionar informações da lista -->
+            <input type="date" id="list-date-input" required>
+            <input type="text" id="list-market-input" placeholder="Mercado" required>
+            <!-- Campos para adicionar novos itens -->
             <input type="text" id="new-item-name" placeholder="Nome do Item" required>
             <input type="number" id="new-item-quantity" placeholder="Quantidade Inicial" required>
             <input type="number" id="new-item-min-quantity" placeholder="Quantidade Máxima" required>
@@ -150,6 +175,7 @@
             </select>
             <input type="submit" value="Adicionar Item">
         </form>
+
 
         <!-- Filtro por categoria -->
         <select id="category-filter">
@@ -176,11 +202,128 @@
             <h3>Parcial Total dos Itens</h3>
             <p id="total-amount">R$ 0.00</p>
         </div>
+
+        <!-- Histórico de Compras -->
+        <div id="purchase-history" class="legend" style="display: none;">
+            <h3>Histórico de Compras</h3>
+            <ul id="purchase-list">
+                <!-- As compras serão adicionadas dinamicamente aqui -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- Div para exibir a localização do usuário -->
+    <div id="user-location" style="display: none;">
+        <h2>Localização do Usuário</h2>
+        <p id="location-info"></p>
     </div>
 
     <script>
+
+        // Função para exibir a localização do usuário
+        function showUserLocation(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            const accuracy = position.coords.accuracy;
+
+            // Aqui você pode usar a latitude e longitude para obter informações de localização mais detalhadas usando uma API de geolocalização
+            const locationInfo = document.getElementById('location-info');
+            locationInfo.textContent = `Latitude: ${latitude}, Longitude: ${longitude}, Precisão: ${accuracy} metros`;
+            document.getElementById('user-location').style.display = 'block';
+        }
+
+        // Lidar com erros na obtenção da localização do usuário
+        function handleLocationError(error) {
+            console.error('Erro ao obter a localização do usuário:', error);
+        }
+
+        // Verificar se o navegador suporta geolocalização
+        if (navigator.geolocation) {
+            // Obter a localização do usuário
+            navigator.geolocation.getCurrentPosition(showUserLocation, handleLocationError);
+        } else {
+            console.error('Geolocalização não suportada pelo navegador.');
+        }
+
+        // Array para armazenar as listas de compras salvas
+        let savedLists = [];
+
+        // Função para renderizar as listas de compras salvas
+        function renderSavedLists() {
+            const savedListsUl = document.getElementById('saved-lists-ul');
+            savedListsUl.innerHTML = '';
+
+            savedLists.forEach((list, index) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `Lista ${index + 1} - ${list.date} (${list.market}) - Total: R$ ${list.totalCost.toFixed(2)}`;
+                listItem.addEventListener('click', () => showListDetails(index));
+                savedListsUl.appendChild(listItem);
+            });
+        }
+
+        // Função para exibir os detalhes de uma lista selecionada
+        function showListDetails(index) {
+            const list = savedLists[index];
+            const listDate = document.getElementById('list-date');
+            const listMarket = document.getElementById('list-market');
+            const listTotalCost = document.getElementById('list-total-cost');
+            const listItemsUl = document.getElementById('list-items');
+
+            listDate.textContent = `Data: ${list.date}`;
+            listMarket.textContent = `Mercado: ${list.market}`;
+            listTotalCost.textContent = `Custo Total: R$ ${list.totalCost.toFixed(2)}`;
+
+            listItemsUl.innerHTML = '';
+            list.items.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.name} - Quantidade: ${item.quantity} - Preço: R$ ${item.price.toFixed(2)}`;
+                listItemsUl.appendChild(listItem);
+            });
+
+            document.getElementById('list-details').style.display = 'block';
+        }
+
+        // Função para ocultar os detalhes da lista
+        function hideListDetails() {
+            document.getElementById('list-details').style.display = 'none';
+        }
+
+        // Função para salvar a lista de compras atual
+        function saveList() {
+            const listDate = document.getElementById('list-date-input').value;
+            const listMarket = document.getElementById('list-market-input').value;
+
+            const newList = {
+                date: listDate,
+                market: listMarket,
+                items: [...items],
+                totalCost: calculatePartialTotal()
+            };
+
+            savedLists.push(newList);
+            renderSavedLists();
+        }
+
+        // Função para carregar uma lista de compras salva
+        function loadList(index) {
+            const list = savedLists[index];
+
+            items = [...list.items];
+            renderItemList();
+            hideListDetails();
+        }
+
+        // Função para deletar uma lista de compras salva
+        function deleteList(index) {
+            savedLists.splice(index, 1);
+            renderSavedLists();
+        }
+
         // Array para armazenar os itens na dispensa
         let items = [];
+
+        // Array para armazenar o histórico de compras
+        let purchaseHistory = [];
 
         // Função para calcular a parcial total dos itens
         function calculatePartialTotal() {
@@ -257,6 +400,16 @@
                 categoryLabel.textContent = `Categoria: ${item.category}`;
                 itemDiv.appendChild(categoryLabel);
 
+                // Data da lista
+                const dateLabel = document.createElement('p');
+                dateLabel.textContent = `Data: ${item.date}`;
+                itemDiv.appendChild(dateLabel);
+
+                // Mercado da lista
+                const marketLabel = document.createElement('p');
+                marketLabel.textContent = `Mercado: ${item.market}`;
+                itemDiv.appendChild(marketLabel);
+
                 // Gráfico horizontal
                 const chartDiv = document.createElement('div');
                 chartDiv.classList.add('chart');
@@ -285,17 +438,21 @@
             document.getElementById('total-amount').textContent = `R$ ${calculatePartialTotal()}`;
         }
 
-        // Função para adicionar um novo item à lista
+
         // Função para adicionar um novo item à lista
         function addItem(event) {
             event.preventDefault();
 
+            // Obter informações da lista
+            const listDate = document.getElementById('list-date-input').value;
+            const listMarket = document.getElementById('list-market-input').value;
+
+            // Obter informações do novo item
             const newItemName = document.getElementById('new-item-name').value.trim().toUpperCase();
             const newItemQuantity = parseInt(document.getElementById('new-item-quantity').value);
             const newItemMinQuantity = parseInt(document.getElementById('new-item-min-quantity').value);
             const newItemPriceInput = document.getElementById('new-item-price').value;
             const newItemPrice = newItemPriceInput ? parseFloat(newItemPriceInput.replace(',', '.')) : null; // Converter para número de ponto flutuante
-
             const newItemCategory = document.getElementById('item-category').value;
 
             if (newItemName && !isNaN(newItemQuantity) && !isNaN(newItemMinQuantity) && newItemCategory) {
@@ -308,7 +465,9 @@
                         quantity: newItemQuantity,
                         minQuantity: newItemMinQuantity,
                         price: isNaN(newItemPrice) ? null : newItemPrice,
-                        category: newItemCategory
+                        category: newItemCategory,
+                        date: listDate, // Adicionar data à lista
+                        market: listMarket // Adicionar mercado à lista
                     };
 
                     items.push(newItem);
@@ -434,27 +593,38 @@
                 categoryLabel.textContent = `Categoria: ${item.category}`;
                 itemDiv.appendChild(categoryLabel);
 
-                // Gráfico horizontal
-                const chartDiv = document.createElement('div');
-                chartDiv.classList.add('chart');
-                const chartFillDiv = document.createElement('div');
-                chartFillDiv.classList.add('chart-fill');
-                chartFillDiv.style.width = `${(item.quantity / item.minQuantity) * 100}%`;
-                chartDiv.appendChild(chartFillDiv);
-                itemDiv.appendChild(chartDiv);
+                // Data da lista
+                const dateLabel = document.createElement('p');
+                dateLabel.textContent = `Data: ${item.date}`;
+                itemDiv.appendChild(dateLabel);
+
+                // Mercado da lista
+                const marketLabel = document.createElement('p');
+                marketLabel.textContent = `Mercado: ${item.market}`;
+                itemDiv.appendChild(marketLabel);
 
                 itemListDiv.appendChild(itemDiv);
             });
 
-            // Exibir a parcial total dos itens
-            document.getElementById('total-amount').textContent = `R$ ${calculatePartialTotal()}`;
+            // Exibir a parcial total dos itens filtrada
+            document.getElementById('total-amount').textContent = `R$ ${calculateFilteredTotal(filteredItems)}`;
         }
 
-        // Renderizar a lista de itens inicialmente
-        renderItemList();
+        // Função para calcular a parcial total dos itens filtrada
+        function calculateFilteredTotal(filteredItems) {
+            let total = 0;
+            filteredItems.forEach(item => {
+                total += (item.price ? item.price * item.quantity : 0);
+            });
+            return total.toFixed(2);
+        }
 
+        // Evento de carregamento inicial
+        window.addEventListener('load', () => {
+            renderItemList();
+            renderSavedLists();
+        });
     </script>
-
 </body>
 
 </html>
