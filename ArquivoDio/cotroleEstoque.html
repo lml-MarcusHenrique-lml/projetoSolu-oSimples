@@ -140,7 +140,7 @@
             <input type="text" id="new-item-name" placeholder="Nome do Item" required>
             <input type="number" id="new-item-quantity" placeholder="Quantidade Inicial" required>
             <input type="number" id="new-item-min-quantity" placeholder="Quantidade Máxima" required>
-            <input type="number" id="new-item-price" placeholder="Preço (Opcional)">
+            <input type="text" id="new-item-price" placeholder="Preço (Opcional)">
             <select id="item-category" required>
                 <option value="">Selecione a Categoria</option>
                 <option value="limpeza">Limpeza</option>
@@ -151,8 +151,7 @@
             <input type="submit" value="Adicionar Item">
         </form>
 
-        <!-- Busca e filtro -->
-        <input type="text" id="search" placeholder="Buscar Categoria">
+        <!-- Filtro por categoria -->
         <select id="category-filter">
             <option value="">Filtrar por Categoria</option>
             <option value="limpeza">Limpeza</option>
@@ -287,13 +286,16 @@
         }
 
         // Função para adicionar um novo item à lista
+        // Função para adicionar um novo item à lista
         function addItem(event) {
             event.preventDefault();
 
             const newItemName = document.getElementById('new-item-name').value.trim().toUpperCase();
             const newItemQuantity = parseInt(document.getElementById('new-item-quantity').value);
             const newItemMinQuantity = parseInt(document.getElementById('new-item-min-quantity').value);
-            const newItemPrice = parseFloat(document.getElementById('new-item-price').value);
+            const newItemPriceInput = document.getElementById('new-item-price').value;
+            const newItemPrice = newItemPriceInput ? parseFloat(newItemPriceInput.replace(',', '.')) : null; // Converter para número de ponto flutuante
+
             const newItemCategory = document.getElementById('item-category').value;
 
             if (newItemName && !isNaN(newItemQuantity) && !isNaN(newItemMinQuantity) && newItemCategory) {
@@ -317,6 +319,7 @@
                 }
             }
         }
+
 
         // Event listener para adicionar itens quando o formulário for enviado
         document.getElementById('add-item-form').addEventListener('submit', addItem);
@@ -364,20 +367,6 @@
                 } else {
                     filteredItems = items.filter(item => item.category === selectedCategory);
                 }
-                renderFilteredItemList(filteredItems);
-
-                // Acionar manualmente o evento de entrada do campo de busca para atualizar a lista filtrada
-                document.getElementById('search').dispatchEvent(new Event('input'));
-            } else {
-                renderItemList();
-            }
-        });
-
-        // Função para realizar a busca dos itens pela categoria
-        document.getElementById('search').addEventListener('input', function () {
-            const searchText = this.value.trim().toLowerCase();
-            if (searchText) {
-                const filteredItems = items.filter(item => item.category.toLowerCase().includes(searchText));
                 renderFilteredItemList(filteredItems);
             } else {
                 renderItemList();
