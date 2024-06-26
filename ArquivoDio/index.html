@@ -1,451 +1,837 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="favicon_io/favicon-32x32.png" type="image/x-icon">
-    <link rel="alternate" href="atom.xml" type="application/atom+xml" title="Atom">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="favicon_io/favicon-32x32.png"
+      type="image/x-icon"
+    />
+    <link
+      rel="alternate"
+      href="atom.xml"
+      type="application/atom+xml"
+      title="Atom"
+    />
     <title>Soluções Inovadoras para Refrigeração e Climatização</title>
     <style>
-        /* Reset CSS */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+      /* Reset CSS */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      #contato {
+        text-align: center;
+      }
+      p {
+        font-family: Georgia, "Times New Roman", Times, serif;
+        font-size: 18px;
+        background-color: rgba(255, 255, 255, 0.505);
+        padding: 2px;
+        border-radius: 8px;
+        margin: 2px 2px 2px 2px;
+      }
 
-        /* Main Styles */
-        body {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            background-color: #dfdede;
-            color: #0a4f64;
-            margin: 0;
-            padding: 0;
-        }
+      /* Main Styles */
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+      }
 
-        header, footer {
-            background-color: #2d3653;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
+      .bgVideo {
+        position: fixed;
 
-        main {
-            padding: 20px;
-        }
+        right: 0;
+        bottom: 0;
+        max-width: 100%;
+        min-height: 0%;
+        z-index: -1; /* Isso manterá o vídeo no fundo */
+      }
 
-        /* Menu Styles */
-        nav ul {
-            list-style: none;
-            text-align: center;
-        }
+      .content {
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        background: rgba(
+          0,
+          0,
+          0,
+          0.09
+        ); /* Adicione transparência ao seu conteúdo se necessário */
+        color: #f1f1f1;
+        width: 100%;
+        padding: 20px;
+        z-index: 100; /* Isso trará o conteúdo para frente */
+      }
 
-        nav ul li {
-            display: inline-block;
-            margin: 0 10px;
-        }
+      header,
+      footer {
+        background-color: #2d365338;
+        color: #fbfbfb;
+        padding: 20px;
+      }
 
-        /* Section Styles */
-        section {
-            margin-bottom: 40px;
-        }
+      main {
+        padding: 20px;
+      }
 
-        h3 {
-            color: #29b250;
-        }
+      /* Menu Styles */
+      nav ul {
+        list-style: none;
+        text-align: center;
+      }
 
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-        }
+      nav ul li {
+        display: inline-block;
+        margin: 0 10px;
+      }
 
-        .titulo {
-            text-align: center;
-            font-size: 25px;
-            font-family: "Times New Roman", Times, serif;
-            color: #004977;
-            margin-bottom: 15px;
-            border: 1px solid #004977;
-            border-radius: 15px;
-            padding: 10px;
-            background-color: #c1f2f9;
-        }
-        section h3{
-            color: #010b3b;
-            font-size: 28px;
-        }
-        section p{
-            font-size: 20px;
-            margin: 1% 5% 0 2%;
-        }
+      /* Section Styles */
+      section {
+        margin-bottom: 40px;
+      }
 
-        .flex {
-            max-width: 1500px;
-            margin: 10px auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+      h3 {
+        color: #29b250;
+      }
 
-        .item {
-            flex: 0 0 calc(20% - 20px);
-            margin-bottom: 20px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-        .item img {
-            width: 100%;
-            display: block;
-            border-radius: 20px;
-            filter: grayscale(100%);
-            transition: filter 1s ease;
-        }
-        .item :hover{
-            filter: none;
-            border-radius:20px;
-            border-style: inset ;
-            border-color: #004977;
-            transition: filter 1s ease;
-            
-            
-            
-        }
+      .titulo {
+        text-align: center;
+        font-size: 25px;
+        font-family: "Times New Roman", Times, serif;
+        color: #004977;
+        margin-bottom: 15px;
+        border: 1px solid #004977;
+        border-radius: 15px;
+        padding: 10px;
+        background-color: #c1f2f9;
+      }
+      section h3 {
+        color: #fafbff;
+        font-size: 28px;
+      }
+      section p {
+        font-size: 20px;
+        margin: 1% 5% 0 2%;
+      }
 
-        /* Sidebar Styles */
-        aside {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
+      .flex {
+        max-width: 1500px;
+        margin: 10px auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-        .Aviso {
-            background-color: #00000096;
-            padding: 10px;
-            border: 1px solid #fff;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
+      .item {
+        flex: 0 0 calc(20% - 20px);
+        margin-bottom: 20px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
 
-        .Aviso p {
-            color: #fff;
-            font-size: 20px;
-            padding: 1%;
-        }
+      .item img {
+        width: 100%;
+        display: block;
+        border-radius: 20px;
+        filter: grayscale(100%);
+        transition: filter 1s ease;
+      }
+      .item :hover {
+        filter: none;
+        border-radius: 20px;
+        border-style: inset;
+        border-color: #004977;
+        transition: filter 1s ease;
+      }
 
-        .borda {
-            background-color: #2e598d;
-            color: #fff;
-            padding: 10px;
-            margin-top: 20px;
-            border-radius: 10px;
-        }
+      /* Sidebar Styles */
+      aside,
+      section,
+      footer {
+        background-color: #09a7eabe;
+        color: #000000;
+        padding: 20px;
 
-        .borda p {
-            color: #fff;
-        }
+        border-radius: 5px;
+      }
 
-        /* Footer Styles */
-        footer {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
+      .Aviso {
+        background-color: #00000096;
+        padding: 10px;
+        border: 1px solid #fff;
+        border-radius: 10px;
+        margin-bottom: 20px;
+      }
 
-        .rodpé {
-            font-size: 12px;
-        }
-        section div{
-            padding: 1%;
-            margin: 0 1,5% 0 3%;
-        }
-        .dadosP p{
-            font-size: 30px;
+      .Aviso p {
+        color: #fff;
+        font-size: 20px;
+        padding: 1%;
+      }
 
-        }
-        .dadosP h3{
-            font-size:40px;
-        }
-        .span1 h6{
-            font-size: 14px;
-        }
-        .span1 h2{
-            font: size 43px;
-            color: #29b250;
-        }
-         /* Estilos para o menu flutuante */
-        .menu-flutuante {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: #2e3e4d;
-            color: #fff;
-            padding: 10px 0;
-            z-index: 9999;
-            text-align: center;
-            
-        }
+      .borda {
+        background-color: #2e598d;
+        color: #fff;
+        padding: 10px;
+        margin-top: 20px;
+        border-radius: 10px;
+      }
 
-        .menu-flutuante ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+      .borda p {
+        color: #fff;
+      }
 
-        .menu-flutuante li {
-            display: inline-block;
-            margin-right: 20px;
-            padding: 3px;
-        }
+      /* Footer Styles */
+      footer {
+        background-color: #3333336e;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
 
-        .menu-flutuante a {
-            color: #fff;
-            text-decoration: none;
-            transition: 0.5s;
-        }
-        .menu-flutuante :hover{
-            color: #6f9fff;
-        }
-        header{
-            margin-top: 40px;
-        }
-        .insuForm ol{
-            margin-left: 5%;
-            font-size: 20px;
-            color: #333;
-            
-        }
-        .insuForm p {
-            text-align: left;
-        }
-        .insuForm {
-            margin-bottom: -3%;
-        }
-        p{
-            font: size 24px;
-            color: #333;
-        }
-        .dadosP h2{
-            color: #93ffa8;
-            font-size: 40px;
-        }
-        .convite h4{
-            font-size: 29px;
-            margin: 0 5% 0 5%;
-        }
-        @media (max-width: 768px) {
-        
-        }
+      .rodpé {
+        font-size: 12px;
+      }
+      section div {
+        padding: 1%;
+        margin: 0 1, 5% 0 3%;
+      }
+      .dadosP p {
+        font-size: 30px;
+      }
+      .dadosP h3 {
+        font-size: 40px;
+      }
+      .span1 h6 {
+        font-size: 14px;
+      }
+      .span1 h2 {
+        font: size 43px;
+        color: #29b250;
+      }
+      /* Estilos para o menu flutuante */
+      .menu-flutuante {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #2e3e4dcd;
+        color: #fff;
+        padding: 10px 0;
+        z-index: 9999;
+        text-align: center;
+        font-family: fantasy;
+        font-size: 18px;
+        transition: all 1s;
+      }
 
+      .menu-flutuante ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        transform: 1s;
+      }
+
+      .menu-flutuante li {
+        display: inline-block;
+        margin-right: 20px;
+        padding: 3px;
+      }
+
+      .menu-flutuante a {
+        color: #fff;
+        text-decoration: none;
+        transition: 0.5s;
+      }
+      .menu-flutuante :hover {
+        color: #6f9fff;
+        font-size: 18px;
+        transition: 0.9s;
+      }
+      header {
+        margin-top: 40px;
+      }
+      .insuForm ol {
+        margin-left: 5%;
+        font-size: 20px;
+        color: #333;
+      }
+      .insuForm p {
+        text-align: left;
+      }
+      .insuForm {
+        margin-bottom: -3%;
+      }
+      p {
+        font: size 25px;
+        color: #000000;
+      }
+      .dadosP h2 {
+        color: #93ffa8;
+        font-size: 40px;
+      }
+      .convite h4 {
+        font-size: 29px;
+        margin: 0 5% 0 5%;
+      }
+      @media (max-width: 768px) {
+      }
     </style>
+  </head>
 
-        
-
-</head>
-
-<body>
+  <body>
     <div class="menu-flutuante">
-        <ul>
-            <li><a href="#solution">Soluções Inovadoras</a></li>
-            <li><a href="#split-multi-split">Split & Multi-Split</a></li>
-            <li><a href="#vrf-vrv">VRF&VRV</a></li>
-            <li><a href="#camaras-frigorificas">Câmaras Frigoríficas</a></li>
-            <li><a href="#energia-solar">Energia Solar</a></li>
-            <li><a href="#materiais-insumos">Materiais & Insumos</a></li>
-            <li><a href="#contato">Contato&Cotações</a></li>
-        </ul>
+      <ul>
+        <li><a href="#solution">Soluções Inovadoras</a></li>
+        <li><a href="#split-multi-split">Split & Multi-Split</a></li>
+        <li><a href="#vrf-vrv">VRF&VRV</a></li>
+        <li><a href="#camaras-frigorificas">Câmaras Frigoríficas</a></li>
+        <li><a href="#energia-solar">Energia Solar</a></li>
+        <li><a href="#materiais-insumos">Materiais & Insumos</a></li>
+        <li><a href="#contato">Contato&Cotações</a></li>
+      </ul>
     </div>
-        
-    <header>
-        
-        
-    </header>
-        <div style="position: relative; width: 100%; height: 0; padding-top: 30%;">
-                        <!-- Substitua 'caminho_para_seu_arquivo' pelo caminho do seu arquivo GIF ou WebM -->
-                    <video autoplay loop muted style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;margin-bottom: 100%;">
-                        <source src="imagem banner atualizado.mp4" type="video/webm">
-                    
-                    </video>
-        </div>
+    <video autoplay muted loop class="bgVideo">
+      <source src="correção Soluções Inovadoras.com.mp4" type="video/mp4" />
+    </video>
+    <header></header>
+    <div
+      style="
+        position: relative;
+        margin-top: -30px;
+        width: 100%;
+        height: 0;
+        padding-top: 30%;
+      "
+    >
+      <!-- Substitua 'caminho_para_seu_arquivo' pelo caminho do seu arquivo GIF ou WebM -->
+      <video
+        autoplay
+        loop
+        muted
+        style="
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          margin-bottom: 100%;
+        "
+      >
+        <source src="imagem banner atualizado.mp4" type="video/webm" />
+      </video>
+    </div>
     <main>
-        <section>
-            <article>
-                <div>
-                    <div>
-                        <h3>Refrigeração: Uma Visão Abrangente</h3>
-                            <p>Seja em residências, estabelecimentos comerciais ou indústrias, a refrigeração desempenha um papel crucial para manter ambientes confortáveis, produtos frescos e processos industriais eficientes. Nesta jornada pelo mundo da refrigeração, exploraremos uma variedade de tecnologias e soluções que garantem conforto, eficiência e economia.</p>
-                            <p>A refrigeração é uma tecnologia essencial que desempenha um papel fundamental em nossas vidas diárias e em uma ampla variedade de indústrias. Desde manter nossas casas confortáveis em dias quentes até preservar alimentos perecíveis e medicamentos, a refrigeração é uma parte indispensável de nosso mundo moderno.</p>
-                            <p>Nos últimos anos, vimos avanços significativos em tecnologias de refrigeração que visam melhorar a eficiência energética e reduzir o impacto ambiental. Isso inclui o desenvolvimento de sistemas de refrigeração sustentáveis, o uso de refrigerantes de baixo potencial de aquecimento global e a integração de dispositivos IoT para monitorar e controlar sistemas de refrigeração remotamente. No entanto, desafios persistentes permanecem, como a necessidade de lidar com o descarte seguro de refrigerantes antigos e a redução do consumo de energia em sistemas de refrigeração de grande porte.</p><br>
+      <section>
+        <article>
+          <div>
+            <div>
+              <h3>Refrigeração: Uma Visão Abrangente</h3>
+              <p>
+                Seja em residências, estabelecimentos comerciais ou indústrias,
+                a refrigeração desempenha um papel crucial para manter ambientes
+                confortáveis, produtos frescos e processos industriais
+                eficientes. Nesta jornada pelo mundo da refrigeração,
+                exploraremos uma variedade de tecnologias e soluções que
+                garantem conforto, eficiência e economia.
+              </p>
+              <p>
+                A refrigeração é uma tecnologia essencial que desempenha um
+                papel fundamental em nossas vidas diárias e em uma ampla
+                variedade de indústrias. Desde manter nossas casas confortáveis
+                em dias quentes até preservar alimentos perecíveis e
+                medicamentos, a refrigeração é uma parte indispensável de nosso
+                mundo moderno.
+              </p>
+              <p>
+                Nos últimos anos, vimos avanços significativos em tecnologias de
+                refrigeração que visam melhorar a eficiência energética e
+                reduzir o impacto ambiental. Isso inclui o desenvolvimento de
+                sistemas de refrigeração sustentáveis, o uso de refrigerantes de
+                baixo potencial de aquecimento global e a integração de
+                dispositivos IoT para monitorar e controlar sistemas de
+                refrigeração remotamente. No entanto, desafios persistentes
+                permanecem, como a necessidade de lidar com o descarte seguro de
+                refrigerantes antigos e a redução do consumo de energia em
+                sistemas de refrigeração de grande porte.
+              </p>
+              <br />
 
-                            <p>A refrigeração é uma tecnologia fundamental que moldou nosso mundo de maneiras profundas e variadas. À medida que avançamos para um futuro mais sustentável, é vital continuar a desenvolver e adotar soluções de refrigeração que sejam eficientes, econômicas e amigáveis ao meio ambiente. Ao fazê-lo, podemos garantir que a refrigeração continue a desempenhar um papel vital em nossa sociedade, proporcionando conforto, segurança e bem-estar para todos.
-                            </p><br>
-                    </div>
-                    <div  id="split-multi-split"><br><br><br>
-                        <h3>Split & Multi-Split: Eficiência Personalizada</h3>
-                            <p>Os sistemas Split e Multi-Split oferecem uma solução flexível e eficaz para climatização de ambientes. Com unidades internas discretas e unidades externas poderosas, esses sistemas podem ser dimensionados de acordo com as necessidades específicas de cada espaço, proporcionando conforto térmico sob medida.</p><br>
-                            <p>
-                                O sistema Split e o sistema Multi-Split são ambos tipos de sistemas de ar-condicionado, mas têm diferenças significativas em termos de design e aplicação</p><br>
-                                
-                                <p><strong>Sistema Split</strong>
+              <p>
+                A refrigeração é uma tecnologia fundamental que moldou nosso
+                mundo de maneiras profundas e variadas. À medida que avançamos
+                para um futuro mais sustentável, é vital continuar a desenvolver
+                e adotar soluções de refrigeração que sejam eficientes,
+                econômicas e amigáveis ao meio ambiente. Ao fazê-lo, podemos
+                garantir que a refrigeração continue a desempenhar um papel
+                vital em nossa sociedade, proporcionando conforto, segurança e
+                bem-estar para todos.
+              </p>
+              <br />
+            </div>
+            <div id="split-multi-split">
+              <br /><br /><br />
+              <h3>Split & Multi-Split: Eficiência Personalizada</h3>
+              <p>
+                Os sistemas Split e Multi-Split oferecem uma solução flexível e
+                eficaz para climatização de ambientes. Com unidades internas
+                discretas e unidades externas poderosas, esses sistemas podem
+                ser dimensionados de acordo com as necessidades específicas de
+                cada espaço, proporcionando conforto térmico sob medida.
+              </p>
+              <br />
+              <p>
+                O sistema Split e o sistema Multi-Split são ambos tipos de
+                sistemas de ar-condicionado, mas têm diferenças significativas
+                em termos de design e aplicação
+              </p>
+              <br />
 
-                                Os sistemas Split são uma das opções mais populares e eficientes para climatização de ambientes residenciais, comerciais e até mesmo industriais. Consistem em duas unidades principais: uma unidade interna, geralmente instalada dentro do ambiente a ser climatizado, e uma unidade externa, localizada do lado de fora do edifício. Essas duas unidades trabalham em conjunto para fornecer refrigeração ou aquecimento, dependendo das necessidades do ambiente.</p><br>
-                                
-                                <p>Devido à sua versatilidade e eficiência, os sistemas Split são amplamente utilizados em uma variedade de aplicações, incluindo residências, escritórios, lojas, restaurantes, salas de servidores e muito mais. Sua capacidade de oferecer conforto personalizado, eficiência energética e operação silenciosa os torna uma escolha popular para quem busca soluções de climatização confiáveis e econômicas.</p>
+              <p>
+                <strong>Sistema Split</strong>
 
-                                <p>Em resumo, os sistemas Split são uma escolha ideal para aqueles que desejam desfrutar de conforto térmico e eficiência energética em seus ambientes. Com seu design discreto, operação silenciosa e capacidade de controlar individualmente a temperatura em cada ambiente, os sistemas Split continuam a ser uma opção atraente para a climatização residencial, comercial e industrial.</p><br>
+                Os sistemas Split são uma das opções mais populares e eficientes
+                para climatização de ambientes residenciais, comerciais e até
+                mesmo industriais. Consistem em duas unidades principais: uma
+                unidade interna, geralmente instalada dentro do ambiente a ser
+                climatizado, e uma unidade externa, localizada do lado de fora
+                do edifício. Essas duas unidades trabalham em conjunto para
+                fornecer refrigeração ou aquecimento, dependendo das
+                necessidades do ambiente.
+              </p>
+              <br />
 
-                            <p><strong>Sistema Multi-Split</strong>
+              <p>
+                Devido à sua versatilidade e eficiência, os sistemas Split são
+                amplamente utilizados em uma variedade de aplicações, incluindo
+                residências, escritórios, lojas, restaurantes, salas de
+                servidores e muito mais. Sua capacidade de oferecer conforto
+                personalizado, eficiência energética e operação silenciosa os
+                torna uma escolha popular para quem busca soluções de
+                climatização confiáveis e econômicas.
+              </p>
 
-                            Os sistemas Mult-Split representam uma solução avançada e altamente flexível para a climatização de ambientes residenciais, comerciais e industriais. Diferentemente dos sistemas convencionais de ar-condicionado, que consistem em uma unidade interna e uma unidade externa, os sistemas Mult-Split permitem a conexão de múltiplas unidades internas a uma única unidade externa, proporcionando uma maior eficiência e versatilidade.</p>
-                            <br>
-                            <p>Uma das principais vantagens dos sistemas Mult-Split é a sua capacidade de oferecer climatização personalizada para cada ambiente. Com a possibilidade de conectar várias unidades internas a uma única unidade externa, os usuários têm a flexibilidade de controlar a temperatura em diferentes áreas de forma independente, de acordo com as necessidades específicas de cada espaço. Isso permite criar zonas de conforto individualizadas, adaptadas ao estilo de vida e preferências dos ocupantes.</p>
+              <p>
+                Em resumo, os sistemas Split são uma escolha ideal para aqueles
+                que desejam desfrutar de conforto térmico e eficiência
+                energética em seus ambientes. Com seu design discreto, operação
+                silenciosa e capacidade de controlar individualmente a
+                temperatura em cada ambiente, os sistemas Split continuam a ser
+                uma opção atraente para a climatização residencial, comercial e
+                industrial.
+              </p>
+              <br />
 
-                            <p>Em resumo, os sistemas Mult-Split oferecem uma combinação única de flexibilidade, eficiência e design moderno, tornando-os uma escolha popular para a climatização de ambientes diversos. Com a capacidade de oferecer conforto personalizado, economia de energia e versatilidade de aplicação, os sistemas Mult-Split continuam a ser uma opção atraente para aqueles que buscam soluções de climatização eficazes e modernas.</p>
-                            <br>
-                    </div>
-                    <div id="vrf-vrv"><br><br><br>
-                        <h3>VRF&VRV: Eficiência Energética e Controle Preciso</h3>
-                            <p>Os sistemas VRF (Fluxo de Refrigerante Variável) e VRV (Volume de Refrigerante Variável) representam o estado da arte em climatização. Com a capacidade de fornecer aquecimento e resfriamento simultâneos para diferentes zonas, juntamente com controle individualizado de temperatura, esses sistemas garantem conforto superior e eficiência energética excepcional.</p>
-                            <p>O VRF, ou Volume de Refrigerante Variável, é um sistema de ar condicionado que se destaca por sua eficiência energética, flexibilidade e capacidade de controle individualizado de temperatura em diferentes áreas de um edifício.</p>    <br>
-                            <p><strong>Eficiência Energética:</strong>  Tanto os sistemas VRV quanto os VRF são conhecidos por sua eficiência energética, mas os sistemas VRV da Daikin, em particular, são frequentemente elogiados por sua capacidade de ajustar continuamente a capacidade de refrigeração de acordo com as necessidades de cada ambiente, o que pode resultar em economias adicionais de energia.<br>
+              <p>
+                <strong>Sistema Multi-Split</strong>
 
-                            Em relação a atender um maior número de salas, geralmente os sistemas VRV têm uma vantagem devido à sua capacidade de escalabilidade e maior capacidade de refrigeração. No entanto, a escolha entre VRV e VRF dependerá das necessidades específicas do projeto, do orçamento e das preferências do cliente, bem como das especificações e recomendações do fabricante. É importante consultar um especialista em climatização para determinar a melhor solução para cada caso.</p>
-                            
-                            <p>Os sistemas VRF/VRV representam uma escolha avançada e eficiente para a climatização de ambientes, oferecendo uma combinação única de eficiência energética, controle de temperatura personalizado e flexibilidade de design. Com sua capacidade de aquecimento e resfriamento simultâneos, esses sistemas são ideais para uma ampla gama de aplicações comerciais e residenciais, proporcionando conforto térmico excepcional e economia de energia significativa.</p><br>
-                    
-                    </div>
-                    <div id="camaras-frigorificas"><br><br><br>
-                        <h3>Câmaras Frigoríficas: Preservação de Produtos e Eficiência Logística</h3>
+                Os sistemas Mult-Split representam uma solução avançada e
+                altamente flexível para a climatização de ambientes
+                residenciais, comerciais e industriais. Diferentemente dos
+                sistemas convencionais de ar-condicionado, que consistem em uma
+                unidade interna e uma unidade externa, os sistemas Mult-Split
+                permitem a conexão de múltiplas unidades internas a uma única
+                unidade externa, proporcionando uma maior eficiência e
+                versatilidade.
+              </p>
+              <br />
+              <p>
+                Uma das principais vantagens dos sistemas Mult-Split é a sua
+                capacidade de oferecer climatização personalizada para cada
+                ambiente. Com a possibilidade de conectar várias unidades
+                internas a uma única unidade externa, os usuários têm a
+                flexibilidade de controlar a temperatura em diferentes áreas de
+                forma independente, de acordo com as necessidades específicas de
+                cada espaço. Isso permite criar zonas de conforto
+                individualizadas, adaptadas ao estilo de vida e preferências dos
+                ocupantes.
+              </p>
 
-                            <p>Para a conservação de alimentos e produtos perecíveis, as câmaras frigoríficas desempenham um papel vital. Seja para armazenamento congelado ou resfriado, essas estruturas oferecem controle preciso de temperatura e umidade, garantindo a frescura e a qualidade dos itens armazenados, além de otimizar os processos logísticos.</p><br>
+              <p>
+                Em resumo, os sistemas Mult-Split oferecem uma combinação única
+                de flexibilidade, eficiência e design moderno, tornando-os uma
+                escolha popular para a climatização de ambientes diversos. Com a
+                capacidade de oferecer conforto personalizado, economia de
+                energia e versatilidade de aplicação, os sistemas Mult-Split
+                continuam a ser uma opção atraente para aqueles que buscam
+                soluções de climatização eficazes e modernas.
+              </p>
+              <br />
+            </div>
+            <div id="vrf-vrv">
+              <br /><br /><br />
+              <h3>VRF&VRV: Eficiência Energética e Controle Preciso</h3>
+              <p>
+                Os sistemas VRF (Fluxo de Refrigerante Variável) e VRV (Volume
+                de Refrigerante Variável) representam o estado da arte em
+                climatização. Com a capacidade de fornecer aquecimento e
+                resfriamento simultâneos para diferentes zonas, juntamente com
+                controle individualizado de temperatura, esses sistemas garantem
+                conforto superior e eficiência energética excepcional.
+              </p>
+              <p>
+                O VRF, ou Volume de Refrigerante Variável, é um sistema de ar
+                condicionado que se destaca por sua eficiência energética,
+                flexibilidade e capacidade de controle individualizado de
+                temperatura em diferentes áreas de um edifício.
+              </p>
+              <br />
+              <p>
+                <strong>Eficiência Energética:</strong> Tanto os sistemas VRV
+                quanto os VRF são conhecidos por sua eficiência energética, mas
+                os sistemas VRV da Daikin, em particular, são frequentemente
+                elogiados por sua capacidade de ajustar continuamente a
+                capacidade de refrigeração de acordo com as necessidades de cada
+                ambiente, o que pode resultar em economias adicionais de
+                energia.<br />
 
-                            <p>As câmaras refrigeradas são amplamente utilizadas em uma variedade de setores, incluindo alimentos e bebidas, medicamentos e produtos químicos. No setor de alimentos, por exemplo, as câmaras refrigeradas são essenciais para armazenar produtos perecíveis, como carnes, laticínios, frutas e legumes, garantindo que permaneçam frescos e seguros para consumo. No setor farmacêutico, as câmaras refrigeradas são usadas para armazenar medicamentos sensíveis à temperatura, ajudando a garantir sua eficácia e segurança.</p><br>
+                Em relação a atender um maior número de salas, geralmente os
+                sistemas VRV têm uma vantagem devido à sua capacidade de
+                escalabilidade e maior capacidade de refrigeração. No entanto, a
+                escolha entre VRV e VRF dependerá das necessidades específicas
+                do projeto, do orçamento e das preferências do cliente, bem como
+                das especificações e recomendações do fabricante. É importante
+                consultar um especialista em climatização para determinar a
+                melhor solução para cada caso.
+              </p>
 
-                            <p>A utilização de câmaras refrigeradas oferece uma série de benefícios significativos, tanto para os fabricantes e distribuidores de produtos quanto para os consumidores finais. Além de garantir a qualidade e a segurança dos produtos armazenados, as câmaras refrigeradas também ajudam a reduzir o desperdício de alimentos e medicamentos, prolongando sua vida útil e minimizando as perdas devido a deterioração. Além disso, as câmaras refrigeradas desempenham um papel importante na conformidade com regulamentos e normas de segurança alimentar e farmacêutica, garantindo que os produtos sejam armazenados e manuseados de acordo com os mais altos padrões de qualidade e segurança.</p><br>
+              <p>
+                Os sistemas VRF/VRV representam uma escolha avançada e eficiente
+                para a climatização de ambientes, oferecendo uma combinação
+                única de eficiência energética, controle de temperatura
+                personalizado e flexibilidade de design. Com sua capacidade de
+                aquecimento e resfriamento simultâneos, esses sistemas são
+                ideais para uma ampla gama de aplicações comerciais e
+                residenciais, proporcionando conforto térmico excepcional e
+                economia de energia significativa.
+              </p>
+              <br />
+            </div>
+            <div id="camaras-frigorificas">
+              <br /><br /><br />
+              <h3>
+                Câmaras Frigoríficas: Preservação de Produtos e Eficiência
+                Logística
+              </h3>
 
-                            <p>Em resumo, as câmaras refrigeradas são uma parte essencial da cadeia de suprimentos de alimentos, medicamentos e outros produtos sensíveis à temperatura. Ao oferecer condições controladas de temperatura e umidade, essas estruturas desempenham um papel crucial na preservação da qualidade e da segurança dos produtos, garantindo que cheguem aos consumidores finais frescos, seguros e prontos para uso.</p><br>
-                    </div>
-                    <div id="energia-solar"><br><br><br>
-                        <h3>Energia Fotovoltaica: Sustentabilidade e Autonomia Energética</h3>
-                            <p>A energia solar fotovoltaica emergiu como uma alternativa sustentável e econômica para suprir as necessidades energéticas de residências, empresas e indústrias. Ao converter a luz solar em eletricidade limpa e renovável, os sistemas fotovoltaicos reduzem os custos de energia e contribuem para a redução das emissões de carbono.</p><br>
+              <p>
+                Para a conservação de alimentos e produtos perecíveis, as
+                câmaras frigoríficas desempenham um papel vital. Seja para
+                armazenamento congelado ou resfriado, essas estruturas oferecem
+                controle preciso de temperatura e umidade, garantindo a frescura
+                e a qualidade dos itens armazenados, além de otimizar os
+                processos logísticos.
+              </p>
+              <br />
 
-                            <p>A energia fotovoltaica é uma forma de energia renovável que utiliza a luz do sol para gerar eletricidade. Esse processo ocorre por meio de células fotovoltaicas, que convertem a luz solar diretamente em eletricidade, sem a necessidade de peças móveis ou combustíveis fósseis. Essa tecnologia tem se tornado cada vez mais popular devido aos seus inúmeros benefícios ambientais, econômicos e sociais.</p><br>
+              <p>
+                As câmaras refrigeradas são amplamente utilizadas em uma
+                variedade de setores, incluindo alimentos e bebidas,
+                medicamentos e produtos químicos. No setor de alimentos, por
+                exemplo, as câmaras refrigeradas são essenciais para armazenar
+                produtos perecíveis, como carnes, laticínios, frutas e legumes,
+                garantindo que permaneçam frescos e seguros para consumo. No
+                setor farmacêutico, as câmaras refrigeradas são usadas para
+                armazenar medicamentos sensíveis à temperatura, ajudando a
+                garantir sua eficácia e segurança.
+              </p>
+              <br />
 
-                            <p>As células fotovoltaicas são compostas por materiais semicondutores, como o silício, que são capazes de gerar uma corrente elétrica quando expostos à luz solar. Quando os fótons de luz atingem a superfície das células, eles excitam os elétrons, criando assim uma corrente elétrica. Essa corrente é então capturada por fios condutores e direcionada para um inversor, que converte a corrente contínua (CC) em corrente alternada (CA), tornando-a compatível com a rede elétrica convencional.</p>
+              <p>
+                A utilização de câmaras refrigeradas oferece uma série de
+                benefícios significativos, tanto para os fabricantes e
+                distribuidores de produtos quanto para os consumidores finais.
+                Além de garantir a qualidade e a segurança dos produtos
+                armazenados, as câmaras refrigeradas também ajudam a reduzir o
+                desperdício de alimentos e medicamentos, prolongando sua vida
+                útil e minimizando as perdas devido a deterioração. Além disso,
+                as câmaras refrigeradas desempenham um papel importante na
+                conformidade com regulamentos e normas de segurança alimentar e
+                farmacêutica, garantindo que os produtos sejam armazenados e
+                manuseados de acordo com os mais altos padrões de qualidade e
+                segurança.
+              </p>
+              <br />
 
-                            <p>A energia fotovoltaica desempenha um papel crucial na transição global para um futuro mais sustentável e resiliente. Como uma fonte limpa, abundante e acessível de energia, ela oferece uma solução promissora para os desafios energéticos e ambientais enfrentados pela sociedade moderna. Ao adotar e investir em sistemas fotovoltaicos, indivíduos, empresas e governos podem contribuir para um mundo mais verde e próspero para as gerações futuras.</p><br>
-                    </div>
-                    <div id="materiais-insumos"><br><br><br>
-                        <h3>Materiais&Insumos: Componentes Essenciais para o Funcionamento Eficiente</h3>
-                            <p>Além das tecnologias principais, uma variedade de materiais e insumos desempenham um papel crucial na refrigeração eficiente. Desde compressores e evaporadores até isolamentos térmicos e gás refrigerantes, cada componente desempenha um papel vital no funcionamento suave e confiável dos sistemas de refrigeração.</p><br>
+              <p>
+                Em resumo, as câmaras refrigeradas são uma parte essencial da
+                cadeia de suprimentos de alimentos, medicamentos e outros
+                produtos sensíveis à temperatura. Ao oferecer condições
+                controladas de temperatura e umidade, essas estruturas
+                desempenham um papel crucial na preservação da qualidade e da
+                segurança dos produtos, garantindo que cheguem aos consumidores
+                finais frescos, seguros e prontos para uso.
+              </p>
+              <br />
+            </div>
+            <div id="energia-solar">
+              <br /><br /><br />
+              <h3>
+                Energia Fotovoltaica: Sustentabilidade e Autonomia Energética
+              </h3>
+              <p>
+                A energia solar fotovoltaica emergiu como uma alternativa
+                sustentável e econômica para suprir as necessidades energéticas
+                de residências, empresas e indústrias. Ao converter a luz solar
+                em eletricidade limpa e renovável, os sistemas fotovoltaicos
+                reduzem os custos de energia e contribuem para a redução das
+                emissões de carbono.
+              </p>
+              <br />
 
-                            <p>A instalação de sistemas de ar condicionado, câmaras frias e sistemas VRF (Fluxo de Refrigerante Variável) requer uma variedade de materiais e insumos específicos para garantir um funcionamento eficiente e confiável. Abaixo estão alguns dos materiais e insumos essenciais utilizados nesses tipos de instalações:</p><br>
+              <p>
+                A energia fotovoltaica é uma forma de energia renovável que
+                utiliza a luz do sol para gerar eletricidade. Esse processo
+                ocorre por meio de células fotovoltaicas, que convertem a luz
+                solar diretamente em eletricidade, sem a necessidade de peças
+                móveis ou combustíveis fósseis. Essa tecnologia tem se tornado
+                cada vez mais popular devido aos seus inúmeros benefícios
+                ambientais, econômicos e sociais.
+              </p>
+              <br />
 
-                                
-                                <div class="insuForm">
-                                    <h4>Tubulações e Conexões:</h4>
-                                    <ol> 
-                                        <li>Tubos de cobre: Usados para transportar o refrigerante entre as unidades internas e externas do sistema de ar condicionado.</li>
-                                        <li>Conexões de cobre: Permitem conectar as tubulações de forma segura e estanque, garantindo um fluxo adequado do refrigerante.</li>
-                                        <li>Isolamento de tubulações: Material isolante aplicado nas tubulações para minimizar a perda de calor ou frio e garantir a eficiência energética do sistema.</li>
-                                        <li>Painéis isolantes: Utilizados na construção de câmaras frias para manter temperaturas internas estáveis e evitar a entrada de calor externo.</li>
-                                        <li>Compressores: Responsáveis por comprimir o refrigerante e aumentar sua pressão para facilitar a transferência de calor.</li>
-                                        <li>Evaporadores: Dispositivos onde o refrigerante absorve calor do ambiente a ser resfriado, evaporando e transformando-se em gás.</li>
-                                        </ol>
-                                        <p>Esses são apenas alguns dos materiais e insumos comumente utilizados na instalação e manutenção de sistemas de ar condicionado, câmaras frias e sistemas VRF. É essencial garantir a qualidade e a compatibilidade desses materiais para garantir o funcionamento eficiente e seguro dos equipamentos de refrigeração.</p>
-                                    
-                                </div>
-                            
-                    </div>
-                </div>
-                
-                <div id="solution">                                  
-                </div>
-                <div class="convite">
-                <h4>"Descubra soluções completas em refrigeração conosco! Oferecemos consultoria, projetos personalizados e aparelhos novos direto da fábrica, garantindo qualidade e confiabilidade. Explore nosso site e encontre inovação e eficiência com o melhor custo-benefício. Estamos aqui para ajudá-lo a alcançar excelência sem comprometer seu orçamento. Visite-nos agora!" </h4><br>
-                <h3>Selecione a solução desejada!</h3>
-                </div>
-                <div class="container">
-                    <div>
-                        <h3 class="titulo">Split &Mult-Split</h3>
-                        <div class="item"><a href="Split.MultSplit.html"><img src="splitxmultsplitpng.png" alt="foto multsplit"></a></div>
-                    </div>
+              <p>
+                As células fotovoltaicas são compostas por materiais
+                semicondutores, como o silício, que são capazes de gerar uma
+                corrente elétrica quando expostos à luz solar. Quando os fótons
+                de luz atingem a superfície das células, eles excitam os
+                elétrons, criando assim uma corrente elétrica. Essa corrente é
+                então capturada por fios condutores e direcionada para um
+                inversor, que converte a corrente contínua (CC) em corrente
+                alternada (CA), tornando-a compatível com a rede elétrica
+                convencional.
+              </p>
 
-                    <div>
-                        <h3 class="titulo">Câmara Fria &Expositores</h3>
-                        <div class="item"><a href="camarafria.html"><img src="camara friapng.png" alt="camarafira"></a></div>
-                    </div>
+              <p>
+                A energia fotovoltaica desempenha um papel crucial na transição
+                global para um futuro mais sustentável e resiliente. Como uma
+                fonte limpa, abundante e acessível de energia, ela oferece uma
+                solução promissora para os desafios energéticos e ambientais
+                enfrentados pela sociedade moderna. Ao adotar e investir em
+                sistemas fotovoltaicos, indivíduos, empresas e governos podem
+                contribuir para um mundo mais verde e próspero para as gerações
+                futuras.
+              </p>
+              <br />
+            </div>
+            <div id="materiais-insumos">
+              <br /><br /><br />
+              <h3>
+                Materiais&Insumos: Componentes Essenciais para o Funcionamento
+                Eficiente
+              </h3>
+              <p>
+                Além das tecnologias principais, uma variedade de materiais e
+                insumos desempenham um papel crucial na refrigeração eficiente.
+                Desde compressores e evaporadores até isolamentos térmicos e gás
+                refrigerantes, cada componente desempenha um papel vital no
+                funcionamento suave e confiável dos sistemas de refrigeração.
+              </p>
+              <br />
 
-                    <div>
-                        <h3 class="titulo">Sistemas VRF&VRV</h3>
-                        <div class="item"><a href="VrvVrf.html"><img src="vrf-ou-vrvpng.png" alt="vrf"></a></div>
-                    </div>
+              <p>
+                A instalação de sistemas de ar condicionado, câmaras frias e
+                sistemas VRF (Fluxo de Refrigerante Variável) requer uma
+                variedade de materiais e insumos específicos para garantir um
+                funcionamento eficiente e confiável. Abaixo estão alguns dos
+                materiais e insumos essenciais utilizados nesses tipos de
+                instalações:
+              </p>
+              <br />
 
-                    <div>
-                        <h3 class="titulo">Energia Solar</h3>
-                        <div class="item"><a href="EnergiaSolar.html"><img src="banerSolar1.png" alt="solar"></a></div>
-                    </div>
+              <div class="insuForm">
+                <h4>Tubulações e Conexões:</h4>
+                <ol>
+                  <li>
+                    Tubos de cobre: Usados para transportar o refrigerante entre
+                    as unidades internas e externas do sistema de ar
+                    condicionado.
+                  </li>
+                  <li>
+                    Conexões de cobre: Permitem conectar as tubulações de forma
+                    segura e estanque, garantindo um fluxo adequado do
+                    refrigerante.
+                  </li>
+                  <li>
+                    Isolamento de tubulações: Material isolante aplicado nas
+                    tubulações para minimizar a perda de calor ou frio e
+                    garantir a eficiência energética do sistema.
+                  </li>
+                  <li>
+                    Painéis isolantes: Utilizados na construção de câmaras frias
+                    para manter temperaturas internas estáveis e evitar a
+                    entrada de calor externo.
+                  </li>
+                  <li>
+                    Compressores: Responsáveis por comprimir o refrigerante e
+                    aumentar sua pressão para facilitar a transferência de
+                    calor.
+                  </li>
+                  <li>
+                    Evaporadores: Dispositivos onde o refrigerante absorve calor
+                    do ambiente a ser resfriado, evaporando e transformando-se
+                    em gás.
+                  </li>
+                </ol>
+                <p>
+                  Esses são apenas alguns dos materiais e insumos comumente
+                  utilizados na instalação e manutenção de sistemas de ar
+                  condicionado, câmaras frias e sistemas VRF. É essencial
+                  garantir a qualidade e a compatibilidade desses materiais para
+                  garantir o funcionamento eficiente e seguro dos equipamentos
+                  de refrigeração.
+                </p>
+              </div>
+            </div>
+          </div>
 
-                    <div>
-                        <h3 class="titulo">Peças &Materiais</h3>
-                        <div class="item"><a href="Peças&Serviços.html"><img src="MateriaisInsumos1.png" alt="pecas"></a></div>
-                    </div>
-                </div>
-            </article>
-        </section>
+          <div id="solution"></div>
+          <div class="convite">
+            <h4>
+              "Descubra soluções completas em refrigeração conosco! Oferecemos
+              consultoria, projetos personalizados e aparelhos novos direto da
+              fábrica, garantindo qualidade e confiabilidade. Explore nosso site
+              e encontre inovação e eficiência com o melhor custo-benefício.
+              Estamos aqui para ajudá-lo a alcançar excelência sem comprometer
+              seu orçamento. Visite-nos agora!"
+            </h4>
+            <br />
+            <h3>Selecione a solução desejada!</h3>
+          </div>
+          <div class="container">
+            <div>
+              <h3 class="titulo">Split &Mult-Split</h3>
+              <div class="item">
+                <a href="Split.MultSplit.html"
+                  ><img src="splitxmultsplitpng.png" alt="foto multsplit"
+                /></a>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="titulo">Câmara Fria &Expositores</h3>
+              <div class="item">
+                <a href="camarafria.html"
+                  ><img src="camara friapng.png" alt="camarafira"
+                /></a>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="titulo">Sistemas VRF&VRV</h3>
+              <div class="item">
+                <a href="VrvVrf.html"
+                  ><img src="vrf-ou-vrvpng.png" alt="vrf"
+                /></a>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="titulo">Energia Solar</h3>
+              <div class="item">
+                <a href="EnergiaSolar.html"
+                  ><img src="banerSolar1.png" alt="solar"
+                /></a>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="titulo">Peças &Materiais</h3>
+              <div class="item">
+                <a href="Peças&Serviços.html"
+                  ><img src="MateriaisInsumos1.png" alt="pecas"
+                /></a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
     </main>
 
     <aside>
-    <div class="Aviso">
+      <div class="Aviso">
         <h2>Trabalhamos com os Principais Fornecedores</h2>
-        <p><strong>Trabalhamos com os principais fornecedores e entregamos em todo o Brasil!</strong> Nossa equipe, com sede em Brasília, está pronta para atendê-lo. Oferecemos opções de pagamento e retirada em loja, ou entrega rápida e eficiente no endereço desejado. Um de nossos colaboradores estará disponível para ajudar com seu pedido. Faça um orçamento sem compromisso e garanta a melhor solução para suas necessidades. Além disso, cobrimos orçamentos de concorrentes.<strong> Conte conosco para fechar ótimos negócios!"</strong> 
+        <p>
+          <strong
+            >Trabalhamos com os principais fornecedores e entregamos em todo o
+            Brasil!</strong
+          >
+          Nossa equipe, com sede em Brasília, está pronta para atendê-lo.
+          Oferecemos opções de pagamento e retirada em loja, ou entrega rápida e
+          eficiente no endereço desejado. Um de nossos colaboradores estará
+          disponível para ajudar com seu pedido. Faça um orçamento sem
+          compromisso e garanta a melhor solução para suas necessidades. Além
+          disso, cobrimos orçamentos de concorrentes.<strong>
+            Conte conosco para fechar ótimos negócios!"</strong
+          >
         </p>
-    </div>
-    <div id="contato">
-        <div class="dadosP"><h3>Colaborador Parceiro</h3>
-     <a href="https://wa.me/5561974012022/?text=Ol%C3%A1%2C%20eu%20gostaria%20de%20solicitar%20um%20or%C3%A7amento!" target="_blank" rel="noopener noreferrer"><h2>Marcus Henrique</h2></a> 
-    </div>
-    
-    <a aria-label="Chat on WhatsApp" href="https://wa.me/5561974012022/?text=Ol%C3%A1%2C%20eu%20gostaria%20de%20solicitar%20um%20or%C3%A7amento!" target="_blank">
-        <img alt="Chat on WhatsApp" src="icoWats2.png" />
-    </a>
-    </div>
-    
-</aside>
+      </div>
+      <div id="contato">
+        <div class="dadosP">
+          <h3>Colaborador Parceiro</h3>
+          <a
+            href="https://wa.me/5561974012022/?text=Ol%C3%A1%2C%20eu%20gostaria%20de%20solicitar%20um%20or%C3%A7amento!"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><h2>Marcus Henrique</h2></a
+          >
+        </div>
 
+        <a
+          aria-label="Chat on WhatsApp"
+          href="https://wa.me/5561974012022/?text=Ol%C3%A1%2C%20eu%20gostaria%20de%20solicitar%20um%20or%C3%A7amento!"
+          target="_blank"
+        >
+          <img alt="Chat on WhatsApp" src="icoWats2.png" />
+        </a>
+      </div>
+    </aside>
 
     <footer>
-        <div>
-            <p>Inscreva-se para receber noticias</p>
-            <form method="post">
-                <input type="text" name="nome" placeholder="Digite seu Nome">
-                <input type="email" name="email" placeholder="Digite seu Email"> <br>
-                <input type="text" name="Texto" placeholder="Sugestão ou Produto">
-                <input type="submit" name="enviar" value="Enviar" onclick="enviar()">
-            </form>
-        </div>
-        <div class="span1">
-            <span><h2>O Melhor Custo Benefício, nós te falamos aqui!</h2></span>
-            <span><h6>&copy;Marcus Henrique Consultor, Todos os direitos reservados</h6></span>
-        </div>
+      <div>
+        <p>Inscreva-se para receber noticias</p>
+        <form method="post">
+          <input type="text" name="nome" placeholder="Digite seu Nome" />
+          <input type="email" name="email" placeholder="Digite seu Email" />
+          <br />
+          <input type="text" name="Texto" placeholder="Sugestão ou Produto" />
+          <input
+            type="submit"
+            name="enviar"
+            value="Enviar"
+            onclick="enviar()"
+          />
+        </form>
+      </div>
+      <div class="span1">
+        <span><h2>O Melhor Custo Benefício, nós te falamos aqui!</h2></span>
+        <span
+          ><h6>
+            &copy;Marcus Henrique Consultor, Todos os direitos reservados
+          </h6></span
+        >
+      </div>
     </footer>
 
     <span class="rodpé"> &copy; MafiosoBR-DF </span>
 
     <script>
-        function enviar() {
-            alert("Mensagem enviada com sucesso!");
-        }
+      function enviar() {
+        alert("Mensagem enviada com sucesso!");
+      }
     </script>
-
-</body>
-
+  </body>
 </html>

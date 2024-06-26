@@ -1,11 +1,306 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Piscinas - Seu Site</title>
+    <style>
+        body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.banner {
+    background-image: url('banner.jpg');
+    background-size: cover;
+    height: 300px;
+    text-align: center;
+    padding: 0 20px;
+    color: #fff;
+}
+
+.banner h2 {
+    margin-top: 100px;
+    font-size: 32px;
+}
+
+.banner p {
+    font-size: 18px;
+}
+
+.banner .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.produtos {
+    padding: 20px;
+}
+
+.produto {
+    display: inline-block;
+    margin-right: 20px;
+    width: 300px;
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.produto img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.produto h3 {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.produto p {
+    font-size: 14px;
+}
+
+.produto .btn {
+    display: block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.servicos, .contato {
+    padding: 20px;
+}
+
+.servicos ul {
+    list-style: disc;
+    margin-left: 20px;
+}
+
+.contato form {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.contato label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.contato input, .contato textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.contato textarea {
+    height: 100px;
+}
+
+.contato button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+    </style>
 </head>
 <body>
-    
+    <header>
+        <h1>Piscinas</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Produtos</a></li>
+                <li><a href="#">Serviços</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="banner">
+            
+            <h2>Realize o sonho da sua piscina!</h2>
+            <p>Oferecemos tudo que você precisa para ter a piscina dos seus sonhos.</p>
+            <a href="#" class="btn">Saiba mais</a>
+        </section>
+
+        <section class="produtos">
+            <h2>Produtos</h2>
+            <div class="produto">
+                <img src="produto1.jpg" alt="Produto 1">
+                <h3>Nome do Produto 1</h3>
+                <p>Descrição do produto 1.</p>
+                <a href="#" class="btn">Comprar</a>
+            </div>
+            <div class="produto">
+                <img src="produto2.jpg" alt="Produto 2">
+                <h3>Nome do Produto 2</h3>
+                <p>Descrição do produto 2.</p>
+                <a href="#" class="btn">Comprar</a>
+            </div>
+             <div class="produto">
+                <img src="produto3.jpg" alt="Produto 3">
+                <h3>Nome do Produto 3</h3>
+                <p>Descrição do produto 3.</p>
+                <a href="#" class="btn">Comprar</a>
+            </div>
+             <div class="produto">
+                <img src="produto4.jpg" alt="Produto 4">
+                <h3>Nome do Produto 4</h3>
+                <p>Descrição do produto 4.</p>
+                <a href="#" class="btn">Comprar</a>
+            </div>
+            <br><br>
+             <div class="produto">
+                <img src="produto6.jpg" alt="Produto 5">
+                <h3>Nome do Produto 6</h3>
+                <p>Descrição do produto 6.</p>
+                <a href="#" class="btn">Comprar</a>
+            </div>
+            
+             <div class="produto">
+                <img src="produto7.jpg" alt="Produto 7">
+                <h3>Nome do Produto 7</h3>
+                <p>Descrição do produto 7.</p>
+                <a href="#" class="btn">Comprar</a>
+            </div>
+            
+             <div class="produto">
+                <img src="produto8.jpg" alt="Produto 8">
+                <h3>Nome do Produto 8</h3>
+                <p>Descrição do produto 8.</p>
+                <a href="#" class="btn">Comprar</a>
+            </div>
+            
+             <div class="produto">
+                <img src="produto9.jpg" alt="Produto 9">
+                <h3>Nome do Produto 9</h3>
+                <p>Descrição do produto 9.</p>
+                <a href="#" class="btn">Comprar</a>
+            </div>
+            </section>
+
+        <section class="servicos">
+            <h2>Serviços</h2>
+            <ul>
+                <li>Construção de piscinas</li>
+                <li>Manutenção de piscinas</li>
+                <li>Reforma de piscinas</li>
+                <li>Venda de produtos químicos</li>
+                </ul>
+        </section>
+
+        <section class="contato">
+            <h2>Contato</h2>
+            <form action="#">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="mensagem">Mensagem:</label>
+                <textarea id="mensagem" name="mensagem" required></textarea>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Seu Site de Piscinas</p>
+    </footer>
+
+    <script>
+        // Suavização na rolagem das seções
+        const sections = document.querySelectorAll('section');
+
+        window.addEventListener('scroll', function() {
+            sections.forEach(function(section) {
+                const distanceToTop = section.getBoundingClientRect().top;
+                const sectionHeight = section.offsetHeight;
+                const scrollPercent = (window.scrollY / (sectionHeight - window.innerHeight)) * 100;
+
+                if (scrollPercent > 50) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+        });
+
+        // Menu responsivo
+        const menu = document.querySelector('nav ul');
+        const menuButton = document.querySelector('.menu-button');
+
+        menuButton.addEventListener('click', function() {
+            menu.classList.toggle('active');
+        });
+
+        // Formulário de contato com validação básica
+        const form = document.querySelector('.contato form');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const nome = document.querySelector('#nome').value;
+            const email = document.querySelector('#email').value;
+            const mensagem = document.querySelector('#mensagem').value;
+
+            if (nome === '' || email === '' || mensagem === '') {
+                alert('Preencha todos os campos!');
+                return;
+            }
+
+            // Simular envio do formulário (você precisaria integrar com um serviço de email real)
+            alert('Formulário enviado com sucesso!');
+            form.reset();
+        });
+    </script>
 </body>
 </html>
