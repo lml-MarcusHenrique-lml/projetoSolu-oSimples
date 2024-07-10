@@ -138,7 +138,7 @@
             <label for="resfriamento">Tipo de Câmara Frigorífica do Primeiro Ambiente:</label>
             <select id="resfriamento" name="resfriamento" required>
                 <option value="">Selecione o Tipo de Câmara</option>
-                <option value="resfriado">Resfriamento (Gás R-410a)</option>
+                <option value="resfriado">Resfriamento (Gás R-22)</option>
                 <option value="congelado">Congelamento (Gás R-404a)</option>
             </select>
         </div>
@@ -150,6 +150,8 @@
                 <option value="2.50">2.50m</option>
                 <option value="2.80">2.80m</option>
                 <option value="3.00">3.00m</option>
+                <option value="3.50">3.50m</option>
+                <option value="3.80">3.80m</option>
                 <!-- Adicione mais opções conforme necessário -->
             </select>
         </div>
@@ -190,7 +192,7 @@
                 <label for="resfriamento2">Tipo de Câmara Frigorífica do Segundo Ambiente:</label>
                 <select id="resfriamento2" name="resfriamento2" required>
                     <option value="">Selecione o Tipo de Câmara</option>
-                    <option value="resfriado">Resfriamento (Gás R-410a)</option>
+                    <option value="resfriado">Resfriamento (Gás R-22)</option>
                     <option value="congelado">Congelamento (Gás R-404a)</option>
                 </select>
             </div>
@@ -219,27 +221,25 @@
             </select>
         </div>
 
-        <div class="form-group">
-            <button onclick="calcular()">Calcular</button>
-        </div>
+       <div class="form-group">
+        <button onclick="calcular()">Calcular</button>
+    </div>
 
-        <div class="resultados-container" id="resultados">
-            <h2>Resultados</h2>
-            <div id="resultado-texto"></div>
-            <div class="lista-insumos" id="lista-insumos" style="display: none;">
-                <h3>Material Para Instalação</h3>
-                <table id="tabela-insumos">
-                    <thead>
-                        <tr>
-                            <th>Nome do Insumo</th>
-                            <th>Preço</th>
-                        </tr>
-                    </thead>
-                    <tbody id="lista-insumos-itens"></tbody>
-                </table>
-            </div>
+    <div class="resultados-container" id="resultados">
+        <h2>Resultados</h2>
+        <div id="resultado-texto"></div>
+        <div class="lista-insumos" id="lista-insumos" style="display: none;">
+            <h3>Material Para Instalação</h3>
+            <table id="tabela-insumos">
+                <thead>
+                    <tr>
+                        <th>Nome do Insumo</th>
+                        <th>Preço</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-insumos-itens"></tbody>
+            </table>
         </div>
-
     </div>
 
     <script>
@@ -273,72 +273,74 @@
             var largura = parseFloat(document.getElementById('largura').value);
             var comprimento = parseFloat(document.getElementById('comprimento').value);
             var tipoPainel = document.getElementById('tipoPainel').value;
-            var divisoria = document.getElementById('divisoria').value === 'sim';
             var tipoResfriamento = document.getElementById('resfriamento').value;
             var incluiInsumos = document.getElementById('insumos').value === 'sim';
 
-            // Verificar se o comprimento do segundo ambiente é válido
-            var largura2 = parseFloat(document.getElementById('largura2').value);
-            if (divisoria && largura2 >= comprimento) {
-                alert("A Largura do segundo ambiente deve ser menor que o do primeiro ambiente.");
-                return;
-            }
-
-            // Calcula a área lateral
             var areaLateral = 2 * (altura * largura) + 2 * (altura * comprimento);
-
-            // Calcula a quantidade de placas para as paredes laterais
             var numPlacasParedes = Math.ceil(2 * (comprimento + largura) / parseFloat(tipoPainel));
-
-            // Calcula a quantidade de placas para o teto (baseado no maior lado)
             var maiorLado = Math.max(comprimento, largura);
             var numPlacasTeto = Math.ceil(maiorLado / parseFloat(tipoPainel));
 
-            // Se houver uma divisória, calcula a quantidade de placas para ela (baseado no menor lado)
             var numPlacasDivisoria = 0;
-            if (divisoria) {
+            var segundoAmbiente = document.getElementById('segundo-ambiente');
+            var divisoria = document.getElementById('divisoria').value === 'sim';
+
+            if (divisoria && segundoAmbiente.style.display !== 'none') {
                 var menorLado = Math.min(comprimento, largura);
                 numPlacasDivisoria = Math.ceil(menorLado / parseFloat(tipoPainel));
             }
 
-            // Soma todas as placas
             var numPlacasTotal = numPlacasParedes + numPlacasTeto + numPlacasDivisoria;
-
-            // Determina o gás com base no tipo de resfriamento
             var gas = tipoResfriamento === 'resfriado' ? 'Câmara resfriada Gás R-410a' : 'Câmara Congelada Gás R-404A';
 
-            // Exibe os resultados
-            var resultadosTexto = '<h3>Resultados</h3>';
+            // Cálculo das cantoneiras internas e externas
+            var juncoesVerticais = 4; // 4 junções verticais (uma em cada canto)
+            var juncoesHorizontais = 2 * (largura + comprimento); // 2 junções horizontais (parte superior e inferior)
+            var comprimentoCantoneirasVerticais = juncoesVerticais * altura;
+            var comprimentoCantoneirasHorizontais = juncoesHorizontais;
+            var comprimentoTotalCantoneiras = comprimentoCantoneirasVerticais + comprimentoCantoneirasHorizontais;
+
+            // Cada cantoneira tem 3 metros de altura
+            var alturaCantoneira = 3;
+            var numCantoneirasInternas = Math.ceil(comprimentoTotalCantoneiras / alturaCantoneira);
+            var numCantoneirasExternas = numCantoneirasInternas; // Assume que o número de cantoneiras internas é igual ao de cantoneiras externas
+
+            var resultadosTexto = '';
             resultadosTexto += '<p>Área Total: ' + areaLateral.toFixed(2) + ' m²</p>';
-            resultadosTexto += '<p>Número de placas necessárias: ' + numPlacasTotal + ' Unidades ' + (tipoPainel === '1.10' ? 'PIR (1,10m)' : 'EPS (1,15m)') + '</p>';
+            resultadosTexto += '<p>Número de placas para as paredes: ' + numPlacasParedes + ' unidades de ' + (tipoPainel === '1.10' ? 'PIR (1,10m)' : 'EPS (1,15m)') + '</p>';
+            
+            resultadosTexto += '<h4>Painéis para o Teto</h4>';
+            resultadosTexto += '<p>Número de placas para o teto (baseado no menor lado): ' + numPlacasTeto + ' unidades de ' + (tipoPainel === '1.10' ? 'PIR (1,10m)' : 'EPS (1,15m)') + '</p>';
+            
+            if (divisoria && segundoAmbiente.style.display !== 'none') {
+                resultadosTexto += '<p>Número de placas para a divisória: ' + numPlacasDivisoria + ' unidades de ' + (tipoPainel === '1.10' ? 'PIR (1,10m)' : 'EPS (1,15m)') + '</p>';
+            }
+
             resultadosTexto += '<p>Tipo de Gás: ' + gas + '</p>';
             resultadosTexto += '<p>Tipo de Painel: ' + (tipoPainel === '1.10' ? 'PIR (1,10m)' : 'EPS (1,15m)') + '</p>';
 
+            // Adiciona os resultados das cantoneiras
+            resultadosTexto += '<h4>Cantoneiras</h4>';
+            resultadosTexto += '<p>Número de cantoneiras internas: ' + numCantoneirasInternas + ' unidades de 3 metros</p>';
+            resultadosTexto += '<p>Número de cantoneiras externas: ' + numCantoneirasExternas + ' unidades de 3 metros</p>';
+
             var resultados = document.getElementById('resultados');
+            var resultadoTextoElem = document.getElementById('resultado-texto');
             var listaInsumos = document.getElementById('lista-insumos');
             var listaInsumosItens = document.getElementById('lista-insumos-itens');
 
-            // Verifica se devem ser incluídos insumos
+            resultadoTextoElem.innerHTML = resultadosTexto;
+
             if (incluiInsumos) {
-                listaInsumosItens.innerHTML = ''; // Limpa a lista de insumos
+                listaInsumosItens.innerHTML = '';
 
-                // Adiciona os insumos selecionados à lista
-                // Aqui você pode adicionar a lógica para buscar os insumos selecionados
-                // e adicioná-los à tabela de insumos
-                // Vou adicionar alguns exemplos simples
-                listaInsumosItens.innerHTML += '<tr><td>Nome do Insumo 1</td><td>R$ 100,00</td></tr>';
-                listaInsumosItens.innerHTML += '<tr><td>Nome do Insumo 2</td><td>R$ 150,00</td></tr>';
-                // Adicione mais insumos conforme necessário
+                listaInsumosItens.innerHTML += '<tr><td>Nome do Insumo 1</td><td>R\$ 100,00</td></tr>';
+                listaInsumosItens.innerHTML += '<tr><td>Nome do Insumo 2</td><td>R\$ 150,00</td></tr>';
 
-                // Exibe a lista de insumos
                 listaInsumos.style.display = 'block';
             } else {
-                // Oculta a lista de insumos se não forem incluídos
                 listaInsumos.style.display = 'none';
             }
-
-            // Exibe os resultados na área de resultados
-            resultados.innerHTML = resultadosTexto;
         }
     </script>
 
