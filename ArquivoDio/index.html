@@ -41,12 +41,13 @@
       body,
       html {
         height: 100%;
-        margin: 0;
+        margin: -1%;
+        margin-top: -5px;
       }
 
       .bgVideo {
         position: fixed;
-
+        
         right: 0;
         bottom: 0;
         max-width: 100%;
@@ -75,6 +76,7 @@
         background-color: #2d365338;
         color: #fbfbfb;
         padding: 20px;
+        margin: 0;
       }
 
       main {
@@ -165,17 +167,15 @@
 
       /* Sidebar Styles */
       aside,
-      section,
-      footer {
-        background-color: #09a7ea00;
+      section{
+      
         color: #000000;
         padding: 20px;
-
         border-radius: 5px;
       }
 
       .Aviso {
-        background-color: #d5171796;
+        background-color: #3a17d580;
         padding: 10px;
         border: 1px solid #fff;
         border-radius: 10px;
@@ -203,7 +203,7 @@
 
       /* Footer Styles */
       footer {
-        background-color: #3333336e;
+        background-color: #2e3e4d;
         color: #fff;
         padding: 20px;
         text-align: center;
@@ -235,9 +235,9 @@
         top: 0;
         left: 0;
         width: 100%;
-        background-color: #2e3e4dcd;
+        background-color: #2e3e4d;
         color: #fff;
-        padding: 10px 0;
+        padding: 5px 0;
         z-index: 9999;
         text-align: center;
         font-family: fantasy;
@@ -255,7 +255,7 @@
       .menu-flutuante li {
         display: inline-block;
         margin-right: 20px;
-        padding: 3px;
+        padding: 1px;
       }
 
       .menu-flutuante a {
@@ -269,7 +269,8 @@
         transition: 0.9s;
       }
       header {
-        margin-top: 40px;
+        margin-top: 10px;
+        margin-right: -1px;
       }
       .insuForm ol {
         margin-left: 5%;
@@ -301,11 +302,12 @@
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
+        margin: 0;
       }
 
       .text-container, .image-container {
         flex: 1;
-        min-width: 300px; /* Ajuste o valor conforme necessário */
+        min-width: 400px; /* Ajuste o valor conforme necessário */
         
       }
 
@@ -323,7 +325,7 @@
         }
 
         .image-container img {
-          width: 60%; /* Ajuste o valor conforme necessário */
+          width: 70%; /* Ajuste o valor conforme necessário */
         }
       }
 
@@ -332,46 +334,44 @@
 
   <body>
     <div class="menu-flutuante">
-      <ul>
-        <li><a href="#solution">Soluções Inovadoras</a></li>
-        <li><a href="#split-multi-split">Split & Multi-Split</a></li>
-        <li><a href="#vrf-vrv">VRF&VRV</a></li>
-        <li><a href="#camaras-frigorificas">Câmaras Frigoríficas</a></li>
-        <li><a href="#energia-solar">Energia Solar</a></li>
-        <li><a href="#materiais-insumos">Materiais & Insumos</a></li>
-        <li><a href="#contato">Contato&Cotações</a></li>
-      </ul>
+      <ul id="home">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#serviços">Serviços</a></li>
+        <li><a href="#soluções">Nossas Soluções</a></li>
+        <li><a href="#contato1">Contato</a></li>
+        
+      </ul> 
     </div>
     <video autoplay muted loop class="bgVideo">
-      <source src="Soluções Inovadoras.com fundo pagina web.mp4" type="video/mp4" />
+      <source src="Soluções Inovadoras.com fundo pagina web.mp4" type="video/mp4" >
     </video>
-    <header></header>
+    <header>
     <div
-      style="
-        position: relative;
-        margin-top: -30px;
-        width: 100%;
-        height: 0;
-        padding-top: 30%;
-      "
-    >
-      <!-- Substitua 'caminho_para_seu_arquivo' pelo caminho do seu arquivo GIF ou WebM -->
-      <video
-        autoplay
-        loop
-        muted
-        style="
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          top: 0;
-          left: 0;
-          margin-bottom: 100%;
-        "
-      >
-        <source src="imagem banner atualizado.mp4" type="video/webm" />
-      </video>
-    </div>
+  style="
+    position: relative;
+    margin: 0; /* Remove todas as margens */
+    width: 100%;
+    height: 0;
+    padding-top: 30%; /* Mantém a proporção do vídeo */
+  "
+>
+  <video
+    autoplay
+    loop
+    muted
+    style="
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      margin: 0; /* Remove todas as margens */
+    "
+  >
+    <source src="imagem banner atualizado.mp4" type="video/webm">
+  </video>
+</div>
+    </header>
     <main>
       <section>
         <article>
@@ -380,11 +380,11 @@
               <img
                 src="banner apresentanção pagweb.png"
                 alt="banner-1"
-                style="width: 90%; height: 70%; margin-left: 5%"
+                style="width: 100%; height: 150%;"
               />
 
               <br />
-              <span style="background-color: #ffffffdb;">
+              <span style="background-color: #ffffffbd;">
                 <strong>Sistema Split</strong>
 
                 Os sistemas Split representam uma solução avançada e altamente
@@ -397,7 +397,7 @@
               </span>
 
               <br/>
-              <p>
+              <p id="serviços">
                 <b>Bem-vindo à Soluções Inovadoras.com! Nós somos especialistas em
                 oferecer soluções completas em refrigeração para residências,
                 estabelecimentos comerciais e indústrias. Nosso compromisso é
@@ -428,7 +428,7 @@
                 </div>
                 <div class="text-container">
                 <div class="image-container">
-                  <img src="DESCUBRA NOSSOS SERVIÇOS.png" alt="ação1" style="border-radius:5%;"/>
+                  <img src="DESCUBRA NOSSOS SERVIÇOS.png" alt="ação1" style="border-radius:5%; max-width:50% ;max-height: 70%;"/>
                 </div>
                 
               </div>
@@ -490,7 +490,7 @@
             
           </div>
 
-          <div id="solution"></div>
+          <div id="soluções"></div>
           <div class="convite">
             <h4>
               "Descubra soluções completas em refrigeração conosco! Oferecemos
@@ -568,59 +568,41 @@
           <strong>Conte conosco para fechar ótimos negócios!"</strong>
         </p>
       </div>
-      <div id="contato">
+      
+    </aside>
+
+    <footer id="contato1">
+      <div>
+        <div id="contato">
         <div class="dadosP">
-          <h3>Colaborador Parceiro</h3>
+          <h3>Contato</h3>
           <a
-            href="https://wa.me/5561974012022/?text=Ol%C3%A1%2C%20eu%20gostaria%20de%20solicitar%20um%20or%C3%A7amento!"
+            href="https://wa.me/5561994440074/?text=Ol%C3%A1%2C%20eu%20gostaria%20de%20solicitar%20um%20or%C3%A7amento!"
             target="_blank"
             rel="noopener noreferrer"
-            ><h2>Marcus Henrique</h2></a
+            ><h2>SoluçõesInovadoras.com</h2></a
           >
         </div>
 
-        <a
-          aria-label="Chat on WhatsApp"
-          href="https://wa.me/5561974012022/?text=Ol%C3%A1%2C%20eu%20gostaria%20de%20solicitar%20um%20or%C3%A7amento!"
-          target="_blank"
-        >
+        <a aria-label="Chat on WhatsApp" href="https://wa.me/5561994440074/?text=Ol%C3%A1%2C%20eu%20gostaria%20de%20solicitar%20um%20or%C3%A7amento!"
+          target="_blank">
           <img alt="Chat on WhatsApp" src="icoWats2.png" />
         </a>
       </div>
-    </aside>
-
-    <footer>
-      <div>
-        <p>Inscreva-se para receber noticias</p>
-        <form method="post">
-          <input type="text" name="nome" placeholder="Digite seu Nome" />
-          <input type="email" name="email" placeholder="Digite seu Email" />
-          <br />
-          <input type="text" name="Texto" placeholder="Sugestão ou Produto" />
-          <input
-            type="submit"
-            name="enviar"
-            value="Enviar"
-            onclick="enviar()"
-          />
-        </form>
+        
       </div>
       <div class="span1">
-        <span><h2>O Melhor Custo Benefício, nós te falamos aqui!</h2></span>
-        <span
-          ><h6>
-            &copy;Marcus Henrique Consultor, Todos os direitos reservados
-          </h6></span
-        >
+              <span><h2>O Melhor Custo Benefício, nós te falamos aqui!</h2></span>
+              <span
+                ><h6>
+                  &copy;Soluções Inovadoras.com, Todos os direitos reservados
+                </h6></span
+              >
       </div>
-    </footer>
-
     <span class="rodpé"> &copy; MafiosoBR-DF </span>
-
+    </footer>    
     <script>
-      function enviar() {
-        alert("Mensagem enviada com sucesso!");
-      }
+      
     </script>
   </body>
 </html>
