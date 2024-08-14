@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Meu Feed</title>
+  <link rel="self" href="https://meusite.com/atom.xml"/>
+  <updated>2023-02-20T14:30:00Z</updated>
+  <entry>
+    <title>Artigo 1</title>
+    <link href="https://meusite.com/artigo1"/>
+    <published>2023-02-15T10:00:00Z</published>
+  </entry>
+  <entry>
+    <title>Artigo 2</title>
+    <link href="https://meusite.com/artigo2"/>
+    <published>2023-02-10T12:00:00Z</published>
+  </entry>
+</feed>
