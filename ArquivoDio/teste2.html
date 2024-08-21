@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home SoluçõesInovadoras.com</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Fundo de GIF - Padrão */
+        .bgImage {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+        
+        /* Ajustes para telas grandes */
+        @media (min-width: 768px) {
+            .bgImage {
+                width: 100vw;
+                height: 100vh;
+            }
+            
+        }
+
+        /* Ajustes para telas pequenas */
+        @media (max-width: 767px) {
+            .bgImage {
+                width: 100vw;
+                height: 100vh;
+            }
+            
+        }
+
+        /* Estilo do Menu */
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar-brand img {
+            max-width: 100px;
+        }
+
+        .navbar-menu {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            transition: all 0.3s;
+            margin-right: 7%;
+            
+        }
+
+        .navbar-item {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        .navbar-burger {
+            display: none;
+            cursor: pointer;
+            margin-right: 28%;
+        }
+
+        .navbar-burger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px;
+            background-color: white;
+            
+        }
+
+        menu{
+            text-align: left;
+            margin-right: 50%;
+        }
+
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            .navbar-menu {
+                display: none;
+                flex-direction: column;
+                width: 90%;
+                background-color: #333;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                z-index: 2;
+                
+            }
+
+            .navbar-burger {
+                display: block;
+            }
+
+            .navbar-menu.is-active {
+                display: flex;
+                
+                
+            }
+
+            .menu{
+                text-align: left;
+                margin-right:35%;
+            }
+            
+            
+            
+            .navbar-item {
+                padding: 10px 20px;
+                text-align: center;
+            }
+        }
+
+        /* Ajuste do posicionamento do botão à direita */
+        .navbar-brand {
+            flex-grow: 1;
+        }
+
+        .navbar-end {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            
+        }
+        .navbar-menu a:hover{
+            color:#333;
+            background-color: #ffffff;
+            transition: 0,3s;
+            border-right-color:rgb(255, 166, 0) ;
+            border-radius: 5%;
+        }
+
+        /* Estilo do layout de imagens */
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+            margin-top: 60px; /* Espaço para o menu fixo */
+        }
+
+        .image-item {
+            margin: 10px;
+            text-align: center;
+        }
+
+        .image-item img {
+            width: 300px;
+            height: 200px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .image-item p {
+            margin-top: 5px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        /* Estilo do Rodapé */
+        footer {
+            background-color: rgba(51, 51, 51, 0.8);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Estilos para as novas seções */
+        .content-section {
+            padding: 20px;
+            margin: 20px 0;
+            background-color: rgba(51, 51, 51, 0.8);
+            border-radius: 8px;
+        }
+
+        .content-section h2 {
+            color: #ffffff;
+        }
+
+        .content-section p {
+            color: #b6a2a2;
+        }
+
+        #sobre {
+            margin-top: 7%;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            width: 100%;
+            border-radius: 20px;
+        }
+
+        .grid-container div img {
+            max-width: 100%;
+            border-radius: 5%;
+        }
+
+        /* Ajustes para tablets */
+        @media (min-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Ajustes para desktops */
+        @media (min-width: 1025px) {
+            .grid-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const burger = document.querySelector('.navbar-burger');
+            const menu = document.querySelector('.navbar-menu');
+
+            burger.addEventListener('click', function() {
+                menu.classList.toggle('is-active');
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- Imagem GIF de Fundo -->
+    <img src="Soluções Inovadoras.com.gif" alt="gif-animado" class="bgImage">
+
+    <!-- Menu Suspenso -->
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a href="/">
+                <img src="/assets/img/navbar-logo.png" alt="Logo">
+            </a>
+        </div>
+        <div class="menu">
+            <a href="https://wa.me/61994440074" target="_blank" title="wats">
+                <i class="fab fa-whatsapp"></i>
+                <img src="icoWats2.png" alt="img-wats">
+            </a>
+            <a href="https://instagram.com/solucoesinovadoras_com/" target="_blank" title="insta">  
+                <i class="fab fa-instagram"></i>
+                <img src="imgInstagram.png" alt="img-insta">
+            </a>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-burger burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="navbar-menu">
+                <a href="#home" class="navbar-item">Início</a>
+                <a href="#sobre" class="navbar-item">Sobre Nós</a>
+                <a href="#projetos" class="navbar-item">Projetos</a>
+                <a href="#servicos" class="navbar-item">Serviços</a>
+                <a href="#Contato" class="navbar-item">Contatos</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Seções adicionais para conteúdo -->
+    <section id="sobre" class="content-section">
+        <h2>Sobre Nós</h2>
+        <p id="serviços"><b>Bem-vindo à Soluções Inovadoras.com...</b></p>
+        <div class="grid-container">
+            <div>
+                <img src="Por que Escolher [Nome da Empresa]/1.png" alt="ação2">
+            </div>
+            <div>
+                <img src="Por que Escolher [Nome da Empresa]/2.png" alt="ação3">
+            </div>
+            <div>
+                <img src="Por que Escolher [Nome da Empresa]/3.png" alt="ação4">
+            </div>
+            <div>
+                <img src="Por que Escolher [Nome da Empresa]/4.png" alt="ação5">
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos" class="content-section">
+        <h2>Nossos Serviços</h2>
+        <p>Detalhes sobre os serviços oferecidos...</p>
+    </section>
+
+    <!-- Galeria de Imagens -->
+    <div class="image-gallery">
+        <div class="image-item">
+            <p>Multi Split</p>
+            <img src="mult-split.jpg" alt="Multi Split">
+        </div>
+        <!-- Continue a galeria... -->
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <section id="contato" class="content-section">
+            <h2>Entre em Contato</h2>
+            <p>Informações de contato e formulário...</p>
+        </section>
+        <p>&copy; 2024 SoluçõesInovadoras.com, Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

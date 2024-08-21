@@ -203,6 +203,48 @@
                 grid-template-columns: repeat(4, 1fr);
             }
         }
+        
+            .dropdown-menu {
+            display: flex;
+            flex-direction: row; /* Alinha os itens horizontalmente */
+            justify-content: space-around; /* Espaça os itens uniformemente */
+            padding: 5px;
+            }
+
+            .dropdown-menu a {
+            display: flex;
+            align-items: center; /* Alinha ícone e imagem verticalmente */
+            margin: 0 10px; /* Espaçamento entre os links */
+            text-decoration: none; /* Remove sublinhado dos links */
+            }
+
+            .dropdown-menu i {
+            font-size: 1.5em; /* Ajuste o tamanho conforme necessário */
+            margin-right: 10px;
+            }
+
+            .dropdown-menu img {
+            max-width: 30px; /* Ajuste o tamanho conforme necessário */
+            height: auto; /* Mantém a proporção da imagem */
+            }
+
+            @media (max-width: 600px) {
+            .dropdown-menu {
+                flex-direction: column; /* Alinha os itens verticalmente em telas menores */
+            }
+
+            .dropdown-menu a {
+                margin: 5px 0; /* Ajusta o espaçamento entre os links em telas menores */
+            }
+
+            .dropdown-menu i {
+                font-size: 1.2em; /* Reduz o tamanho dos ícones em telas menores */
+            }
+
+            .dropdown-menu img {
+                max-width: 25px; /* Ajusta o tamanho da imagem em telas menores */
+            }
+        }
 
     </style>
 </head>
@@ -224,9 +266,20 @@
                 <a href="#contato">Contato</a>
             </div>
         </div> 
-        <a href="#contato">Contato</a>
-    </div>
+        <div class="menu">
+            <a href="https://wa.me/61994440074">
+                <i class="fab fa-whatsapp"></i>
+                <img src="icoWats2.png" alt="img-wats">
+            </a>
+            <a href="https://instagram.com/solucoesinovadoras_com/">  
+                <i class="fab fa-instagram"></i>
+                <img src="imgInstagram.png" alt="img-insta">
+            </a>
+        </div>
 
+        
+    </div>
+        
     <!-- Seções adicionais para conteúdo -->
         <section id="sobre" class="content-section">
             <h2>Sobre Nós</h2>
