@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="SI/icoaba-pag-web/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="SI/icoaba-pag-web/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="SI/icoaba-pag-web/favicon-16x16.png">
+    <link rel="manifest" href="SI/icoaba-pag-web/site.webmanifest">
     <title>Home SoluçõesInovadoras.com</title>
     <style>
         body {
@@ -57,7 +61,8 @@
         }
 
         .navbar-brand img {
-            max-width: 100px;
+            width: 250px; /* Ajuste este valor conforme necessário */
+            height: auto; /* Mantém a proporção da altura */
         }
 
         .navbar-menu {
@@ -92,8 +97,8 @@
         }
 
         menu{
-            text-align: left;
-            margin-right: 50%;
+            justify-content: center;
+                margin-bottom: 10px;
         }
 
         /* Estilos responsivos */
@@ -120,10 +125,7 @@
                 
             }
 
-            .menu{
-                text-align: left;
-                margin-right:35%;
-            }
+            
             
             
             
@@ -131,11 +133,22 @@
                 padding: 10px 20px;
                 text-align: center;
             }
+            menu{
+                justify-content: center;
+                margin-bottom: 10px;
+                transition: filter 0.3s ease; /* Transição suave para o efeito */
+                filter: grayscale(1); /* Inicialmente em tons de cinza */                
         }
+        }
+        .menu a :hover{
+            transform: scale(0.9);
+            filter: grayscale(0); /* Remove o efeito de cinza ao passar o mouse */
+        }
+
 
         /* Ajuste do posicionamento do botão à direita */
         .navbar-brand {
-            flex-grow: 1;
+            flex-grow: 10%;
         }
 
         .navbar-end {
@@ -205,7 +218,7 @@
         }
 
         .content-section p {
-            color: #d4bebe;
+            color: beige;
         }
 
         #sobre {
@@ -229,6 +242,9 @@
         @media (min-width: 768px) {
             .grid-container {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            #servicos{
+                color: beige;
             }
         }
 
@@ -257,18 +273,18 @@
     <!-- Menu Suspenso -->
     <nav  class="navbar">
         <div class="navbar-brand">
-            <a href="/">
-                <img src="faviconio-logo Menu 1/logo.svg" alt="Logo">
+            <a href="#home">
+                <img src="faviconio-logo Menu 1/logo soluçõesinovadoras-sem-fundo.png" alt="Logo">
             </a>
         </div>
         <div class="menu">
             <a href="https://wa.me/61994440074" target="_blank" title="wats">
                 <i class="fab fa-whatsapp"></i>
-                <img src="icoWats2.png" alt="img-wats">
+                <img src="SI/logowatsAtual/favicon.ico" alt="img-wats">
             </a>
             <a href="https://instagram.com/solucoesinovadoras_com/" target="_blank" title="insta">  
                 <i class="fab fa-instagram"></i>
-                <img src="imgInstagram.png" alt="img-insta">
+                <img src="SI/logo insta-atual/favicon.ico" alt="img-insta">
             </a>
         </div>
         <div class="navbar-end">
@@ -281,14 +297,16 @@
                 <a href="#home" class="navbar-item">Início</a>
                 <a href="#sobre" class="navbar-item">Sobre Nós</a>
                 <a href="#projetos" class="navbar-item">Projetos</a>
-                <a href="#servicos" class="navbar-item">Dicas</a>
+                <a href="#servicos" class="navbar-item">Dicas&Pomoções</a>
                 <a href="#Contato" class="navbar-item">Contato</a>
             </div>
         </div>
     </nav>
 
     <!-- Seções adicionais para conteúdo -->
-    <section id="sobre" class="content-section">
+    <div id="sobre"></div>
+    <br>
+    <section  class="content-section">
         <h2>Sobre Nós</h2>
             <p id="serviços"><b>Bem-vindo!</b> A Soluções Inovadoras.com é a sua parceira ideal para transformar seus ambientes em espaços mais confortáveis e eficientes. Com mais de 15 anos de experiência, oferecemos através de nossos proficionais, soluções completas em refrigeração, climatização e automação para residências, comércios e indústrias. </p>
             <p>
