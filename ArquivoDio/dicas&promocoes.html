@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="SI/icoaba-pag-web/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="SI/icoaba-pag-web/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="SI/icoaba-pag-web/favicon-16x16.png">
+    <link rel="manifest" href="SI/icoaba-pag-web/site.webmanifest">
+    <title>Home SoluçõesInovadoras.com</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Fundo de GIF - Padrão */
+        .bgImage {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+        
+        /* Ajustes para telas grandes */
+        @media (min-width: 768px) {
+            .bgImage {
+                width: 100vw;
+                height: 100vh;
+            }
+            
+        }
+
+        /* Ajustes para telas pequenas */
+        @media (max-width: 767px) {
+            .bgImage {
+                width: 100vw;
+                height: 100vh;
+            }
+            
+        }
+
+        /* Estilo do Menu */
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar-brand img {
+            width: 250px; /* Ajuste este valor conforme necessário */
+            height: auto; /* Mantém a proporção da altura */
+        }
+
+        .navbar-menu {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            transition: all 0.3s;
+            margin-right: 7%;
+            
+        }
+
+        .navbar-item {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        .navbar-burger {
+            display: none;
+            cursor: pointer;
+            margin-right: 28%;
+        }
+
+        .navbar-burger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px;
+            background-color: white;
+            
+        }
+
+        menu{
+            justify-content: center;
+                margin-bottom: 10px;
+        }
+
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            .navbar-menu {
+                display: none;
+                flex-direction: column;
+                width: 90%;
+                background-color: #333;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                z-index: 2;
+                color: beige;
+            }
+
+            .navbar-burger {
+                display: block;
+            }
+
+            .navbar-menu.is-active {
+                display: flex;
+                
+                
+            }
+
+            .navbar-item {
+                padding: 10px 20px;
+                text-align: center;
+            }
+            menu{
+                justify-content: center;
+                margin-bottom: 10px;
+                transition: filter 0.3s ease; /* Transição suave para o efeito */
+                filter: grayscale(1); /* Inicialmente em tons de cinza */                
+        }
+        }
+        .menu a :hover{
+            transform: scale(0.9);
+            filter: grayscale(0); /* Remove o efeito de cinza ao passar o mouse */
+        }
+
+
+        /* Ajuste do posicionamento do botão à direita */
+        .navbar-brand {
+            flex-grow: 10%;
+        }
+        li{
+            color: beige;
+        }
+
+        .navbar-end {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            
+        }
+        .navbar-menu a:hover{
+            color:#333;
+            background-color: #ffffff;
+            transition: 0,3s;
+            border-right-color:rgb(255, 166, 0) ;
+            border-radius: 5%;
+        }
+
+        /* Estilo do layout de imagens */
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+            margin-top: 60px; /* Espaço para o menu fixo */
+        }
+
+        .image-item {
+            margin: 10px;
+            text-align: center;
+        }
+
+        .image-item img {
+            width: 300px;
+            height: 200px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .image-item p {
+            margin-top: 5px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        /* Estilo do Rodapé */
+        footer {
+            background-color: rgba(51, 51, 51, 0.8);
+            color: beige;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Estilos para as novas seções */
+        .content-section {
+            padding: 20px;
+            margin: 20px 0;
+            background-color: rgba(51, 51, 51, 0.8);
+            border-radius: 8px;
+        }
+
+        .content-section h2 {
+            color: #ffffff;
+        }
+
+        .content-section p {
+            color: beige;
+        }
+
+        #sobre {
+            margin-top: 7%;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            width: 100%;
+            border-radius: 20px;
+        }
+
+        .grid-container div img {
+            max-width: 100%;
+            border-radius: 5%;
+        }
+
+        /* Ajustes para tablets */
+        @media (min-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            #servicos{
+                color: beige;
+            }
+        }
+
+        /* Ajustes para desktops */
+        @media (min-width: 1025px) {
+            .grid-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        .container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 20px;
+        }
+
+        .container .content, .container .image {
+            flex: 1;
+            min-width: 300px; /* Garante que o conteúdo se ajuste em telas menores */
+            padding: 10px;
+            color: beige;
+        }
+
+        .container .image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            object-fit: cover; /* Mantém a imagem proporcional */
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column; /* Em telas menores, o layout se torna vertical */
+                text-align: center; /* Centraliza o texto e as imagens */
+                color:beige ;
+            }            
+            .servicos{
+                color: beige;
+            }
+            .vid{
+                margin-top:15%;
+            
+            }
+        }    
+        /* Estilo do Vídeo */
+        .background-video {
+            width: 100%;
+            height: auto; /* Ajusta a altura automaticamente para manter a proporção */
+            margin-top: 70px; /* Espaço entre o menu e o vídeo */
+            margin-bottom: 0; /* Espaço entre o vídeo e o conteúdo subsequente */
+            display: block;
+            position: relative; /* Certifica-se de que o vídeo fique abaixo do menu */
+            z-index: 1; /* Garante que o vídeo não sobreponha outros elementos */
+        }
+        .vid{
+            margin-top: 5%;
+            margin-bottom:-7%;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const burger = document.querySelector('.navbar-burger');
+            const menu = document.querySelector('.navbar-menu');
+            const menuItems = document.querySelectorAll('.navbar-item');
+
+            burger.addEventListener('click', function() {
+                menu.classList.toggle('is-active');
+            });
+
+            // Fecha o menu automaticamente ao clicar em qualquer item
+            menuItems.forEach(function(item) {
+                item.addEventListener('click', function() {
+                    menu.classList.remove('is-active');
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- Imagem GIF de Fundo -->
+    <img src="Soluções Inovadoras.com.gif" alt="gif-animado" class="bgImage">
+    <div id="home"></div>
+    <!-- Menu Suspenso -->
+    <nav  class="navbar">
+        <div class="navbar-brand">
+            <a href="#home">
+                <img src="faviconio-logo Menu 1/logo soluçõesinovadoras-sem-fundo.png" alt="Logo">
+            </a>
+        </div>
+        <div class="menu">
+            <a href="https://wa.me/61994440074" target="_blank" title="wats">
+                <i class="fab fa-whatsapp"></i>
+                <img src="SI/logowatsAtual/favicon.ico" alt="img-wats">
+            </a>
+            <a href="https://instagram.com/solucoesinovadoras_com/" target="_blank" title="insta">  
+                <i class="fab fa-instagram"></i>
+                <img src="SI/logo insta-atual/favicon.ico" alt="img-insta">
+            </a>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-burger burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="navbar-menu">
+                <a href="index.html" class="navbar-item">Início</a>
+                <a href="index.html#sobre" class="navbar-item">Sobre Nós</a>
+                <a href="index.html#projetos" class="navbar-item">Projetos</a>
+                <a href="#Contato" class="navbar-item">Contato</a>
+            </div>
+        </div>
+    </nav>
+
+    
+        <!-- Vídeo de Fundo -->
+        <div class="vid">
+            <video autoplay loop muted class="background-video">
+                <source src="imagem banner atualizado.mp4" type="video/webm">
+            </video>
+        </div>
+        
+    
+
+    <!-- Seções adicionais para conteúdo -->
+    <div id="sobre"></div>
+    <br>
+    <section  class="content-section">
+        <h2>Sobre Nós</h2>
+            <p id="serviços"><b>Bem-vindos!</b> <br>A Soluções Inovadoras.com é a sua parceira ideal para transformar seus ambientes em espaços mais confortáveis e eficientes. Com mais de 15 anos de experiência, oferecemos através de nossos Profissionais, soluções completas em refrigeração, climatização e automação para residências, comércios e indústrias. </p>
+            <p>
+            Nossa equipe de especialistas desenvolve projetos personalizados, utilizando as mais recentes tecnologias e produtos de alta qualidade. Além disso, contamos com um amplo portfólio de serviços, incluindo instalação, manutenção e reparo de equipamentos.<br> <strong>Venda de peças, acessórios e consultoria especializada.</strong> 
+        </p>
+        <div class="grid-container">
+            <div>
+                <h4><li>
+                    Refrigeração com Gases Naturais 
+                    O uso de gases naturais, como o CO2 (R-32), está ganhando popularidade por ser mais ecológico e eficiente.
+                    Equipamentos que utilizam esses gases têm menor impacto ambiental e estão alinhados com as metas globais de redução de emissão de carbono.</li>
+                </h4>
+            </div>
+            <div>
+                <h4><li>
+                    Energia Solar Bifacial
+                    Painéis solares bifaciais captam a luz solar em ambos os lados, aumentando a eficiência em até 30% em comparação com os painéis tradicionais.
+                    Essa tecnologia é ideal para áreas com alta reflexão de luz, como telhados brancos ou superfícies arenosas.
+                    </li>
+                </h4>
+            </div>
+            <div>
+                <h4><li>Expansão do Mercado de Câmaras Frigoríficas
+                    O mercado de câmaras frigoríficas está em crescimento, impulsionado pela demanda por armazenamento de alimentos, vacinas e produtos farmacêuticos.
+                    Tecnologias de refrigeração criogênica estão sendo desenvolvidas para atender às necessidades de armazenamento a temperaturas extremamente baixas.</li>
+                </h4>
+            </div>
+            <div>
+                <h4><li>Tecnologia Inverter: Menos Ruído e Mais Economia
+                    A tecnologia inverter em sistemas split e multi split reduz o consumo de energia em até 40% e opera de forma mais silenciosa, proporcionando um ambiente mais confortável.
+                    Ideal para quem busca eficiência energética e menor impacto ambiental, essa tecnologia também prolonga a vida útil dos aparelhos.</li>
+                </h4>
+            </div>
+            <div>
+                <h4><li>
+                    VRF e Economia de Espaço
+                    Os sistemas VRF são compactos e economizam espaço, tornando-os ideais para construções com áreas limitadas para instalações de ar-condicionado.
+                    Eles podem ser instalados em locais discretos, como telhados ou varandas, sem comprometer a estética do edifício.
+                    </li>
+                </h4>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos" class="content-section">
+        <h2>Dicas&Curiosidades</h2>
+        
+            <div class="container">
+                <div class="content">
+                        <h3>Consultoria Dinâmica</h3>
+                        <p>
+                            Não sabe por onde começar seu projeto de climatização? Nossa equipe está aqui para ajudar! Oferecemos uma consultoria dinâmica e personalizada para identificar as melhores soluções para suas necessidades. Com anos de experiência no mercado, garantimos um atendimento de excelência, focado em eficiência e qualidade.
+                        </p>
+                    </div>
+                    <div class="image">
+                        <img src="SI/fundo banner loja.jpeg" alt="Consultoria Dinâmica">
+                    </div>
+            </div>
+
+            <div class="container">
+                <div class="image">
+                    <img src="banner apresentanção pagweb.png" alt="Experiência e Conhecimento">
+                </div>
+                <div class="content">
+                    <h3>Experiência e Conhecimento</h3>
+                    <p>
+                        Nossa equipe é composta por profissionais altamente qualificados e com vasta experiência no setor de climatização. Estamos sempre atualizados com as últimas tendências e tecnologias para oferecer as melhores soluções.
+                    </p>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="content">
+                        <h3>Sustentabilidade</h3>
+                        <p>
+                            <b>
+                                Estamos comprometidos com a sustentabilidade e a preservação do meio ambiente. Nossas soluções de climatização são projetadas para serem energeticamente eficientes, reduzindo o consumo de energia e o impacto ambiental.
+                            </b>
+                        </p>
+                    </div>
+                    <div class="image">
+                        <img src="SI/banner solar.png" alt="Consultoria Dinâmica">
+                    </div>
+            </div>
+
+            <div class="container">
+                <div class="image">
+                    <img src="Promo TCL.png" alt="Experiência e Conhecimento">
+                </div>
+                <div class="content">
+                    <h3>Facilidades de Pagamento</h3>
+                    <p>
+                        <b>
+                            Oferecemos uma variedade de opções de pagamento para tornar sua compra ainda mais acessível. Com facilidades como o parcelamento, você pode adquirir o conforto que merece sem comprometer seu orçamento. Não deixe para depois o que pode ser resolvido hoje. Com nossas condições flexíveis, garantimos que você possa desfrutar de um ambiente climatizado e confortável de forma prática e conveniente.
+                        </b>
+                    </p>
+                </div>
+            </div>
+                    
+            </section>
+            <div>
+                <h2>
+                    Promoções Especiais
+                </h2>
+            </div>
+            <!-- Galeria de Imagens -->
+            <div class="image-gallery">
+        <div class="image-item">
+            <p>Split</p>
+            <img src="image-eb4c97819a4242199fd08ebd19df7338.webp" alt="Split">
+        </div>
+        <div class="image-item">
+            <p>Multi Split</p>
+            <img src="mult-split.jpg" alt="Multi Split">
+        </div>
+        <div class="image-item">
+            <p>VRF&VRV</p>
+            <img src="vrf-ou-vrvpng.png" alt="VRF">
+        </div>
+        <div class="image-item">
+            <p>Filtros&Bebedouros</p>
+            <img src="filtro banner.jpeg" alt="Purificador">
+        </div>
+        <div class="image-item">
+            <p>Piscinas</p>
+            <img src="piscinas-4.png" alt="Piscinas">
+        </div>
+        <div class="image-item">
+            <p>Energia Fotovotáica</p>
+            <img src="nv-energy-solar-grid-al6twrj3s65qr16j.jpg" alt="Solar">
+        </div>
+        <div class="image-item">
+            <p>Camara Frigorigena</p>
+            <img src="camara friapng.png" alt="Solar">
+        </div>
+        <div class="image-item">
+            <p>Peças&Isumos</p>
+            <img src="MateriaisInsumos1.png" alt="Materiais">
+        </div>
+        <div class="image-item">
+            <p>Serviços</p>
+            <img src="banner apresentanção pagweb.png" alt="Serviços">
+        </div>
+        <!-- Continue a galeria... -->
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <section id="contato" class="content-section">
+            <h3>Contato</h3>
+            
+                <p>contato@soluçõesinovadoras.com</p>
+                <h2>Soluções Inovadoras.com</h2>
+                <h3>Inovação que Transforma, <br>
+                    Soluções que Inspiram.
+                </h3>
+                
+
+                <a aria-label="Chat on WhatsApp" href="https://wa.me/5561994440074/?text=Ol%C3%A1%2C%20eu%20gostaria%20de%20solicitar%20um%20or%C3%A7amento!"
+                target="_blank">
+                <img alt="Chat on WhatsApp" src="SI/logowatsAtual/favicon.ico" />
+                </a>
+                
+            <div class="span1">
+                    <span><h2>O Melhor Custo Benefício, nós te falamos aqui!</h2></span>
+            </div>
+            <span>
+                <h4>
+                    QNL 20, LN VIA 29 LT 09, CEP 72161-029, Tel. 61 9 9444-0074
+                </h4>
+                <h2>Estamos Aqui!</h2>
+                <a href="https://maps.app.goo.gl/TQn9v2CwouPc7Z8q9"><img src="SI/inagem-mapPNG.png" alt="MAP"></a>
+            </span>
+        </section>
+        <p>&copy; 2024 SoluçõesInovadoras.com, Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

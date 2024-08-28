@@ -112,7 +112,7 @@
                 top: 60px;
                 right: 0;
                 z-index: 2;
-                
+                color: beige;
             }
 
             .navbar-burger {
@@ -125,10 +125,6 @@
                 
             }
 
-            
-            
-            
-            
             .navbar-item {
                 padding: 10px 20px;
                 text-align: center;
@@ -149,6 +145,9 @@
         /* Ajuste do posicionamento do botão à direita */
         .navbar-brand {
             flex-grow: 10%;
+        }
+        li{
+            color: beige;
         }
 
         .navbar-end {
@@ -198,7 +197,7 @@
         /* Estilo do Rodapé */
         footer {
             background-color: rgba(51, 51, 51, 0.8);
-            color: white;
+            color: beige;
             text-align: center;
             padding: 10px 0;
             position: relative;
@@ -254,14 +253,71 @@
                 grid-template-columns: repeat(4, 1fr);
             }
         }
+        .container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 20px;
+        }
+
+        .container .content, .container .image {
+            flex: 1;
+            min-width: 300px; /* Garante que o conteúdo se ajuste em telas menores */
+            padding: 10px;
+            color: beige;
+        }
+
+        .container .image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            object-fit: cover; /* Mantém a imagem proporcional */
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column; /* Em telas menores, o layout se torna vertical */
+                text-align: center; /* Centraliza o texto e as imagens */
+                color:beige ;
+            }            
+            .servicos{
+                color: beige;
+            }
+            .vid{
+                margin-top:15%;
+            
+            }
+        }    
+        /* Estilo do Vídeo */
+        .background-video {
+            width: 100%;
+            height: auto; /* Ajusta a altura automaticamente para manter a proporção */
+            margin-top: 70px; /* Espaço entre o menu e o vídeo */
+            margin-bottom: 0; /* Espaço entre o vídeo e o conteúdo subsequente */
+            display: block;
+            position: relative; /* Certifica-se de que o vídeo fique abaixo do menu */
+            z-index: 1; /* Garante que o vídeo não sobreponha outros elementos */
+        }
+        .vid{
+            margin-top: 5%;
+            margin-bottom:-7%;
+        }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const burger = document.querySelector('.navbar-burger');
             const menu = document.querySelector('.navbar-menu');
+            const menuItems = document.querySelectorAll('.navbar-item');
 
             burger.addEventListener('click', function() {
                 menu.classList.toggle('is-active');
+            });
+
+            // Fecha o menu automaticamente ao clicar em qualquer item
+            menuItems.forEach(function(item) {
+                item.addEventListener('click', function() {
+                    menu.classList.remove('is-active');
+                });
             });
         });
     </script>
@@ -297,20 +353,30 @@
                 <a href="#home" class="navbar-item">Início</a>
                 <a href="#sobre" class="navbar-item">Sobre Nós</a>
                 <a href="#projetos" class="navbar-item">Projetos</a>
-                <a href="#servicos" class="navbar-item">Dicas&Pomoções</a>
-                <a href="#Contato" class="navbar-item">Contato</a>
+                <a href="dicas&promocoes.html" class="navbar-item">Dicas&Pomoções</a>
+                <a href="#contato" class="navbar-item">Contato</a>
             </div>
         </div>
     </nav>
+
+    
+        <!-- Vídeo de Fundo -->
+        <div class="vid">
+            <video autoplay loop muted class="background-video">
+                <source src="imagem banner atualizado.mp4" type="video/webm">
+            </video>
+        </div>
+        
+    
 
     <!-- Seções adicionais para conteúdo -->
     <div id="sobre"></div>
     <br>
     <section  class="content-section">
         <h2>Sobre Nós</h2>
-            <p id="serviços"><b>Bem-vindo!</b> A Soluções Inovadoras.com é a sua parceira ideal para transformar seus ambientes em espaços mais confortáveis e eficientes. Com mais de 15 anos de experiência, oferecemos através de nossos proficionais, soluções completas em refrigeração, climatização e automação para residências, comércios e indústrias. </p>
+            <p id="serviços"><b>Bem-vindos!</b> <br>A Soluções Inovadoras.com é a sua parceira ideal para transformar seus ambientes em espaços mais confortáveis e eficientes. Com mais de 15 anos de experiência, oferecemos através de nossos Profissionais, soluções completas em refrigeração, climatização e automação para residências, comércios e indústrias. </p>
             <p>
-            Nossa equipe de especialistas desenvolve projetos personalizados, utilizando as mais recentes tecnologias e produtos de alta qualidade. Além disso, contamos com um amplo portfólio de serviços, incluindo instalação, manutenção e reparo de equipamentos, venda de peças e acessórios, e consultoria especializada.
+            Nossa equipe de especialistas desenvolve projetos personalizados, utilizando as mais recentes tecnologias e produtos de alta qualidade. Além disso, contamos com um amplo portfólio de serviços, incluindo instalação, manutenção e reparo de equipamentos.<br> <strong>Venda de peças, acessórios e consultoria especializada.</strong> 
         </p>
         <div class="grid-container">
             <div>
@@ -343,63 +409,69 @@
             <li><b>Custo-benefício:</b>  Oferecemos soluções personalizadas e acessíveis para atender às suas necessidades e orçamento.</li>
             <li> <b>Equipe especializada:</b>  Contamos com uma equipe altamente qualificada e experiente para oferecer o melhor atendimento e suporte técnico.</li>
         </ul>
-        <h3>Consultoria Dinâmica</h3>
-            <p>
-                Não sabe por onde começar seu projeto de climatização? Nossa equipe está aqui para ajudar! Oferecemos uma consultoria dinâmica e personalizada para identificar as melhores soluções para suas necessidades. Com anos de experiência no mercado, garantimos um atendimento de excelência, focado em eficiência e qualidade.
-            </p>
-            <br>
-            <h3>
-                Experiência e Conhecimento
-            </h3>
-            <p>
-                Nossa equipe é composta por profissionais altamente qualificados e com vasta experiência no setor de climatização. Estamos sempre atualizados com as últimas tendências e tecnologias para oferecer as melhores soluções.
-            </p>
-            <br >
-            <h3>
-                Soluções Personalizadas
-            </h3>
-            <p>
-                Entendemos que cada projeto é único. Por isso, realizamos uma análise detalhada das suas necessidades e do seu ambiente para propor soluções sob medida, que garantam o máximo de conforto e eficiência energética. </p><br>
-
-                <h3>
-                    Qualidade e Segurança
-                </h3>
-                <p>
-                Prezamos pela qualidade dos nossos serviços e pela segurança dos nossos clientes. Utilizamos apenas materiais de alta qualidade e seguimos rigorosamente todas as normas de segurança.
-            </p> <br>
-                <h3>
-                    Atendimento Diferenciado
-                </h3>
-            <p>
-                Nosso compromisso é com a sua satisfação. Oferecemos um atendimento personalizado, acompanhando cada etapa do projeto, desde a consultoria inicial até a instalação e manutenção dos sistemas de climatização.
-                </p><br>
-                <h3>
-                    ustentabilidade
-                </h3>
-            <p>
-                Estamos comprometidos com a sustentabilidade e a preservação do meio ambiente. Nossas soluções de climatização são projetadas para serem energeticamente eficientes, reduzindo o consumo de energia e o impacto ambiental.
-            </p><br>
-            <p>Transforme seu ambiente com o conforto e a tecnologia que você merece. Conte conosco para fazer a diferença! Entre em contato e descubra como podemos ajudar a tornar seu projeto de climatização uma realidade.</p>
-            <br >
-            
-            <div id="camaras-frigorificas">
-                <h3>
-                    Facilidades de Pagamento
-                </h3>
-
-            <p>
-                Oferecemos uma variedade de opções de pagamento para tornar sua compra ainda mais acessível. Com facilidades como o parcelamento, você pode adquirir o conforto que merece sem comprometer seu orçamento. Não deixe para depois o que pode ser resolvido hoje. Com nossas condições flexíveis, garantimos que você possa desfrutar de um ambiente climatizado e confortável de forma prática e conveniente.
-            </p>
-            <br>
+            <div class="container">
+                <div class="content">
+                        <h3>Consultoria Dinâmica</h3>
+                        <p>
+                            Não sabe por onde começar seu projeto de climatização? Nossa equipe está aqui para ajudar! Oferecemos uma consultoria dinâmica e personalizada para identificar as melhores soluções para suas necessidades. Com anos de experiência no mercado, garantimos um atendimento de excelência, focado em eficiência e qualidade.
+                        </p>
+                    </div>
+                    <div class="image">
+                        <img src="SI/fundo banner loja.jpeg" alt="Consultoria Dinâmica">
+                    </div>
             </div>
-            
-    </section>
 
-    <!-- Galeria de Imagens -->
-    <div class="image-gallery">
+            <div class="container">
+                <div class="image">
+                    <img src="banner apresentanção pagweb.png" alt="Experiência e Conhecimento">
+                </div>
+                <div class="content">
+                    <h3>Experiência e Conhecimento</h3>
+                    <p>
+                        Nossa equipe é composta por profissionais altamente qualificados e com vasta experiência no setor de climatização. Estamos sempre atualizados com as últimas tendências e tecnologias para oferecer as melhores soluções.
+                    </p>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="content">
+                        <h3>Sustentabilidade</h3>
+                        <p>
+                            <b>
+                                Estamos comprometidos com a sustentabilidade e a preservação do meio ambiente. Nossas soluções de climatização são projetadas para serem energeticamente eficientes, reduzindo o consumo de energia e o impacto ambiental.
+                            </b>
+                        </p>
+                    </div>
+                    <div class="image">
+                        <img src="SI/banner solar.png" alt="Consultoria Dinâmica">
+                    </div>
+            </div>
+
+            <div class="container">
+                <div class="image">
+                    <img src="Promo TCL.png" alt="Experiência e Conhecimento">
+                </div>
+                <div class="content">
+                    <h3>Facilidades de Pagamento</h3>
+                    <p>
+                        <b>
+                            Oferecemos uma variedade de opções de pagamento para tornar sua compra ainda mais acessível. Com facilidades como o parcelamento, você pode adquirir o conforto que merece sem comprometer seu orçamento. Não deixe para depois o que pode ser resolvido hoje. Com nossas condições flexíveis, garantimos que você possa desfrutar de um ambiente climatizado e confortável de forma prática e conveniente.
+                        </b>
+                    </p>
+                </div>
+            </div>
+                    
+            </section>
+            <div>
+                <h2>
+                    Projetos e Serviços Especializados
+                </h2>
+            </div>
+            <!-- Galeria de Imagens -->
+            <div class="image-gallery">
         <div class="image-item">
             <p>Split</p>
-            <img src="Arseg-Ar-Condicionado-08-01-banner.jpg" alt="Split">
+            <img src="image-eb4c97819a4242199fd08ebd19df7338.webp" alt="Split">
         </div>
         <div class="image-item">
             <p>Multi Split</p>
@@ -440,18 +512,29 @@
     <footer>
         <section id="contato" class="content-section">
             <h3>Contato</h3>
-                <h2>SoluçõesInovadoras.com</h2>
+            
+                <p>contato@soluçõesinovadoras.com</p>
+                <h2>Soluções Inovadoras.com</h2>
+                <h3>Inovação que Transforma, <br>
+                    Soluções que Inspiram.
+                </h3>
                 
 
                 <a aria-label="Chat on WhatsApp" href="https://wa.me/5561994440074/?text=Ol%C3%A1%2C%20eu%20gostaria%20de%20solicitar%20um%20or%C3%A7amento!"
                 target="_blank">
-                <img alt="Chat on WhatsApp" src="icoWats2.png" />
+                <img alt="Chat on WhatsApp" src="SI/logowatsAtual/favicon.ico" />
                 </a>
                 
             <div class="span1">
                     <span><h2>O Melhor Custo Benefício, nós te falamos aqui!</h2></span>
-                    
             </div>
+            <span>
+                <h4>
+                    QNL 20, LN VIA 29 LT 09, CEP 72161-029, Tel. 61 9 9444-0074
+                </h4>
+                <h2>Estamos Aqui!</h2>
+                <a href="https://maps.app.goo.gl/TQn9v2CwouPc7Z8q9"><img src="SI/inagem-mapPNG.png" alt="MAP" target="_blank" ></a>
+            </span>
         </section>
         <p>&copy; 2024 SoluçõesInovadoras.com, Todos os direitos reservados.</p>
     </footer>
