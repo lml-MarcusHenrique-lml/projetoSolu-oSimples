@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_logo loja/apple-touch">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_logo loja/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_logo loja/favicon-16x16.png">
+    <link rel="manifest" href="favicon_logo loja/site.webmanifest">
+    <link
+      rel="alternate"
+      href="atom.xml"
+      type="application/atom+xml"
+      title="Atom"
+    />
+    <title>Soluções Inovadoras para Refrigeração e Climatização</title>
+    <style>
+      /* Reset CSS */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      #contato {
+        text-align: center;
+      }
+      p {
+        font-family: Georgia, "Times New Roman", Times, serif;
+        font-size: 18px;
+        background-color: rgba(75, 180, 255, 0.935);
+        color: #000000;
+        padding: 2px;
+        border-radius: 8px;
+        padding: 1%;
+        font-weight: bold;
+      }
+
+      /* Main Styles */
+      body,
+      html {
+        height: 100%;
+        margin: -1%;
+        margin-top: -5px;
+      }
+
+      .bgVideo {
+        position: fixed;
+        
+        right: 0;
+        bottom: 0;
+        max-width: 100%;
+        min-height: 0%;
+        z-index: -1; /* Isso manterá o vídeo no fundo */
+      }
+
+      .content {
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        background: rgba(
+          0,
+          0,
+          0,
+          0.09
+        ); /* Adicione transparência ao seu conteúdo se necessário */
+        color: #f1f1f1;
+        width: 100%;
+        padding: 20px;
+        z-index: 100; /* Isso trará o conteúdo para frente */
+      }
+
+      header,
+      footer {
+        background-color: #2d365338;
+        color: #fbfbfb;
+        padding: 20px;
+        margin: 0;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      /* Menu Styles */
+      nav ul {
+        list-style: none;
+        text-align: center;
+      }
+
+      nav ul li {
+        display: inline-block;
+        margin: 0 10px;
+      }
+
+      /* Section Styles */
+      section {
+        margin-bottom: 40px;
+      }
+
+      h3 {
+        color: #ffffff;
+        font-size: 29px;
+      }
+
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .titulo {
+        text-align: center;
+        font-size: 25px;
+        font-family: "Times New Roman", Times, serif;
+        color: #004977;
+        margin-bottom: 15px;
+        border: 1px solid #004977;
+        border-radius: 15px;
+        padding: 10px;
+        background-color: #c1f2f9;
+      }
+      section h3 {
+        color: #fafbff;
+        font-size: 29px;
+        background-color: #0068a8f1;
+        border-radius: 10px;
+        padding: 2px;
+        }
+      section p {
+        font-size: 20px;
+        margin: 1% 5% 0 2%;
+      }
+
+      .flex {
+        max-width: 1500px;
+        margin: 10px auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .item {
+        flex: 0 0 calc(20% - 20px);
+        margin-bottom: 20px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .item img {
+        width: 100%;
+        display: block;
+        border-radius: 20px;
+        filter: grayscale(100%);
+        transition: filter 1s ease;
+      }
+      .item :hover {
+        filter: none;
+        border-radius: 20px;
+        border-style: inset;
+        border-color: #004977;
+        transition: filter 1s ease;
+      }
+
+      /* Sidebar Styles */
+      aside,
+      section{
+      
+        color: #000000;
+        padding: 20px;
+        border-radius: 5px;
+      }
+
+      .Aviso {
+        background-color: #3a17d580;
+        padding: 10px;
+        border: 1px solid #fff;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        color: #000000;
+      }
+
+      .Aviso p {
+        color: #fff;
+        font-size: 20px;
+        padding: 1%;
+      }
+
+      .borda {
+        background-color: #2e598d;
+        color: #fff;
+        padding: 10px;
+        margin-top: 20px;
+        border-radius: 10px;
+      }
+
+      .borda p {
+        color: #fff;
+      }
+
+      /* Footer Styles */
+      footer {
+        background-color: #2e3e4d;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .rodpé {
+        font-size: 12px;
+      }
+      section div {
+        padding: 1%;
+        margin: 0 1, 5% 0 3%;
+      }
+      .dadosP p {
+        font-size: 30px;
+      }
+      .dadosP h3 {
+        font-size: 40px;
+      }
+      .span1 h6 {
+        font-size: 14px;
+      }
+      .span1 h2 {
+        font: size 43px;
+        color: #29b250;
+      }
+      /* Estilos para o menu flutuante */
+      .menu-flutuante {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #2e3e4d;
+        color: #fff;
+        padding: 5px 0;
+        z-index: 9999;
+        text-align: center;
+        font-family: fantasy;
+        font-size: 18px;
+        transition: all 1s;
+      }
+
+      .menu-flutuante ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        transform: 1s;
+      }
+
+      .menu-flutuante li {
+        display: inline-block;
+        margin-right: 20px;
+        padding: 1px;
+      }
+
+      .menu-flutuante a {
+        color: #fff;
+        text-decoration: none;
+        transition: 0.5s;
+      }
+      .menu-flutuante :hover {
+        color: #6f9fff;
+        font-size: 18px;
+        transition: 0.9s;
+      }
+      header {
+        margin-top: 10px;
+        margin-right: -1px;
+      }
+      .insuForm ol {
+        margin-left: 5%;
+        font-size: 20px;
+        color: #333;
+      }
+      .insuForm p {
+        text-align: left;
+      }
+      .insuForm {
+        margin-bottom: -3%;
+      }
+      .dadosP h2 {
+        color: #93ffa8;
+        font-size: 40px;
+      }
+      .convite h4 {
+        font-size: 30px;
+        margin: 0 5% 0 5%;
+        background-color: #9a9999e5;
+        padding: 3px;
+        border-radius: 15px;
+        color: #6c0000;
+      }
+      @media (max-width: 768px) {
+      }
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0;
+      }
+
+      .text-container, .image-container {
+        flex: 1;
+        min-width: 400px; /* Ajuste o valor conforme necessário */
+        
+      }
+
+      .image-container img {
+        width: 70%;
+        height: auto;
+        
+      }
+
+      /* Estilos responsivos */
+      @media (max-width: 768px) {
+        .text-container, .image-container {
+          flex-basis: 100%;
+          text-align: center;
+        }
+
+        .image-container img {
+          width: 70%; /* Ajuste o valor conforme necessário */
+        }
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <nav id="home">
+      <div class="menu-flutuante">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#serviços">Serviços</a></li>
+          <li><a href="#soluções">Nossas Soluções</a></li>
+          <li><a href="#contato1">Contato</a></li>
+          
+        </ul> 
+      </div>
+    </nav>
+    
+    <video autoplay muted loop class="bgVideo">
+      <source src="Soluções Inovadoras.com fundo pagina web.mp4" type="video/mp4" >
+    </video>
+    <header>
+    <div
+  style="
+    position: relative;
+    margin: 0; /* Remove todas as margens */
+    width: 100%;
+    height: 0;
+    padding-top: 30%; /* Mantém a proporção do vídeo */
+  "
+>
+  <video
+    autoplay
+    loop
+    muted
+    style="
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      margin: 0; /* Remove todas as margens */
+    "
+  >
+    <source src="imagem banner atualizado.mp4" type="video/webm">
+  </video>
+</div>
+    </header>
+    <main>
+      <section>
+        <article>
+          <div>
+            <div>
+              <img
+                src="banner apresentanção pagweb.png"
+                alt="banner-1"
+                style="width: 100%; height: 150%;"
+              />
+
+              <br >
+              <span style="background-color: #ffffffbd;">
+                <strong>Sistema Split</strong>
+
+                Os sistemas Split representam uma solução avançada e altamente
+                flexível para a climatização de ambientes residenciais,
+                comerciais e industriais. Diferentemente dos sistemas
+                convencionais de ar-condicionado, que consistem em uma unidade
+                interna e uma unidade externa, os sistemas Mult-Split permitem a
+                conexão de múltiplas unidades internas a uma única unidade
+                externa, proporcionando uma maior eficiência e versatilidade.
+              </span>
+
+              <br>
+              <p id="serviços">
+                <b>Bem-vindo à Soluções Inovadoras.com! Nós somos especialistas em
+                oferecer soluções completas em refrigeração para residências,
+                estabelecimentos comerciais e indústrias. Nosso compromisso é
+                proporcionar conforto, eficiência e economia através das
+                melhores tecnologias disponíveis no mercado.</b>
+              </p>
+              <div style="display: flex; width: 100%; border-radius:20px;">
+                  <div>
+                      <img src="Por que Escolher [Nome da Empresa]/1.png" alt="ação2" style="max-width: 100%; border-radius: 5%;">
+                  </div>
+                  <div>
+                      <img src="Por que Escolher [Nome da Empresa]/2.png" alt="ação3" style="max-width: 100%; border-radius: 5%;">
+                  </div>
+                  <div>
+                      <img src="Por que Escolher [Nome da Empresa]/3.png" alt="ação4" style="max-width: 100%; border-radius: 5%;">
+                  </div>
+                  <div>
+                      <img src="Por que Escolher [Nome da Empresa]/4.png" alt="ação5" style="max-width: 100%; border-radius: 5%;">
+                  </div>
+              </div>
+
+              <div class="container">
+                <div class="text-container">
+                  <h3>Entre em Contato Conosco</h3>
+                  <p>
+                    "Descubra soluções completas em refrigeração! Oferecemos consultoria, projetos personalizados e aparelhos novos direto da fábrica, garantindo qualidade e confiabilidade. Explore nosso site e encontre inovação e eficiência com o melhor custo-benefício. Estamos aqui para ajudá-lo a alcançar excelência sem comprometer seu orçamento. Visite-nos agora!"
+                  </p>
+                </div>
+                <div class="text-container">
+                <div class="image-container">
+                  <img src="DESCUBRA NOSSOS SERVIÇOS.png" alt="ação1" style="border-radius:5%; max-width:50% ;max-height: 70%;"/>
+                </div>
+                
+              </div>
+
+            
+            </div>
+            <div id="vrf-vrv">
+              <br >
+              <h3>Consultoria Dinâmica</h3>
+              <p>
+                Não sabe por onde começar seu projeto de climatização? Nossa equipe está aqui para ajudar! Oferecemos uma consultoria dinâmica e personalizada para identificar as melhores soluções para suas necessidades. Com anos de experiência no mercado, garantimos um atendimento de excelência, focado em eficiência e qualidade.
+              </p>
+              <br>
+              <h3>
+                Experiência e Conhecimento
+              </h3>
+              <p>
+                Nossa equipe é composta por profissionais altamente qualificados e com vasta experiência no setor de climatização. Estamos sempre atualizados com as últimas tendências e tecnologias para oferecer as melhores soluções.
+              </p>
+              <br >
+              <h3>
+                Soluções Personalizadas
+              </h3>
+              <p>
+                Entendemos que cada projeto é único. Por isso, realizamos uma análise detalhada das suas necessidades e do seu ambiente para propor soluções sob medida, que garantam o máximo de conforto e eficiência energética. </p><br>
+
+                <h3>
+                  Qualidade e Segurança
+                </h3>
+                <p>
+                Prezamos pela qualidade dos nossos serviços e pela segurança dos nossos clientes. Utilizamos apenas materiais de alta qualidade e seguimos rigorosamente todas as normas de segurança.
+              </p> <br>
+                <h3>
+                  Atendimento Diferenciado
+                </h3>
+              <p>
+                Nosso compromisso é com a sua satisfação. Oferecemos um atendimento personalizado, acompanhando cada etapa do projeto, desde a consultoria inicial até a instalação e manutenção dos sistemas de climatização.
+              </p><br>
+                <h3>
+                  Sustentabilidade
+                </h3>
+              <p>
+                Estamos comprometidos com a sustentabilidade e a preservação do meio ambiente. Nossas soluções de climatização são projetadas para serem energeticamente eficientes, reduzindo o consumo de energia e o impacto ambiental.
+              </p><br>
+              <p>Transforme seu ambiente com o conforto e a tecnologia que você merece. Conte conosco para fazer a diferença! Entre em contato e descubra como podemos ajudar a tornar seu projeto de climatização uma realidade.</p>
+              <br >
+            </div>
+            <div id="camaras-frigorificas">
+              
+              <h3>
+                Facilidades de Pagamento
+              </h3>
+
+              <p>
+                Oferecemos uma variedade de opções de pagamento para tornar sua compra ainda mais acessível. Com facilidades como o parcelamento, você pode adquirir o conforto que merece sem comprometer seu orçamento. Não deixe para depois o que pode ser resolvido hoje. Com nossas condições flexíveis, garantimos que você possa desfrutar de um ambiente climatizado e confortável de forma prática e conveniente.
+              </p>
+              <br>
+            </div>
+            
+          </div>
+
+          <div id="soluções"></div>
+          <div class="convite">
+            <h4>
+              "Descubra soluções completas em refrigeração conosco! Oferecemos
+              consultoria, projetos personalizados e aparelhos novos direto da
+              fábrica, garantindo qualidade e confiabilidade. Explore nosso site
+              e encontre inovação e eficiência com o melhor custo-benefício.
+              Estamos aqui para ajudá-lo a alcançar excelência sem comprometer
+              seu orçamento. Visite-nos agora!"
+            </h4>
+            <br/>
+            <h3>Selecione a solução desejada!</h3>
+          </div>
+          <div class="container">
+            <div>
+              <h3 class="titulo">Split &Mult-Split</h3>
+              <div class="item">
+                <a href="Split.MultSplit.html"
+                  ><img src="splitxmultsplitpng.png" alt="foto multsplit"
+                /></a>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="titulo">Câmara Fria &Expositores</h3>
+              <div class="item">
+                <a href="camarafria.html"
+                  ><img src="camara friapng.png" alt="camarafira"
+                /></a>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="titulo">Sistemas VRF&VRV</h3>
+              <div class="item">
+                <a href="VrvVrf.html"
+                  ><img src="vrf-ou-vrvpng.png" alt="vrf"
+                /></a>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="titulo">Energia Solar</h3>
+              <div class="item">
+                <a href="EnergiaSolar.html"
+                  ><img src="banerSolar1.png" alt="solar"
+                /></a>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="titulo">Peças &Materiais</h3>
+              <div class="item">
+                <a href="Peças&Serviços.html"
+                  ><img src="MateriaisInsumos1.png" alt="pecas"
+                /></a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <aside>
+      <div class="Aviso">
+        <h3>Trabalhamos com os Principais Fornecedores</h3>
+        <p>
+          <strong>Trabalhamos com os principais fornecedores e entregamos em todo o
+            Brasil!</strong>
+          Nossa equipe, com sede em Brasília, está pronta para atendê-lo.
+          Oferecemos opções de pagamento e retirada em loja, ou entrega rápida e
+          eficiente no endereço desejado. Um de nossos colaboradores estará
+          disponível para ajudar com seu pedido. Faça um orçamento sem
+          compromisso e garanta a melhor solução para suas necessidades. Além
+          disso, cobrimos orçamentos de concorrentes.
+          <strong>Conte conosco para fechar ótimos negócios!"</strong>
+        </p>
+      </div>
+      
+    </aside>
+
+    <footer id="contato1">
+      <div>
+        <div id="contato">
+        <div class="dadosP">
+          <h3>Contato</h3>
+          <a
+            href="https://wa.me/5561994440074/?text=Ol%C3%A1%2C%20eu%20gostaria%20de%20solicitar%20um%20or%C3%A7amento!"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><h2>SoluçõesInovadoras.com</h2></a
+          >
+        </div>
+
+        <a aria-label="Chat on WhatsApp" href="https://wa.me/5561994440074/?text=Ol%C3%A1%2C%20eu%20gostaria%20de%20solicitar%20um%20or%C3%A7amento!"
+          target="_blank">
+          <img alt="Chat on WhatsApp" src="icoWats2.png" />
+        </a>
+      </div>
+        
+      </div>
+      <div class="span1">
+              <span><h2>O Melhor Custo Benefício, nós te falamos aqui!</h2></span>
+              <span
+                ><h6>
+                  &copy;Soluções Inovadoras.com, Todos os direitos reservados
+                </h6></span>
+      </div>
+    <span class="rodpé"> &copy; MafiosoBR-DF </span>
+    </footer>    
+    <script>
+      
+    </script>
+  </body>
+</html>

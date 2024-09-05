@@ -365,58 +365,62 @@
             });
         });
             
-            document.getElementById('other').addEventListener('change', function() {
-            document.getElementById('customAmount').style.display = 'block';
-        });
+            // Adiciona evento aos botões de seleção do valor
+            document.querySelectorAll('input[name="amount"]').forEach((el) => {
+                el.addEventListener('change', function() {
+                    const customAmountField = document.getElementById('customAmount');
 
-        document.querySelectorAll('input[name="amount"]').forEach((el) => {
-            el.addEventListener('change', function() {
-                if (el.value !== 'other') {
-                    document.getElementById('customAmount').style.display = 'none';
-                }
+                    // Verifica se a opção "Outro valor" foi selecionada
+                    if (this.value === 'other') {
+                        customAmountField.style.display = 'block';  // Mostra o campo de "Outro valor"
+                        customAmountField.value = '';  // Limpa o valor anterior
+                        customAmountField.focus();  // Foca no campo de "Outro valor"
+                    } else {
+                        customAmountField.style.display = 'none';  // Esconde o campo de "Outro valor"
+                    }
+                });
             });
-        });
 
-        function generateDonationDetails() {
-            const amount = document.querySelector('input[name="amount"]:checked').value;
-            const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
-            let donationAmount = amount;
+            // Função para gerar os detalhes da doação
+            function generateDonationDetails() {
+                const amount = document.querySelector('input[name="amount"]:checked').value;
+                const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+                let donationAmount = amount;
 
-            if (amount === 'other') {
-                donationAmount = document.getElementById('customAmount').value;
-
-                // Se "outro valor" for selecionado e nenhum valor personalizado for inserido,
-                // gerar QR code sem valor definido.
-                if (!donationAmount) {
-                    donationAmount = 'Valor livre';
+                // Se "Outro valor" foi selecionado, não obrigar a digitar um valor
+                if (amount === 'other') {
+                    donationAmount = 'no_value';  // Marca como sem valor definido
                 }
-            }
 
-            if (!paymentMethod) {
-                alert('Por favor, selecione uma forma de pagamento.');
-                return;
-            }
+                // Verifica se uma forma de pagamento foi selecionada
+                if (!paymentMethod) {
+                    alert('Por favor, selecione uma forma de pagamento.');
+                    return;
+                }
 
-            document.getElementById('donationDetails').style.display = 'block';
-            
-            if (paymentMethod === 'pix') {
-                document.getElementById('qrCode').style.display = 'block';
-                document.getElementById('bankDetails').style.display = 'none';
+                document.getElementById('donationDetails').style.display = 'block';
 
-                // Aqui você pode definir a lógica para gerar o QR code com valor definido
-                // ou sem valor definido, dependendo do valor inserido ou da opção "outro".
-                if (donationAmount === 'Valor livre') {
-                    // Gerar QR code sem valor definido
-                    document.getElementById('qrCode').src = 'path/to/qr_code_without_value.png';
+                if (paymentMethod === 'pix') {
+                    document.getElementById('qrCode').style.display = 'block';
+                    document.getElementById('bankDetails').style.display = 'none';
+
+                    // Gera o QR code apropriado baseado no valor selecionado
+                    if (donationAmount === '5') {
+                        document.getElementById('qrCodeImage R$5,00').src = 'qr_code_5.png';  // QR code para R\$ 5,00
+                    } else if (donationAmount === '10') {
+                        document.getElementById('qrCodeImage R$10,00').src = 'qr_code_10.png';  // QR code para R\$ 10,00
+                    } else if (donationAmount === '15') {
+                        document.getElementById('qrCodeImage R$15,00').src = 'qr_code_15.png';  // QR code para R\$ 15,00
+                    } else {
+                        document.getElementById('qrCodeImage').src = 'qr_code_no_value.png';  // QR code sem valor definido
+                    }
+
                 } else {
-                    // Gerar QR code com valor específico
-                    document.getElementById('qrCode').src = `path/to/qr_code_with_${donationAmount}_value.png`;
+                    document.getElementById('qrCode').style.display = 'none';
+                    document.getElementById('bankDetails').style.display = 'block';
                 }
-            } else {
-                document.getElementById('qrCode').style.display = 'none';
-                document.getElementById('bankDetails').style.display = 'block';
             }
-        }
+            
     </script>
 </head>
 <body>
@@ -691,48 +695,41 @@
             <section  class="content-section">
                 <div class="donation-container">
                     
-                        <h2>Apoie Nosso Conteúdo!</h2>
-                            <p><b> Se nossas dicas foram úteis ou agregaram valor ao seu dia, que tal nos ajudar com um pequeno gesto? Uma doação, por menor que seja, nos mostra o quanto nossas informações estão fazendo a diferença para você. Com a sua contribuição, poderemos continuar mantendo o site sempre atualizado e repleto de conteúdo relevante.
-                            Sua opinião é fundamental para nós! Se tiver dúvidas, sugestões ou dicas, não hesite em nos contatar pelo WhatsApp ou enviar um e-mail. Estamos aqui para ajudar!</b>
-                            </p>
-                    
-                    
-                    <form>
-                        <label>
-                            <input type="radio" name="amount" value="5"> <b>R$ 5</b> 
-                        </label>
-                        <label>
-                            <input type="radio" name="amount" value="10"> <b>R$ 10</b>
-                        </label>
-                        <label>
-                            <input type="radio" name="amount" value="15"> <b>R$ 15</b>
-                        </label>
-                        <label>
-                            <input type="radio" name="amount" value="other" id="other"> <b>Outro valor</b> 
-                        </label>
-                        <input type="number" id="customAmount" placeholder="Digite o valor">
-                        <br><br>
-                        <label>
-                            <input type="radio" name="paymentMethod" value="pix"> <b>PIX</b> 
-                        </label>
-                        <label>
-                            <input type="radio" name="paymentMethod" value="deposito"> <b>Depósito</b> 
-                        </label>
-                        <br><br>
-                        <button type="button" onclick="generateDonationDetails()">Gerar detalhes da doação</button>
+                    <h2>Apoie Nosso Conteúdo!</h2>
+                    <p><b>Se nossas dicas foram úteis ou agregaram valor ao seu dia, que tal nos ajudar com um pequeno gesto? Uma doação, por menor que seja, nos mostra o quanto nossas informações estão fazendo a diferença para você. Com a sua contribuição, poderemos continuar mantendo o site sempre atualizado e repleto de conteúdo relevante. Sua opinião é fundamental para nós! Se tiver dúvidas, sugestões ou dicas, não hesite em nos contatar pelo WhatsApp ou enviar um e-mail. Estamos aqui para ajudar!</b></p>
+                    <p>Escolha um valor para doar:</p>
+                    <form id="donationForm">
+                        <input type="radio" id="5" name="amount" value="5">
+                        <label for="5">R\$ 5,00</label><br>
+                        <input type="radio" id="10" name="amount" value="10">
+                        <label for="10">R\$ 10,00</label><br>
+                        <input type="radio" id="15" name="amount" value="15">
+                        <label for="15">R\$ 15,00</label><br>
+                        <input type="radio" id="other" name="amount" value="other">
+                        <label for="other">Outro valor</label><br>
+                        <input type="number" id="customAmount" placeholder="Digite um valor" style="display: none;"><br><br>
+
+                        <p>Escolha a forma de pagamento:</p>
+                        <input type="radio" id="pix" name="paymentMethod" value="pix">
+                        <label for="pix">Pix</label><br>
+                        <input type="radio" id="deposit" name="paymentMethod" value="deposit">
+                        <label for="deposit">Depósito</label><br><br>
+
+                        <button type="button" onclick="generateDonationDetails()">Gerar Detalhes de Doação</button>
                     </form>
-                    <div id="donationDetails">
-                        <div id="qrCode">
-                            <p><b>QR Code para PIX:</b></p>
-                            <img src="seu-qrcode-url-aqui.png" alt="QR Code">
+
+                    <div id="donationDetails" style="display: none;">
+                        <h3>Detalhes para Doação</h3>
+                        <div id="qrCode" style="display: none;">
+                            <p>Escaneie o QR code abaixo para fazer a doação via Pix:</p>
+                            <img id="qrCodeImage" src="" alt="QR Code Pix">
                         </div>
-                        <div id="bankDetails">
-                            <b>
-                                <p>Dados bancários:</p>
-                                <p>Banco: XYZ</p>
-                                <p>Agência: 0000</p>
-                                <p>Conta: 000000-0</p>
-                            </b>
+                        <div id="bankDetails" style="display: none;">
+                            <p>Dados Bancários para Depósito:</p>
+                            <p>Banco: XYZ</p>
+                            <p>Agência: 1234</p>
+                            <p>Conta: 56789-0</p>
+                            <p>Titular: Seu Nome</p>
                         </div>
                     </div>
                 </div>  
