@@ -346,82 +346,12 @@
         .marg{
             padding-top: 5%;
         }
+        #qrCodeImage{
+            max-width: 300px;
+            max-height: 300px;
+        }
     </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const burger = document.querySelector('.navbar-burger');
-            const menu = document.querySelector('.navbar-menu');
-            const menuItems = document.querySelectorAll('.navbar-item');
-
-            burger.addEventListener('click', function() {
-                menu.classList.toggle('is-active');
-            });
-
-            // Fecha o menu automaticamente ao clicar em qualquer item
-            menuItems.forEach(function(item) {
-                item.addEventListener('click', function() {
-                    menu.classList.remove('is-active');
-                });
-            });
-        });
-            
-            // Adiciona evento aos botões de seleção do valor
-            document.querySelectorAll('input[name="amount"]').forEach((el) => {
-                el.addEventListener('change', function() {
-                    const customAmountField = document.getElementById('customAmount');
-
-                    // Verifica se a opção "Outro valor" foi selecionada
-                    if (this.value === 'other') {
-                        customAmountField.style.display = 'block';  // Mostra o campo de "Outro valor"
-                        customAmountField.value = '';  // Limpa o valor anterior
-                        customAmountField.focus();  // Foca no campo de "Outro valor"
-                    } else {
-                        customAmountField.style.display = 'none';  // Esconde o campo de "Outro valor"
-                    }
-                });
-            });
-
-            // Função para gerar os detalhes da doação
-            function generateDonationDetails() {
-                const amount = document.querySelector('input[name="amount"]:checked').value;
-                const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
-                let donationAmount = amount;
-
-                // Se "Outro valor" foi selecionado, não obrigar a digitar um valor
-                if (amount === 'other') {
-                    donationAmount = 'no_value';  // Marca como sem valor definido
-                }
-
-                // Verifica se uma forma de pagamento foi selecionada
-                if (!paymentMethod) {
-                    alert('Por favor, selecione uma forma de pagamento.');
-                    return;
-                }
-
-                document.getElementById('donationDetails').style.display = 'block';
-
-                if (paymentMethod === 'pix') {
-                    document.getElementById('qrCode').style.display = 'block';
-                    document.getElementById('bankDetails').style.display = 'none';
-
-                    // Gera o QR code apropriado baseado no valor selecionado
-                    if (donationAmount === '5') {
-                        document.getElementById('qrCodeImage R$5,00').src = 'qr_code_5.png';  // QR code para R\$ 5,00
-                    } else if (donationAmount === '10') {
-                        document.getElementById('qrCodeImage R$10,00').src = 'qr_code_10.png';  // QR code para R\$ 10,00
-                    } else if (donationAmount === '15') {
-                        document.getElementById('qrCodeImage R$15,00').src = 'qr_code_15.png';  // QR code para R\$ 15,00
-                    } else {
-                        document.getElementById('qrCodeImage').src = 'qr_code_no_value.png';  // QR code sem valor definido
-                    }
-
-                } else {
-                    document.getElementById('qrCode').style.display = 'none';
-                    document.getElementById('bankDetails').style.display = 'block';
-                }
-            }
-            
-    </script>
+    
 </head><div id="home"></div>
 <body>
     <!-- Imagem GIF de Fundo -->
@@ -778,5 +708,79 @@
         </section>
         <p>&copy; 2024 SoluçõesInovadoras.com, Todos os direitos reservados.</p>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const burger = document.querySelector('.navbar-burger');
+            const menu = document.querySelector('.navbar-menu');
+            const menuItems = document.querySelectorAll('.navbar-item');
+
+            burger.addEventListener('click', function() {
+                menu.classList.toggle('is-active');
+            });
+
+            // Fecha o menu automaticamente ao clicar em qualquer item
+            menuItems.forEach(function(item) {
+                item.addEventListener('click', function() {
+                    menu.classList.remove('is-active');
+                });
+            });
+        });
+            
+            // Adiciona evento aos botões de seleção do valor
+            document.querySelectorAll('input[name="amount"]').forEach((el) => {
+                el.addEventListener('change', function() {
+                    const customAmountField = document.getElementById('customAmount');
+
+                    // Verifica se a opção "Outro valor" foi selecionada
+                    if (this.value === 'other') {
+                        customAmountField.style.display = 'block';  // Mostra o campo de "Outro valor"
+                        customAmountField.value = '';  // Limpa o valor anterior
+                        customAmountField.focus();  // Foca no campo de "Outro valor"
+                    } else {
+                        customAmountField.style.display = 'none';  // Esconde o campo de "Outro valor"
+                    }
+                });
+            });
+
+            // Função para gerar os detalhes da doação
+            function generateDonationDetails() {
+                const amount = document.querySelector('input[name="amount"]:checked').value;
+                const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+                let donationAmount = amount;
+
+                // Se "Outro valor" foi selecionado, não obrigar a digitar um valor
+                if (amount === 'other') {
+                    donationAmount = 'no_value';  // Marca como sem valor definido
+                }
+
+                // Verifica se uma forma de pagamento foi selecionada
+                if (!paymentMethod) {
+                    alert('Por favor, selecione uma forma de pagamento.');
+                    return;
+                }
+
+                document.getElementById('donationDetails').style.display = 'block';
+
+                if (paymentMethod === 'pix') {
+                    document.getElementById('qrCode').style.display = 'block';
+                    document.getElementById('bankDetails').style.display = 'none';
+                    // Gera o QR code apropriado baseado no valor selecionado
+                    if (donationAmount === '5') {
+                        document.getElementById('qrCodeImage R$5,00').src = 'qr_code_5.png';  // QR code para R\$ 5,00
+                    } else if (donationAmount === '10') {
+                        document.getElementById('qrCodeImage R$10,00').src = 'qr_code_10.png';  // QR code para R\$ 10,00
+                    } else if (donationAmount === '15') {
+                        document.getElementById('qrCodeImage R$15,00').src = 'qr_code_15.png';  // QR code para R\$ 15,00
+                    } else {
+                        document.getElementById('qrCodeImage').src = 'https://github.com/lml-MarcusHenrique-lml/Curso_dio-Flex_Box/blob/main/ArquivoDio/SI/Qr_Code_mini_void.png';  // QR code sem valor definido
+                    }
+
+                } else {
+                    document.getElementById('qrCode').style.display = 'none';
+                    document.getElementById('bankDetails').style.display = 'block';
+                }
+            }
+            
+    </script>
 </body>
 </html>
