@@ -352,6 +352,61 @@
             max-width: 300px;
             max-height: 300px;
         }
+        .carousel {
+        position: relative;
+        max-width: 600px;
+        margin: 20px auto;
+        overflow: hidden;
+        border-radius: 10px;
+        }
+
+        .carousel-slide {
+        display: none;
+        padding: 20px;
+        text-align: center;
+        background-image: url(SI/Soluções\ Inovadoras.com.gif);
+        opacity: 0;
+        transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .carousel-slide.active {
+        display: block;
+        opacity: 1;
+        transform: translateX(0);
+        }
+
+        .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 8px;
+        margin-top: -22px;
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        border-radius: 50%;
+        user-select: none;
+        }
+
+        .next {
+        right: 0;
+        border-radius: 50%;
+        }
+
+        .prev {
+        left: 0;
+        border-radius: 50%;
+        }
+
+        .carousel-slide.prev-slide {
+        transform: translateX(-100%);
+        }
+
+        .carousel-slide.next-slide {
+        transform: translateX(100%);
+        }
     </style>
     
 </head><div id="home"></div>
@@ -437,36 +492,95 @@
     <section id="dicas-instalação" class="content-section">
         <h2>Compra Inteligente, Segurança e Qualidade Sem Arrependimentos</h2>
         <div class="grid-container">
-                <div>
-                    <h3>A Importância da Assistência Técnica.</h3>
-                        
-                        <h4>Ao escolher um ar condicionado, a facilidade em acionar a garantia e encontrar peças de reposição são cruciais. Opte por marcas renomadas com uma ampla rede de assistência técnica e boa reputação no mercado. Pesquise sobre a disponibilidade de peças e os prazos para reparos antes de finalizar a compra.</h4>
-                    
+            <div class="carousel" id="carousel-1">
+                <div class="carousel-slide active">
+                    <img src="SI/bannerCompraSegura/1.A Importância da Assistência Técnica..gif" alt="intro">
                 </div>
-                <div>
-                    <h3>Dimensionamento Correto: Não Desperdice a Eficiência do Inverter</h3>
-                        
-                        <h4>O dimensionamento correto do ar condicionado é fundamental para garantir o máximo desempenho e economia de energia, especialmente em modelos inverter. Um aparelho muito pequeno pode não conseguir refrigerar o ambiente de forma eficiente, enquanto um muito grande pode gerar um consumo excessivo de energia. Consulte um profissional para calcular a capacidade ideal de BTU para o seu ambiente.</h4>
-                    
-                    
+                <div class="carousel-slide">
+                    <img src="SI/bannerCompraSegura/2.A Importância da Assistência Técnica..gif" alt="2parte">
                 </div>
-                <div>
-                    <h3>A Orientação de um Profissional: Um Investimento Seguro</h3>
-                        <h4>Contar com a orientação de um profissional especializado é essencial para escolher o ar condicionado ideal para as suas necessidades. Ele irá analisar as características do ambiente, como tamanho, incidência solar e número de pessoas, e indicar o modelo mais adequado. Além disso, o profissional poderá auxiliar na instalação e fornecer dicas importantes para a manutenção do equipamento.</h4>
-                    
+                <div class="carousel-slide">
+                    <img src="SI/bannerCompraSegura/3.A Importância da Assistência Técnica..gif" alt="3parte">
                 </div>
-                <div>
-                    <h3>Avalie a Instalação Existente: Evite Obras Desnecessárias</h3> 
-                        <h4>Antes de comprar o ar condicionado, é fundamental verificar as condições da tubulação já existente. Se a tubulação for compatível com o novo aparelho, você poderá economizar com a instalação. Caso seja necessário fazer alguma adaptação, consulte um técnico para avaliar a melhor forma de proceder.</h4>
-                    
+                <div class="carousel-slide">
+                    <img src="Soluções Inovadoras.com.gif" alt="3parte">
                 </div>
-                <div>
-                    
-                        <h3>Compare as Opções: Pesquise e Negocie</h3> 
-                        <h4>Pesquise em diferentes lojas e compare os preços e as condições de pagamento. Não se esqueça de verificar a garantia oferecida por cada modelo. Além disso, negocie com os vendedores para tentar conseguir um desconto ou algum benefício extra.</h4>
-                        
-                    
+                <!-- Controles -->
+                <button class="prev" onclick="moveSlide(-1, 'carousel-1')">&#10094;</button>
+                <button class="next" onclick="moveSlide(1, 'carousel-1')">&#10095;</button>
                 </div>
+
+                <div class="carousel" id="carousel-2">
+                <div class="carousel-slide active">
+                    <img src="SI/bannerCompraSegura/4.Dimensionamento Correto Não Desperdice a Eficiência do Inverter.gif" alt="intro">
+                </div>
+                <div class="carousel-slide">
+                    <img src="SI/bannerCompraSegura/5.Dimensionamento Correto Não Desperdice a Eficiência do Inverter.gif" alt="2parte">
+                </div>
+                <div class="carousel-slide">
+                    <img src="SI/bannerCompraSegura/6.Dimensionamento Correto Não Desperdice a Eficiência do Inverter.gif" alt="3parte">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Soluções Inovadoras.com.gif" alt="3parte">
+                </div>
+                <!-- Controles -->
+                <button class="prev" onclick="moveSlide(-1, 'carousel-2')">&#10094;</button>
+                <button class="next" onclick="moveSlide(1, 'carousel-2')">&#10095;</button>
+                </div>
+
+                <div class="carousel" id="carousel-3">
+                <div class="carousel-slide active">
+                    <img src="SI/bannerCompraSegura/7.A Orientação de um Profissional Um Investimento Seguro.gif" alt="">
+                </div>
+                <div class="carousel-slide">
+                    <img src="SI/bannerCompraSegura/8.A Orientação de um Profissional Um Investimento Seguro.gif" alt="">
+                </div>
+                <div class="carousel-slide">
+                    <img src="SI/bannerCompraSegura/9.A Orientação de um Profissional Um Investimento Seguro.gif" alt="">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Soluções Inovadoras.com.gif" alt="3parte">
+                </div>
+                <!-- Controles -->
+                <button class="prev" onclick="moveSlide(-1, 'carousel-3')">&#10094;</button>
+                <button class="next" onclick="moveSlide(1, 'carousel-3')">&#10095;</button>
+                </div>
+
+                <div class="carousel" id="carousel-4">
+                <div class="carousel-slide active">
+                    <img src="SI/bannerCompraSegura/10.Avalie a Instalação Existente Evite Obras Desnecessárias.gif" alt="">
+                </div>
+                <div class="carousel-slide">
+                    <img src="SI/bannerCompraSegura/11.Avalie a Instalação Existente Evite Obras Desnecessárias.gif" alt="">
+                </div>
+                <div class="carousel-slide">
+                    <img src="SI/bannerCompraSegura/12.Avalie a Instalação Existente Evite Obras Desnecessárias.gif" alt="">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Soluções Inovadoras.com.gif" alt="3parte">
+                </div>
+                <!-- Controles -->
+                <button class="prev" onclick="moveSlide(-1, 'carousel-4')">&#10094;</button>
+                <button class="next" onclick="moveSlide(1, 'carousel-4')">&#10095;</button>
+                </div>
+                <div class="carousel" id="carousel-5">
+                <div class="carousel-slide active">
+                    <img src="SI/bannerCompraSegura/13.Compare as Opções Pesquise e Negocie.gif" alt="">
+                </div>
+                <div class="carousel-slide">
+                    <img src="SI/bannerCompraSegura/14.Compare as Opções Pesquise e Negocie.gif" alt="">
+                </div>
+                <div class="carousel-slide">
+                    <img src="SI/bannerCompraSegura/15.Compare as Opções Pesquise e Negocie.gif" alt="">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Soluções Inovadoras.com.gif" alt="3parte">
+                </div>
+                <!-- Controles -->
+                <button class="prev" onclick="moveSlide(-1, 'carousel-5')">&#10094;</button>
+                <button class="next" onclick="moveSlide(1, 'carousel-5')">&#10095;</button>
+                </div>
+                
             </div>
     </section>
 
@@ -474,6 +588,94 @@
     <section id="dicas-técnicas" class="content-section">
         <h2>Instalação Perfeita? Tudo Começa com o Instalador Certo!</h2>
         <div class="grid-container">
+            <div class="carousel" id="carousel-6">
+                <div class="carousel-slide active">
+                    <img src="SI/bannerCompraSegura/1.A Importância da Assistência Técnica..gif" alt="intro">
+                </div>
+                <div class="carousel-slide">
+                    <img src="SI/bannerCompraSegura/2.A Importância da Assistência Técnica..gif" alt="2parte">
+                </div>
+                <div class="carousel-slide">
+                    <img src="SI/bannerCompraSegura/3.A Importância da Assistência Técnica..gif" alt="3parte">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Soluções Inovadoras.com.gif" alt="3parte">
+                </div>
+                <!-- Controles -->
+                <button class="prev" onclick="moveSlide(-1, 'carousel-6')">&#10094;</button>
+                <button class="next" onclick="moveSlide(1, 'carousel-6')">&#10095;</button>
+                </div>
+
+                <div class="carousel" id="carousel-7">
+                <div class="carousel-slide active">
+                    <img src="SI/bannerCompraSegura/4.Dimensionamento Correto Não Desperdice a Eficiência do Inverter.gif" alt="intro">
+                </div>
+                <div class="carousel-slide">
+                    <img src="SI/bannerCompraSegura/5.Dimensionamento Correto Não Desperdice a Eficiência do Inverter.gif" alt="2parte">
+                </div>
+                <div class="carousel-slide">
+                    <img src="SI/bannerCompraSegura/6.Dimensionamento Correto Não Desperdice a Eficiência do Inverter.gif" alt="3parte">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Soluções Inovadoras.com.gif" alt="3parte">
+                </div>
+                <!-- Controles -->
+                <button class="prev" onclick="moveSlide(-1, 'carousel-7')">&#10094;</button>
+                <button class="next" onclick="moveSlide(1, 'carousel-7')">&#10095;</button>
+                </div>
+
+                <div class="carousel" id="carousel-8">
+                <div class="carousel-slide active">
+                    <img src="SI/bannerCompraSegura/7.A Orientação de um Profissional Um Investimento Seguro.gif" alt="">
+                </div>
+                <div class="carousel-slide">
+                    <img src="SI/bannerCompraSegura/8.A Orientação de um Profissional Um Investimento Seguro.gif" alt="">
+                </div>
+                <div class="carousel-slide">
+                    <img src="SI/bannerCompraSegura/9.A Orientação de um Profissional Um Investimento Seguro.gif" alt="">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Soluções Inovadoras.com.gif" alt="3parte">
+                </div>
+                <!-- Controles -->
+                <button class="prev" onclick="moveSlide(-1, 'carousel-8')">&#10094;</button>
+                <button class="next" onclick="moveSlide(1, 'carousel-8')">&#10095;</button>
+                </div>
+
+                <div class="carousel" id="carousel-9">
+                <div class="carousel-slide active">
+                    <img src="SI/bannerCompraSegura/10.Avalie a Instalação Existente Evite Obras Desnecessárias.gif" alt="">
+                </div>
+                <div class="carousel-slide">
+                    <img src="SI/bannerCompraSegura/11.Avalie a Instalação Existente Evite Obras Desnecessárias.gif" alt="">
+                </div>
+                <div class="carousel-slide">
+                    <img src="SI/bannerCompraSegura/12.Avalie a Instalação Existente Evite Obras Desnecessárias.gif" alt="">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Soluções Inovadoras.com.gif" alt="3parte">
+                </div>
+                <!-- Controles -->
+                <button class="prev" onclick="moveSlide(-1, 'carousel-9')">&#10094;</button>
+                <button class="next" onclick="moveSlide(1, 'carousel-9')">&#10095;</button>
+                </div>
+                <div class="carousel" id="carousel-10">
+                <div class="carousel-slide active">
+                    <img src="SI/bannerCompraSegura/13.Compare as Opções Pesquise e Negocie.gif" alt="">
+                </div>
+                <div class="carousel-slide">
+                    <img src="SI/bannerCompraSegura/14.Compare as Opções Pesquise e Negocie.gif" alt="">
+                </div>
+                <div class="carousel-slide">
+                    <img src="SI/bannerCompraSegura/15.Compare as Opções Pesquise e Negocie.gif" alt="">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Soluções Inovadoras.com.gif" alt="3parte">
+                </div>
+                <!-- Controles -->
+                <button class="prev" onclick="moveSlide(-1, 'carousel-10')">&#10094;</button>
+                <button class="next" onclick="moveSlide(1, 'carousel-10')">&#10095;</button>
+                </div>
                 <div>
                     
                         <h3>Escolha do Técnico Certificado </h3>
@@ -483,8 +685,8 @@
                 </div>
                 <div>
                     
-                        <h3>Instalação Correta = Vida Longa do Aparelho:</h3>
-                        <h4>Uma instalação feita conforme o manual é essencial para a durabilidade do aparelho. O uso correto de ferramentas, como o vácuo no sistema de refrigeração, evita futuros problemas.Uma instalação feita conforme o manual é essencial para a durabilidade do aparelho. O uso correto de ferramentas, como o vácuo no sistema de refrigeração, evita futuros problemas.</h4>
+                        <h3>Instalação Correta = Vida Longa do Aparelho</h3>
+                        <h4>Uma instalação feita conforme o manual é essencial para a durabilidade do aparelho. O uso correto de ferramentas, como o vácuo no sistema de refrigeração, evita futuros problemas.</h4>
                 
                     
                 </div>
@@ -584,21 +786,20 @@
                                 </li>
                                 <li><b>Conforto térmico:</b>Mantém a temperatura estável, sem oscilações, garantindo um ambiente agradável.
                                 </li>
-                                <li><b></b>
-                                </li>
+                                
                                                                 
 
                             </ul>
                         </p>
                     </div>
                     <div class="image">
-                        <img src="SI/fundo banner loja.jpeg" alt="Consultoria Dinâmica">
+                        <img src="SI/BannerTodasAsMarcas/BannerPromocionalLG.gif" alt="Consultoria Dinâmica">
                     </div>
             </div>
 
             <div class="container">
                 <div class="image">
-                    <img src="banner apresentanção pagweb.png" alt="Experiência e Conhecimento">
+                    <img src="SI/BannerTodasAsMarcas/BannerPromocionalDaikin.gif" alt="Experiência e Conhecimento">
                 </div>
                 <div class="content">
                     <h3>Split Daikin</h3>
@@ -618,13 +819,13 @@
                         </p>
                     </div>
                     <div class="image">
-                        <img src="SI/banner solar.png" alt="Consultoria Dinâmica">
+                        <img src="SI/BannerTodasAsMarcas/BannerPromocionalFujitsu.gif" alt="Consultoria Dinâmica">
                     </div>
             </div>
 
             <div class="container">
                 <div class="image">
-                    <img src="Promo TCL.png" alt="Experiência e Conhecimento">
+                    <img src="SI/BannerTodasAsMarcas/BannerPromocionalHitachi.gif" alt="Experiência e Conhecimento">
                 </div>
                 <div class="content">
                     <h3>Split Hitachi</h3>
@@ -794,7 +995,38 @@
                     document.getElementById('bankDetails').style.display = 'block';
                 }
             }
-            
+            // Objeto para armazenar o estado de cada carrossel individualmente
+            let carouselState = {
+            'carousel-1': 0,
+            'carousel-2': 0,
+            'carousel-3': 0,
+            'carousel-4': 0,
+            'carousel-5': 0,
+            'carousel-6': 0,
+            'carousel-7': 0,
+            'carousel-8': 0,
+            'carousel-9': 0,
+            'carousel-10': 0
+
+            };
+
+            function moveSlide(direction, carouselId) {
+            const slides = document.querySelectorAll(`#${carouselId} .carousel-slide`);
+            const currentIndex = carouselState[carouselId];
+
+            // Remover a classe 'active' do slide atual
+            slides[currentIndex].classList.remove('active');
+
+            // Atualizar o índice atual
+            carouselState[carouselId] = (currentIndex + direction + slides.length) % slides.length;
+
+            // Adicionar a classe 'active' ao novo slide
+            slides[carouselState[carouselId]].classList.add('active');
+            }
+
+            // Auto-slide functionality (opcional)
+            // let autoSlide = setInterval(() => moveSlide(1, 'carousel-1'), 5000);
+                        
     </script>
 </body>
 </html>
